@@ -1,0 +1,1262 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="tab-buttons">
+                <!-- <button class="tab-btn {{leadbtn}}" (click)="openTab('lead')">
+                    Lead
+                </button> -->
+                <!-- <button class="tab-btn {{contactbtn}}" (click)="openTab('contact')">
+                    Contacts
+                </button>
+                <button class="tab-btn {{calllogbtn}}" (click)="openTab('calllog')">
+                    Call Log
+                </button>
+                <button class="tab-btn {{eventsbtn}}" (click)="openTab('events')">
+                    Events
+                </button>
+                <button class="tab-btn {{remindersbtn}}" (click)="openTab('reminders')">
+                    Reminders
+                </button>
+                <button class="tab-btn {{enquirybtn}}" (click)="openTab('enquiry')">
+                    Enquiry
+                </button>
+                <button class="tab-btn {{quotationbtn}}" (click)="openTab('quotation')">
+                    Quotation
+                </button>
+                <button class="tab-btn {{ordersbtn}}" (click)="openTab('orders')">
+                    Orders
+                </button> -->
+                <!-- 
+                <button class="tab-btn {{documentsbtn}}" (click)="openTab('documents')">
+                    Documents
+                </button> -->
+
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="lead" *ngIf="lead" class="mt-3">
+                <h3>Lead Information</h3>
+                <hr />
+
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Lead Owner<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <select class="form-select" [(ngModel)]="leadcreateform.lead_owner">
+                            <option value="0">--Select Owner--</option>
+                            <option *ngFor="let item of lstleadowner" [value]="item.id">{{item.description}}</option>
+                        </select> -->
+
+                    <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.lead_owner">
+                        <option value="0">--Select Owner--</option>
+                        <option *ngFor="let emp of employees" [value]="emp.recordId">{{ emp.empname }}</option>
+                      </select>
+
+                    </div>
+                    <div class="col-md-2">
+                        <label>Company<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text"  maxlength="50" class="form-control"
+                            [(ngModel)]="leadcreateform.company" />
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Title</label>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <input type="text"  maxlength="50" class="form-control" [(ngModel)]="leadcreateform.title" />
+                          -->
+
+
+                          <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.title">
+
+                            <option value="">--Select Title--</option>
+                            <option *ngFor="let item of lstleadtitle" [value]="item.description">{{item.description}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>First Name<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" (keypress)="letterOnly($event)" maxlength="100" class="form-control"
+                            [(ngModel)]="leadcreateform.first_name" />
+                    </div>
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" (keypress)="letterOnly($event)" maxlength="100" class="form-control"
+                            [(ngModel)]="leadcreateform.last_name" />
+                    </div>
+                    <div class="col-md-2">
+                        <label>Email<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="email" maxlength="100" class="form-control"
+                            [(ngModel)]="leadcreateform.business_email" #email="ngModel" name="business_email" required
+                            email />
+                        <div *ngIf="email.invalid && email.touched" class="text-danger">
+                            <small *ngIf="email.errors?.required">Email is required.</small>
+                            <small *ngIf="email.errors?.email">Please enter a valid email address.</small>
+                            <small *ngIf="email.errors?.maxlength">Email cannot be longer than 100 characters.</small>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Phone<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" (keypress)="mobilevalidate($event)" maxlength="12" class="form-control"
+                            [(ngModel)]="leadcreateform.phonenumber" />
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <label>Fax</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" [(ngModel)]="leadcreateform.fax" />
+                    </div> -->
+                    <div class="col-md-2">
+                        <label>Mobile</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" (keypress)="mobilevalidate($event)" maxlength="12" class="form-control"
+                            [(ngModel)]="leadcreateform.alternate_number" />
+                    </div>
+                </div>
+                <div class="row mb-4">
+
+                    <div class="col-md-2">
+                        <label>Website</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" maxlength="150" class="form-control" [(ngModel)]="leadcreateform.website"
+                            name="website" #websiteField="ngModel" required pattern="https?://.+" />
+                        <div *ngIf="websiteField.invalid && websiteField.touched" class="text-danger">
+                            <div *ngIf="websiteField.errors?.required">Website is required.</div>
+                            <div *ngIf="websiteField.errors?.pattern">Enter a valid website URL (e.g.,
+                                https://example.com).</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Lead Source<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.lead_source">
+                            <option value="0">--Lead Source--</option>
+                            <option *ngFor="let item of lstleadsource" [value]="item.id">{{item.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+
+                    <div class="col-md-2">
+                        <label>Lead Status<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.lead_status">
+                            <option value="0">--Lead Status--</option>
+                            <option *ngFor="let item of lstleadstatus" [value]="item.id">{{item.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Lead Stage</label>
+                    </div>
+
+                    <div class="col-md-4"  >
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.lead_stage">
+
+                            <option value="0">--Lead Stage--</option>
+                            <option *ngFor="let item of lstcrmleadstage" [value]="item.id">{{item.description}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Industry</label>
+                    </div>
+
+                    <div class="col-md-4"  >
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.industry">
+
+                            <option value="">--Industry--</option>
+                            <option *ngFor="let item of lstcrmindustry" [value]="item.description">{{item.description}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>No. of Employees</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" [(ngModel)]="leadcreateform.numberofemployees"
+                            name="numberofemployees" #numberOfEmployeesField="ngModel" required min="0"
+                            [max]="9999999999" (input)="validateNumberOfEmployees()" />
+                        <div *ngIf="numberOfEmployeesField.invalid && numberOfEmployeesField.touched"
+                            class="text-danger">
+                            <div *ngIf="numberOfEmployeesField.errors?.required">Number of Employees is required.</div>
+                            <div *ngIf="numberOfEmployeesField.errors?.min">Number of Employees cannot be negative.
+                            </div>
+                            <div *ngIf="numberOfEmployeesField.errors?.maxlength">Maximum of 10 digits allowed.</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row mb-4">
+
+                    <!-- <div class="col-md-2">
+                        <label>Rating</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" [(ngModel)]="leadcreateform.rating">
+                            <option value="0">--Rating--</option>
+                        </select>
+                    </div> -->
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Annual Revenue</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control"  (keypress)="amountvalidate($event)" [(ngModel)]="leadcreateform.annual_revenue"
+                            name="annual_revenue" #annualRevenueField="ngModel" pattern="^[0-9]+$" />
+                        <div *ngIf="annualRevenueField.invalid && annualRevenueField.touched" class="text-danger">
+                            <div *ngIf="annualRevenueField.errors?.required">Annual Revenue is required.</div>
+                            <div *ngIf="annualRevenueField.errors?.pattern">Please enter a valid number (no letters or
+                                special characters).</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Disable Email Notifications</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" [(ngModel)]="leadcreateform.emailoutputformat" />
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <label>Skype ID</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" [(ngModel)]="leadcreateform.skypeid"/>
+                    </div> -->
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Secondary Email</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" maxlength="100"
+                            [(ngModel)]="leadcreateform.secondary_email" #secondaryEmail="ngModel"
+                            name="secondary_email" email />
+                        <div *ngIf="secondaryEmail.invalid && secondaryEmail.touched" class="text-danger">
+                            <small *ngIf="secondaryEmail.errors?.email">Please enter a valid email address.</small>
+                            <small *ngIf="secondaryEmail.errors?.maxlength">Email cannot exceed 100 characters.</small>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <label>Twitter</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control"  [(ngModel)]="leadcreateform.twitter" />
+                    </div> -->
+                </div>
+                <h3>Address Information</h3>
+                <hr />
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Country<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.country" >
+
+                            <option value="">--Select Country--</option>
+                            <option *ngFor="let item of lstleadcountry" [value]="item.cntname">{{item.cntname}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>State<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <input type="text" class="form-control" [(ngModel)]="leadcreateform.state" /> -->
+
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.state" >
+
+                            <option value="">--Select State--</option>
+                            <option *ngFor="let item of lstleadstates" [value]="item.stateName">{{item.stateName}}
+                            </option>
+                        </select>
+                    </div>
+                   
+                   
+                    <!-- <div class="col-md-2">
+                        <label>City</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" [(ngModel)]="leadcreateform.city" >
+                            <option value="">--Select City--</option>
+                            <option *ngFor="let item of lstleadcountry" [value]="item.cntname">{{item.cntname}}</option>
+                        </select>
+                       
+                    </div> -->
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>City</label>
+                    </div>
+                    <div class="col-md-4">
+
+                        <select class="form-select form-control-lg" [(ngModel)]="leadcreateform.city" >
+
+                            <option value="">--Select City--</option>
+                            <option *ngFor="let item of allrecords" [value]="item.description">{{item.description}}
+                            </option>
+                        </select>
+                    </div>
+                  
+
+                    <div class="col-md-2">
+                        <label>Street</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" maxlength="500" class="form-control" [(ngModel)]="leadcreateform.street" />
+                    </div>
+
+                </div>
+                <div class="row mb-4">
+
+                    <div class="col-md-2">
+                        <label>Zip Code</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" [(ngModel)]="leadcreateform.zipcode" />
+                    </div>
+
+                </div>
+
+                <h3>Description Information</h3>
+                <hr />
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Description</label>
+                    </div>
+                    <div class="col-md-4">
+                        <textarea type="text" class="form-control" style="height: 200px;"
+                            [(ngModel)]="leadcreateform.description"></textarea>
+
+                    </div>
+
+                </div>
+
+                <h3 *ngIf="!leadid" class="title">Contact</h3>
+                <hr>
+
+
+                <div *ngIf="!leadid" class="cor-form">
+                    <div class="input-box">
+                        <span class="details">First Name <span class="cor-mandate">*</span></span>
+                        <input type="text" class="form-control" (keypress)="letterOnly($event)" placeholder="Enter your First Name"
+                            [(ngModel)]="leadcreateform.firstName">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last Name<span class="cor-mandate">*</span></span>
+                        <input type="text" class="form-control" (keypress)="letterOnly($event)" placeholder="Enter your Last Name"
+                            [(ngModel)]="leadcreateform.lastName">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email Address<span class="cor-mandate">*</span></span>
+                        <input 
+                            type="email" 
+                            class="form-control" 
+                            placeholder="Enter your Email Address" 
+                            maxlength="100" 
+                            [(ngModel)]="leadcreateform.email" 
+                            #emailField="ngModel" 
+                            name="email" 
+                            required 
+                            email />
+                        <div *ngIf="emailField.invalid && emailField.touched" class="text-danger">
+                            <small *ngIf="emailField.errors?.required">Email is required.</small>
+                            <small *ngIf="emailField.errors?.email">Please enter a valid email address.</small>
+                            <small *ngIf="emailField.errors?.maxlength">Email cannot exceed 100 characters.</small>
+                        </div>
+                    </div>                    
+                    <div class="input-box">
+                        <span class="details">Mobile Number<span class="cor-mandate">*</span></span>
+                        <input type="number" class="form-control" placeholder="Enter your Mobile Number"
+                            [(ngModel)]="leadcreateform.mobile">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Designation</span>
+                        <input type="text" class="form-control" placeholder="Enter your Designation"
+                            [(ngModel)]="leadcreateform.designation">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Location </span>
+                        <input type="text" class="form-control" placeholder="Enter your Location"
+                            [(ngModel)]="leadcreateform.location">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-success btn-lg"
+                            (click)="savecrmlead()">Save</button>&nbsp;&nbsp;
+
+                        <button type="button" class="btn btn-success btn-lg" (click)="closes()">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div id="contact" *ngIf="contact" class="mt-3">
+                <div class="row mb-4">
+                    <div class="col-md-10">
+                        <h2> Contact Information</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- <button type="button" class="btn btn-success"(click)="addContact()">NEW</button> -->
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <!-- <div class="form-group col-md-4">
+                        <label for="id">LeadName</label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="contactForm.leadName" >
+                    </div> -->
+                    <div class="form-group col-md-4">
+                        <label for="firstname">First Name<span class="cor-mandate">*</span></label>
+                        <input type="text" maxlength="100" class="form-control" id="enquiryFrom"
+                            [(ngModel)]="leadcreateform.firstName">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="lastname">Last Name<span class="cor-mandate">*</span></label>
+                        <input type="text" maxlength="100" class="form-control" id="enquiryDetails"
+                            [(ngModel)]="leadcreateform.lastName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="email">Email<span class="cor-mandate">*</span></label>
+                        <input type="text" maxlength="50" class="form-control" id="" [(ngModel)]="leadcreateform.email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="mobile">Mobile<span class="cor-mandate">*</span></label>
+                        <input type="text" maxlength="20" class="form-control" id="enquiryFrom"
+                            [(ngModel)]="leadcreateform.mobile">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="designation">Designation</label>
+                        <input type="text" maxlength="50" class="form-control" id="enquiryDetails"
+                            [(ngModel)]="leadcreateform.designation">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="leadcreateform.location">
+                    </div>
+
+                </div>
+
+
+                <div class="row mb-4">
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-success btn-lg"
+                            (click)="saveContact()">Save</button>&nbsp;&nbsp;
+
+                        <button type="button" class="btn btn-success btn-lg" (click)="close()">Close</button>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <h3>List Contact Details</h3>
+                    <hr />
+                </div>
+                <div class="row mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Designation</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let contact of contactlst; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ contact.firstName}}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.designation }}</td>
+                                <td>{{ contact.location }}</td>
+
+                                <td>
+                                    <button class="btn btn-info btn-sm mr-2"
+                                        (click)="editcontact(contact.id)">Edit</button>
+                                    <button class="btn btn-danger btn-sm" (click)="delete(contact.id)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr *ngIf="contactlst.length==0">
+                                <td>No Records Found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="calllog" *ngIf="calllog" class="mt-3">
+                <!-- <div class="form first"> -->
+                <!-- Call logs list section, only visible when open == 1 -->
+                <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+
+
+                    <!-- Create Call Log form section, only visible when open == 2 -->
+                    <div class=""
+                        style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+                        <div class="container">
+                            <h2>Call Log Details</h2>
+                            <hr />
+
+                            <div class="row" style="padding-top: 20px;">
+                                <div class="col-md-4">
+                                    <label for="contactId" class="form-label">Contact <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-outline">
+                                        <select class="form-select" [(ngModel)]="callLogForm.contactId">
+                                            <option>--Select Contact--</option>
+                                            <option *ngFor="let item of contactlst" [value]="item.firstName">
+                                                {{ item.firstName }} {{ item.lastName }}
+                                            </option>
+                                        </select>
+                                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                        class="form-control form-control" placeholder="Enter Contact Name"> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="contactId" class="form-label">Reason For Call <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-outline">
+                                        <select class="form-select" [(ngModel)]="callLogForm.reasonforcall">
+                                            <option value="">--Select Reason for call--</option>
+                                            <option *ngFor="let type of lstdatacallforreason" [value]="type.id">
+                                                {{ type.description }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="callTypes" class="form-label">Call Type <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-outline">
+                                        <select name="callTypes" [(ngModel)]="callLogForm.callTypes"
+                                            class="form-select form-control-lg">
+                                            <option value="">--Select Call Type--</option>
+                                            <option *ngFor="let type of calltypeslist" [value]="type.id">
+                                                {{ type.description }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="contactId" class="form-label">Caller Notes <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-outline">
+                                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                        class="form-control form-control" placeholder="Enter Contact Name"> -->
+                                        <textarea class="form-control" maxlength="500" style="height: 150px;"
+                                            [(ngModel)]="callLogForm.callernotes">
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="contactId" class="form-label">Customer Notes <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-outline">
+                                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                        class="form-control form-control" placeholder="Enter Contact Name"> -->
+                                        <textarea class="form-control" maxlength="500" style="height: 150px;"
+                                            [(ngModel)]="callLogForm.customernotes">
+
+                                        </textarea>
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="col-md-4">
+                                <label for="leadOwnerId" class="form-label">Lead Owner <span
+                                        class="text-danger">*</span></label>
+                                <div class="form-outline">
+                                    <select [(ngModel)]="callLogForm.leadOwnerId" class="form-control">
+                                        <option value="" disabled selected>Select Lead Owner</option>
+                                        <option *ngFor="let employee of employeesList" [value]="employee.recordId">
+                                            {{ employee.empname }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div> -->
+
+
+                            </div>
+
+                            <!-- <div class="row" style="padding-top: 20px;">
+                            <div class="col-md-4">
+                                <label for="callDate" class="form-label">Call Date <span
+                                        class="text-danger">*</span></label>
+                                <div class="form-outline">
+                                    <input type="date" name="callDate" [(ngModel)]="callLogForm.callDate"
+                                        class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label for="comments" class="form-label">Comments <span
+                                        class="text-danger">*</span></label>
+                                <textarea name="comments" [(ngModel)]="callLogForm.comments" class="form-control"
+                                    cols="100" rows="2"></textarea>
+                            </div>
+                        </div> -->
+                            <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                                <div class="col-md-6 mt-3">
+                                    <span class=" btn-lg btn-success" (click)="saveCallLog()"
+                                        style="padding-right:10px">Save</span>&nbsp;&nbsp;
+                                    <span class=" btn-lg btn-success" (click)="close()">Close</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mr-2 d-flex justify-content-end" style="padding-bottom: 20px;padding-top: 20px;">
+                            <!-- Click event to open the Create Call Log form -->
+                            <!-- <button (click)="openCreateCallLog()" style="background-color: #8d0000;" type="button"
+                            class="btn btn-primary">
+                            Create Call Log
+                        </button> -->
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <h3>List Call Log Details</h3>
+                        <hr />
+                    </div>
+                    <table class="table table-bordered" style="width: 100%;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Contact</th>
+                                <th>Reason For Call</th>
+                                <th>Call Types</th>
+                                <th>Caller Notes</th>
+                                <th>Customer Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let a of callLogs; let i = index">
+                                <td>{{ a.contactId }}</td> <!-- Displaying Lead Owner ID -->
+                                <td>{{ a.reasonforcallname }}</td> <!-- Displaying Contact ID -->
+                                <td>{{ a.callTypesName }}</td> <!-- Displaying Call Types -->
+                                <td>{{ a.callernotes }}</td> <!-- Formatting Date -->
+                                <td>{{ a.customernotes }}</td> <!-- Displaying Comments -->
+                                <td style="width: 5%;">
+                                    <i class="ft-edit font-medium-1" (click)="editCallLog(a.id)"
+                                        style="padding-right:10px"></i>
+                                    <i class="ft-trash font-medium-1" (click)="deleteCallLog(a.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div id="events" *ngIf="events" class="mt-3">
+                <div style="padding: 20px;">
+                    <!-- Events List Section -->
+                    <div>
+
+                        <div>
+                            <div>
+                                <h3>Events Details</h3>
+                                <hr />
+
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-md-4">
+                                        <label for="eventTitle" class="form-label">Event Title <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter event title"
+                                            [(ngModel)]="currentEvent.EventTitle" name="eventTitle" required />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="eventDate" class="form-label">Event Date <span
+                                                class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" [(ngModel)]="currentEvent.EventTime"
+                                            name="eventDate" required />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="eventGuests" class="form-label">Guests</label>
+                                        <input type="text" class="form-control" placeholder="Enter guests"
+                                            [(ngModel)]="currentEvent.EventGuests" name="eventGuests" />
+                                    </div>
+                                </div>
+
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-md-6">
+                                        <label for="eventLocation" class="form-label">Location</label>
+                                        <input type="text" class="form-control" placeholder="Enter event location"
+                                            [(ngModel)]="currentEvent.MeetingLocation" name="eventLocation" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                                    <div class="col-md-6 mt-3">
+                                        <button (click)="saveEvent()" type="button"
+                                            class="btn-lg btn-success mr-1 mb-1">Save</button>
+                                        <button type="button" class="btn-lg btn-success mb-1"
+                                            (click)="close()">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mr-2 d-flex justify-content-end"
+                                style="padding-bottom: 20px; padding-top: 20px;">
+                                <!-- Click event to open the Create Reminder form -->
+                                <!-- <button (click)="openCreateEvent()" style="background-color: #8d0000;" type="button"
+                                    class="btn btn-primary">
+                                    Create Event
+                                </button> -->
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <h3>List Event Details</h3>
+                            <hr />
+                        </div>
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Event Title</th>
+                                    <th>Date</th>
+                                    <th>Guests</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let event of event">
+                                    <td>{{ event.eventTitle }}</td>
+                                    <td>{{ event.eventTime | date:'dd/MM/yyyy' }}</td>
+                                    <td>{{ event.eventGuests }}</td>
+                                    <td>{{ event.meetingLocation }}</td>
+                                    <td>
+                                        <i class="ft-edit font-medium-1" (click)="editEvent(event.id)"
+                                            style="padding-right:10px"></i>
+                                        <i class="ft-trash font-medium-1" (click)="deleteEvent(event.id)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Event Form Section -->
+
+                </div>
+            </div>
+            <div id="reminders" *ngIf="reminders" class="mt-3">
+                <div>
+                    <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+
+                        <div>
+                            <div class="container">
+                                <h2>Reminder Details</h2>
+                                <hr />
+
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-md-4">
+                                        <label for="ReminderName" class="form-label">Reminder Name <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" maxlength="250" class="form-control"
+                                            placeholder="Enter reminder name" [(ngModel)]="newReminder.reminderName"
+                                            name="reminderName" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="ReminderDate" class="form-label">Reminder Date <span
+                                                class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" [(ngModel)]="newReminder.reminderDate"
+                                            name="reminderDate" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="ReminderTime" class="form-label">Reminder Time <span
+                                                class="text-danger">*</span></label>
+                                        <input type="time" class="form-control" [(ngModel)]="newReminder.reminderTime"
+                                            name="reminderTime" />
+                                    </div>
+                                </div>
+
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-md-6">
+                                        <label for="notes" class="form-label">Notes <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter your notes"
+                                            [(ngModel)]="newReminder.notes" name="notes"></textarea>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                                    <div class="col-md-6 mt-3">
+                                        <button (click)="saveReminder()" type="button"
+                                            class="btn-lg btn-success mr-1 mb-1">Save</button>
+                                        <button type="button" class="btn-lg btn-success mb-1"
+                                            (click)="close()">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mr-2 d-flex justify-content-end"
+                                style="padding-bottom: 20px; padding-top: 20px;">
+                                <!-- Click event to open the Create Reminder form -->
+                                <!-- <button (click)="openReminderForm()" style="background-color: #8d0000;" type="button"
+                                    class="btn btn-primary">
+                                    Create Reminder
+                                </button> -->
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <h3>List Reminder Details</h3>
+                            <hr />
+                        </div>
+                        <table class="table table-bordered" style="width: 100%;">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Reminder Name</th>
+                                    <th>Notes</th>
+                                    <th>Reminder Date</th>
+                                    <th>Reminder Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reminder of reminder; let i = index">
+                                    <td>{{ i + 1 }}</td> <!-- Displaying Serial Number -->
+                                    <td>{{ reminder.reminderName }}</td> <!-- Displaying Reminder Name -->
+                                    <td>{{ reminder.notes }}</td> <!-- Displaying Notes -->
+                                    <td>{{ reminder.reminderDate | date:'dd/MM/yyyy' }}</td>
+                                    <!-- Displaying Reminder Date -->
+                                    <td>{{ reminder.reminderTime?.hours }}:{{ reminder.reminderTime?.minutes }}</td>
+                                    <td style="width: 5%;">
+                                        <i class="ft-edit font-medium-1" (click)="editReminder(reminder.recordId)"
+                                            style="padding-right:10px"></i>
+                                        <i class="ft-trash font-medium-1"
+                                            (click)="deleteReminder(reminder.recordId)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="enquiry" *ngIf="enquiry" class="mt-3">
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Material<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <ng-select id='cmbitem' (change)="makeUnits($event)" [(ngModel)]="material.itemId">
+                            <ng-option *ngFor="let a of itemList" [value]="a.recordId">{{a.itemname}}</ng-option>
+                        </ng-select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Qty<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" maxlength="50" class="form-control" [(ngModel)]='material.qty' />
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>UOM<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <ng-select [(ngModel)]='material.um'>
+                            <ng-option value="0">---Select---</ng-option>
+                            <ng-option *ngFor='let um of units' value="{{um.um}}">{{um.um}}</ng-option>
+                        </ng-select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Lead Days</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" [(ngModel)]='material.leaddays' />
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Rate<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" value="{{material.stdrat}}"
+                            [(ngModel)]='material.rate' />
+                    </div>
+                    <div class="col-md-2">
+                        <label>Discount% </label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" [(ngModel)]='material.discount_percent' />
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <label>Discount<span class="cor-mandate">*</span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" [(ngModel)]='material.discount' />
+                    </div>
+
+                </div>
+
+                <div class="m-3">
+                    <td style="width: 25%;" align="right"> &nbsp;</td>
+                    <td colspan="4">
+
+                        <button type="button" class="btn btn-success mr-1 mb-1"
+                            (click)="saveleadEnquiryData()">Save</button>
+                        <!-- (click)='saveCall()' -->
+                        <button type="button" class="btn btn-success mb-1" (click)='close()'>Close</button>
+                    </td>
+                </div>
+
+
+
+                <table style="width: 100%; margin-top: 20px;">
+                    <h1> List of Enquiry</h1>
+
+                    <tr>
+                        <td colspan="11">
+                            <div style="width: 100%; height: 300px; overflow-y: scroll ;">
+                                <table class="table table-bordered table-stripped table-hover" style="width: 100%;">
+                                    <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th style="width: 5%;">#</th>
+                                            <th style="width: 30%;">Material</th>
+                                            <th style="width: 10%;">Qty</th>
+                                            <th style="width: 10%;">UOM</th>
+                                            <th style="width: 10%;">Lead Days</th>
+                                            <th style="width: 10%;">Rate</th>
+                                            <th style="width: 10%;">Discount</th>
+                                            <th style="width: 10%;">Value</th>
+                                            <th style="width: 5%;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor='let det of lstleadenquiry;let i=index'>
+                                            <td style="width: 5%;">{{i+1}}</td>
+                                            <td style="width: 30%;"> {{det.leaditemname}}</td>
+                                            <td style="width: 10%;">
+                                                {{det.qty}}
+                                            </td>
+                                            <td style="width: 10%;">{{det.um}}</td>
+                                            <td style="width: 10%;">{{det.leaddays}} </td>
+                                            <td style="width: 10%;">{{det.rate}} </td>
+                                            <th style="width: 10%;"> {{det.discount}} </th>
+                                            <!-- {{(det.qty*det.rat)*det.discper/100 | number:'0.2'}}  -->
+                                            <td style="width: 10%;">
+                                                {{(det.qty*det.rate)-((det.qty*det.rate)*det.discount/100) |
+                                                number:'0.2'}}</td>
+                                            <td style="width: 5%;"><i class="ft-trash-2 font-medium-1"
+                                                    (click)='deleteItem(det)'></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="quotation" *ngIf="quotation" class="mt-3">
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <h2 class="text-primary">Quotation Form</h2>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <!-- Placeholder for additional actions -->
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <!-- <div class="form-group col-md-4">
+                        <label for="id">LeadName</label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="quotationForm.leadName" >
+                    </div> -->
+                    <div class="form-group col-md-4">
+                        <label for="itemName">Item Name<span class="cor-mandate">*</span></label>
+                        <select class="form-select" id="itemName" [(ngModel)]="quotationForm.itemName"
+                            (ngModelChange)="onItemChange()">
+                            <option *ngFor="let item of itemList" [value]="item.recordId">{{item.itemname}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="lastname">Quantity<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="enquiryDetails" [(ngModel)]="quotationForm.qty">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="email">UOM<span class="cor-mandate">*</span></label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="quotationForm.um">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="mobile">Lead Days</label>
+                        <input type="number" class="form-control" id="enquiryFrom" [(ngModel)]="quotationForm.leadDays">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="designation">Rate<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="enquiryDetails" [(ngModel)]="quotationForm.rate">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="location">Discount Percent</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.disper">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Tax<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.tax">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Base Amount<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.baseAmt">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="location">Discount </label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.discount">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Taxes</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.taxes">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Total Amount</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.totalAmt">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" [(ngModel)]="quotationForm.itemDescription"
+                            rows="3" placeholder="Enter description"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success"
+                            (click)="saveQuotation()">Save</button>&nbsp;&nbsp;
+
+                        <button type="button" class="btn btn-success" (click)="close()">Close</button>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <h3>List Contact Details</h3>
+                    <hr />
+                </div>
+                <div class="row mb-4">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Units</th>
+                                <th>Total Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let quotation of quotationlst; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ quotation.leadquotename}}</td>
+                                <td>{{ quotation.qty }}</td>
+                                <td>{{ quotation. um }}</td>
+                                <td>{{ quotation.totalAmt }}</td>
+
+                                <td>
+                                    <button class="btn btn-info btn-sm mr-2"
+                                        (click)="editQuotation(quotation.id)">Edit</button>
+                                    <button class="btn btn-danger btn-sm"
+                                        (click)="deleteQuotation(quotation.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="orders" *ngIf="orders" class="mt-3">
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <h2>Order Form</h2>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <!-- Placeholder for additional actions -->
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <!-- <div class="form-group col-md-4">
+                        <label for="id">LeadName</label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="quotationForm.leadName" >
+                    </div> -->
+                    <div class="form-group col-md-4">
+                        <label for="itemName">Material<span class="cor-mandate">*</span></label>
+                        <select class="form-select" id="itemName" [(ngModel)]="orderForm.itemid">
+                            <option *ngFor="let item of itemList" [value]="item.recordId">{{item.itemname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="lastname">Quantity<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="enquiryDetails" [(ngModel)]="orderForm.qty">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email">UOM<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="orderForm.um">
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                        <label for="mobile">Required Date</label>
+                        <input type="date" class="form-control" id="enquiryFrom" [(ngModel)]="orderForm.reqdBy">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="designation">Rate<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="enquiryDetails" [(ngModel)]="orderForm.rat">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Discount Percent</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="orderForm.discPer">
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                        <label for="location">Tax</label>
+                        <select class="form-select">
+                            <option value="0">--Select Tax--</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Base Amount<span class="cor-mandate">*</span></label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="quotationForm.baseAmt">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Delivery Date</label>
+                        <input type="date" class="form-control" id="" [(ngModel)]="orderForm.delivery_date">
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                        <label for="location">Description</label>
+                        <input type="text" class="form-control" id="" [(ngModel)]="orderForm.order_description">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Mode Of Payment</label>
+                        <select class="form-select" [(ngModel)]="orderForm.mode_of_payment">
+                            <option value="0">--Select Mode of Payment--</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Order Status</label>
+                        <select class="form-select" [(ngModel)]="orderForm.order_status">
+                            <option value="0">--Select Order Status--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="location">Discount </label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="orderForm.discount">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Taxes</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="orderForm.taxes">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location">Total Amount</label>
+                        <input type="number" class="form-control" id="" [(ngModel)]="orderForm.totalAmt">
+                    </div>
+
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success btn-lg"
+                            (click)="saveorders()">Save</button>&nbsp;&nbsp;
+
+                        <button type="button" class="btn btn-success btn-lg" (click)="closeA()">Close</button>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <h3>List Order Details</h3>
+                    <hr />
+                </div>
+                <div class="row mb-4">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Units</th>
+                                <th>Total Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let quotation of orderslst; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ quotation.itemName}}</td>
+                                <td>{{ quotation.qty }}</td>
+                                <td>{{ quotation. um }}</td>
+                                <td>{{ quotation.totalAmt }}</td>
+
+                                <td>
+                                    <button class="btn btn-info btn-sm mr-2" (click)="edit(quotation.id)">Edit</button>
+                                    <button class="btn btn-danger btn-sm" (click)="delete(quotation.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="documents" *ngIf="documents" class="mt-3">
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,44 @@
+<br/>
+<div ng-sidebar-content>
+      
+    <nav>
+        <h3>
+            List of Customer Trails
+        </h3>
+        
+     
+        
+        <table class="table m-0 table-bordered table-hover" style="width: 100%;">
+            <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th>Customer Code </th>
+                <th>Company Name</th>
+                <th>Owner Name</th>
+                <th>Contact No</th>
+                <th>Url</th>
+                <th>Registration Date</th>
+                <th>Expiration Date</th>              
+               
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr *ngFor='let cnt of custtrails; let i=index'>
+                <th scope="row" >{{i+1}}</th>
+                <td><a routerLink="/admin/custrailcreate" [queryParams]="{id:cnt.customerId}"  style="text-decoration: underline;">{{cnt.customerId}}</a> </td>
+                <td>{{cnt.companyName}}</td>
+                <td>{{cnt.ownerName}}</td>
+                <td>{{cnt.contactNo}}</td>
+                <td>{{cnt.urldet}}</td>
+                <td>{{cnt.regDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{cnt.expDate | date:'dd/MM/yyyy'}}</td>
+                
+              </tr>
+             
+            </tbody>
+          </table>
+          <ngb-pagination [collectionSize]="totalpages" (pageChange)="loadPage($event)" [(page)]="page4" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+  
+    </nav>
+  </div>

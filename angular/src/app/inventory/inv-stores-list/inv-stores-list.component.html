@@ -1,0 +1,127 @@
+
+ <ngx-spinner></ngx-spinner>
+ <ng-sidebar-container>
+  <ng-sidebar [opened]="opened" mode="push" >
+    <div class="card">
+       <div class="card-header">
+        <h3>
+          Store Details
+        </h3>
+       </div>
+       <div class="card-body">
+        <table style="width: 40%;">
+          <tr>
+           
+            <td style="width: 100%;">
+             <input type="text" class="form-control" id="basicInput"  placeholder="Store Code" ngDefaultControl  [(ngModel)]='storecode' style="width: 50%;">
+            
+                </td>
+          </tr>
+          <tr>
+       
+           <td style="width: 100%;">
+             <input type="text" class="form-control" id="basicInput"  placeholder="Store Name" ngDefaultControl  [(ngModel)]='storename' style="width: 90%;">
+            
+                </td>
+       
+       
+         </tr>
+         <tr>
+       
+           <td style="width: 100%;">
+             <input type="text" class="form-control" id="basicInput"  placeholder="Store Incharge" ngDefaultControl  [(ngModel)]='storeincharge' style="width: 90%;">
+            
+                </td>
+       
+       
+         </tr>
+         
+          <tr>
+            <td colspan="2">
+              &nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button type="button" class="btn-lg btn-danger mr-1 mb-1" *ngIf='delVisible && deletebuttonenable' [disabled]='!delCheck' (click) ='deleteStore()' >Delete</button>
+              <button type="button" class="btn-lg btn-primary mr-1 mb-1" [disabled]='!creCheck' (click)='saveStore()' >{{saveStr}}</button>
+              <button type="button" class="btn-lg btn-dark mb-1" (click)='close()'>Close</button>
+            </td>
+          </tr>
+          </table>
+       </div>
+    </div>
+    
+   <br>
+  
+ 
+</ng-sidebar>
+       
+      
+<div ng-sidebar-content>
+    
+  <nav *ngIf='!opened'>
+  
+<div class="card">
+<div class="card-header">
+  <h3>
+    List of Stores
+</h3>
+</div>
+<div class="card-body">
+  <table style="width: 100%;">
+    <tr>
+        <td align="left" *ngIf="addbuttonenable">
+          <button type="button" *ngIf='!opened' class="btn-lg btn-success mr-1 mb-1" (click)='openNew()' id="new-button" >New</button>
+          <!-- Tooltip Arrow -->
+      <div
+      class="tooltip-arrow"
+      ngbTooltip="Click here to add a new stores!"
+      placement="right"
+      container="body"
+      [ngClass]="{'paused': isArrowPaused}"
+      (mouseenter)="stopArrowMovement()"
+      (mouseleave)="startArrowMovement()"
+    >
+      <span class="arrow">🢦</span>
+      </div>
+        </td>
+    </tr>
+    </table>
+    
+    <table class="table m-0" style="width: 60%;">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Store Code</th>
+            <th>Store Name</th>
+            <th>Store Incharge</th>
+            <th>Open</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr *ngFor='let store of stores; let i=index'>
+            <th scope="row" >{{i+1}}</th>
+            <td>{{store.storeCode}}</td>
+            <td>{{store.storeName}}</td>
+            <td>{{store.storeIncharge}}</td>
+            <td *ngIf="modifybuttonenable"><i *ngIf='!opened' class="ft-edit font-medium-1" (click)='openOld(store)' ></i></td>
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
+</div>
+     
+       
+       
+  </nav>
+</div>
+ </ng-sidebar-container>
+
+ 
+
+ <div  *ngIf='!authCheck'>
+<h1>You are not authorised to view this page</h1>
+ </div>

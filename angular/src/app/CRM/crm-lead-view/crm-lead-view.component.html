@@ -1,0 +1,36 @@
+
+<div class="card m-3 w-100 card-main-list">
+    <div class="card-header h4">Lead View</div>
+    <div class="card-body">
+      <div class="container">
+        <div class="tabs">
+          <div class="tab-header">
+            <!-- Tabs with click event instead of routerLink -->
+            <div class="tab" [ngClass]="{'active': selectedTab === 0}" (click)="selectTab(0)">Contact View</div>
+            <!-- <div class="tab" [ngClass]="{'active': selectedTab === 1}" (click)="selectTab(1)">Email Conversation</div> -->
+            <div class="tab" [ngClass]="{'active': selectedTab === 1}" (click)="selectTab(1)">Call Logs</div>
+            <div class="tab" [ngClass]="{'active': selectedTab === 2}" (click)="selectTab(2)">Events</div>
+            <div class="tab" [ngClass]="{'active': selectedTab === 3}" (click)="selectTab(3)">Reminder</div>
+          </div>
+  
+          <div class="tab-content">
+            <!-- Conditionally show content based on selectedTab -->
+            <app-crm-contact-view  *ngIf="selectedTab === 0"></app-crm-contact-view>
+            <!-- <app-email-conversation *ngIf="selectedTab === 1"></app-email-conversation> -->
+            <app-crm-leads-calllogs *ngIf="selectedTab === 1"></app-crm-leads-calllogs> 
+            <app-crm-lead-events *ngIf="selectedTab === 2"></app-crm-lead-events>
+            <app-crm-lead-remainders *ngIf="selectedTab === 3"></app-crm-lead-remainders>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+<!-- 
+  <div class="tab" [routerLink]="['/crm/crmleadview/', id, 'contactview', id]" routerLinkActive="active">Contact View</div>
+  <div class="tab" [routerLink]="['/crm/crmleadview/', id, 'emailConversation', id]" routerLinkActive="active">Email Conversation</div>
+  <div class="tab" [routerLink]="['/crm/crmleadview/', id, 'crmCallLogs', id]" routerLinkActive="active">Call Logs</div>
+  <div class="tab" [routerLink]="['/crm/crmleadview/', id, 'events', id]" routerLinkActive="active">Events</div>
+  <div class="tab" [routerLink]="['/crm/crmleadview/', id, 'remainders', id]" routerLinkActive="active">Reminder</div> -->

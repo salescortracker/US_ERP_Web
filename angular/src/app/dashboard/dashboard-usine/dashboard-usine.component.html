@@ -1,0 +1,2190 @@
+
+
+<!-- First Modal -->
+<ng-template #myModal let-modal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header first-modal-header">
+        <div class="modal-title-container first-modal-title-container">
+          <h5 class="modal-title first-modal-title">🎉 Congratulations to the Organization! 🎉</h5>
+        </div>
+      </div>
+      <div class="modal-body text-center first-modal-body">
+        <h3>Welcome Aboard! 🚀</h3>
+        <h4>Your ERP journey is about to begin!</h4>
+
+        <p style="font-weight: bold; margin-top: 2rem;">
+          "A journey of a thousand miles begins with the right tools."
+        </p>
+        <p style="font-weight: bold; margin-top: 2rem;">Press the "Next" button to proceed!</p>
+      </div>
+      <div class="modal-footer first-modal-footer">
+        <button type="button" class="btn btn-primary first-modal-btn" (click)="onNextClick()">Next</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Second Modal -->
+<ng-template #mySecondModal let-modal>
+  <div class="second-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header second-modal-header">
+        <div class="modal-title-container second-modal-title-container">
+          <h4 class="modal-title second-modal-title">✨ Next Steps for Success! ✨</h4>
+        </div>
+        <button
+          type="button"
+          class="close second-modal-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center second-modal-body">
+        <h4 style="font-weight: bold;">Let's finalize your setup journey!</h4>
+        <p >
+          To get started with the ERP setup, you need to configure the masters in the Admin module on the left side of the page.
+        </p>
+        <img src="../../../assets/gif.gif" alt="Setup Animation" style="width: 230px; height: 120px; max-width: 100%; border-radius: 5px;">
+        <p style="font-weight: bold; margin-top: 0.5rem;">Once you’re ready, press "Finish" to complete the setup!</p>
+      </div>
+      <div class="modal-footer second-modal-footer">
+        <button type="button" class="btn btn-success second-modal-btn" (click)="closeSecondModal()">Finish</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- <div class="row" (resized)="onResized($event)"> -->
+<!-- 
+
+  <div class="container"> -->
+
+<!-- <div class="overlay"></div>
+<div class="search-input">
+<h6 class="mb-3 text-center text-white"><b>Feeling Stuck?</b> Search our Knowledge Base</h6>
+<div class="input-group">
+  <input placeholder="search" class="search-input-styles" class="form-control" />
+</div>
+</div> -->
+
+
+<!-- <div class="top-nav-wrapper">
+<div class="top-nav">
+<div class="hamburger-menu">
+  <div class="hamburger-icon">
+    <div class="bar-one"></div>
+    <div class="bar-two"></div>
+    <div class="bar-three"></div>
+  </div>
+</div> -->
+
+<!-- 
+<div class="dashboard"> -->
+  <!-- <button class="active dashboard-btn nav-btn">Admin Cloud</button> -->
+  <!-- <div class="menu-wrapper menu-black">
+    <ul class="menu">
+       
+        <li>
+            <a href=""> Admin Cloud <i class="fas fa-caret-down"></i></a>
+            <ul>
+                <li ><a href="/#/hrd/hrddashboard" ><i class="fas fa-briefcase"></i> HRD</a></li>
+                <li><a href="/#/accounts/accdashboard" ><i class="fas fa-pen-nib"></i> Accounts</a></li>
+               
+            </ul>
+        </li>
+        <li>
+          <a href="">Sales Cloud <i class="fas fa-caret-down"></i></a>
+          <ul>
+              <li><a href="/#/pos/salesdashboard"><i class="fas fa-briefcase"></i> Sales</a></li>             
+          </ul>
+      </li>
+      <li>
+        <a href=""> Service Cloud <i class="fas fa-caret-down"></i></a>
+        <ul>
+            <li><a href="/#/inventory/invdashusine"><i class="fas fa-briefcase"></i> Inventory</a></li>
+            <li><a href="/#/production/dashboard"><i class="fas fa-pen-nib"></i> Production</a></li>
+            <li><a href="/#/purchases/purdashboard"><i class="fas fa-pen-nib"></i> Purchases</a></li>
+            <li><a href="/#/qc/dashboard"><i class="fas fa-pen-nib"></i> QC</a></li>
+            <li><a href="/#/maintenance/maindashboard"><i class="fas fa-pen-nib"></i> Maintenance</a></li>
+        </ul>
+    </li>
+    <li>
+      <a href="">Marketing Cloud <i class="fas fa-caret-down"></i></a>
+      <ul>
+          <li><a href="/#/crm/crmdashboard"><i class="fas fa-earphones"></i> CRM</a></li>
+          
+      </ul>
+  </li>
+     </ul>
+     </div>
+</div> -->
+<!-- <div class="hosting">
+      <div class="hosting-btn nav-btn">Sales Cloud</div>
+</div>
+<div class="marketplace">
+      <button class="marketplace-btn nav-btn">Service Cloud</button>
+</div>
+<div class="domains">
+      <button class="domain-btn nav-btn">Marketing Cloud</button>
+</div> -->
+<!-- <div class="nav-slider"></div>
+
+</div>
+
+</div> -->
+
+    
+<!-- Minimal statistics with bg color section start -->
+<!-- <section id="minimal-statistics-bg">
+
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-warning">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">278k</h3>
+                    <span>Production</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                    <i class="icon-wrench font-large-2 float-right"></i>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-success">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">15k</h3>
+                    <span>Home</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                      <i class="ft-briefcase font-large-2 float-right"></i>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-danger">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">64.89 %</h3>
+                    <span>Maintenance</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                      <i class="ft-life-buoy font-large-2 float-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-primary">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">423</h3>
+                    <span>Others</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                    
+                    <i class="ft-user font-large-2 float-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+  
+      <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-warning">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">278</h3>
+                    <span>In Process</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                      <i class="icon-wrench font-large-2 float-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-12">
+          <div class="card card-inverse bg-success">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="media">
+                  <div class="media-body text-left">
+                    <h3 class="card-text">156</h3>
+                    <span>Losses</span>
+                  </div>
+                  <div class="media-right align-self-center">
+                    <i class="ft-zap font-large-2 float-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+  
+        <div class="col-xl-12 col-12">
+          <div class="card">
+              <div class="card-header">
+                  <h4 class="card-title">Consumptions Chart</h4>
+              </div>
+              <div class="card-content">
+                  <div class="card-body">
+                    <apx-chart
+                    [series]="barChartOptions.series"
+                    [colors]="barChartOptions.colors"
+                    [chart]="barChartOptions.chart"
+                    [xaxis]="barChartOptions.xaxis"
+                    [yaxis]="barChartOptions.yaxis"
+                    [title]="barChartOptions.title"
+                    [dataLabels]="barChartOptions.dataLabels"
+                    [stroke]="barChartOptions.stroke"
+                    [grid]="barChartOptions.grid"
+                    [tooltip]="barChartOptions.tooltip"
+                    [plotOptions]="barChartOptions.plotOptions"
+                    [fill]="barChartOptions.fill"
+                    [legend]="barChartOptions.legend"
+                    [labels]="barChartOptions.labels"
+                    [markers]="barChartOptions.markers"
+                    [theme]="barChartOptions.theme"
+                    [responsive]="barChartOptions.responsive"
+                  ></apx-chart>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+       <div class="col-xl-12 col-12">
+          <div class="card">
+              <div class="card-header">
+                  <h4 class="card-title">ABC Analysis</h4>
+              </div>
+              <div class="card-content">
+                  <div class="card-body">
+                    <apx-chart
+                    [series]="abcChartOptions.series"
+                    [colors]="abcChartOptions.colors"
+                    [chart]="abcChartOptions.chart"
+                    [xaxis]="abcChartOptions.xaxis"
+                    [yaxis]="abcChartOptions.yaxis"
+                    [title]="abcChartOptions.title"
+                    [dataLabels]="abcChartOptions.dataLabels"
+                    [stroke]="abcChartOptions.stroke"
+                    [grid]="abcChartOptions.grid"
+                    [tooltip]="abcChartOptions.tooltip"
+                    [plotOptions]="abcChartOptions.plotOptions"
+                    [fill]="abcChartOptions.fill"
+                    [legend]="abcChartOptions.legend"
+                    [labels]="abcChartOptions.labels"
+                    [markers]="abcChartOptions.markers"
+                    [theme]="abcChartOptions.theme"
+                    [responsive]="abcChartOptions.responsive"
+                  ></apx-chart>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+      <!-- Bar Chart ends -->
+  
+      
+  
+  
+      
+
+<!--  <div class="page mt-4 message-page">
+<div class="mt-5">
+   <h4 class="mb-4">Hosting</h4>
+</div>
+</div>  -->
+
+
+
+
+<!--   <div class="container">
+<h4 class="mt-4 mb-4">Title</h4>
+<div class="row">
+
+
+
+<div class="col-lg-8">
+  
+    <div class="card border-0 mb-4 temporary-box-shadow">
+<div class="d-flex">
+  <div class="pl-5 pr-2 d-flex align-items-center justify-content-center">
+    <div class="material-icons icons">account_circle</div>
+  </div>
+    <div class="flex-fill">
+       <div class="card-body">
+         <p class="card-title mt-2 text-secondary">Primarydomain.com</p>
+         <p class="card-subtitle ellipsis-length-long mb-2">RE: Ticket #826</p>
+       </div>
+    </div>
+     <div class="d-flex align-items-center justify-content-center">
+       <div class="mx-5 small text-secondary">2 days ago</div>
+      </div>
+  </div>
+</div>
+</div>
+  
+
+<div class="col-lg-4">
+        
+
+  <div class="card border-0 bg-primary">
+    <div class="card-body">
+      <h5 class="font-weight-bold title-line-height text-white mb-4">HostGator gives FREE SSL Certificates to customers!</h5>
+      <p class="text-white mb-4">Lorem ipsum dolor milk shake in the house?</p>
+      <button class="btn btn-warning text-white mb-2">Read More</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div> -->
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+
+
+
+
+
+
+   <div class="container">
+    <div class="row mb-5 mt-3">
+
+         <div class="col" (click)='setModule("acc")' style="cursor:pointer">
+       <div class="card radius-10 border-start border-0 border-3 border-info">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div>
+              
+              <h2 class="my-1 text-info">ACCOUNTS</h2>
+            
+            </div>
+            <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class="fa ft-dollar-sign font-large-1"></i>
+            </div>
+          </div>
+        </div>
+       
+       </div>
+       </div>
+       
+        <div class="col" (click)='setModule("pur")' style="cursor:pointer">
+      <div class="card radius-10 border-start border-0 border-3 border-danger">
+       <div class="card-body">
+         <div class="d-flex align-items-center">
+           <div>
+            
+             <h2 class="my-1 text-danger">PURCHASES</h2>
+            
+           </div>
+           <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-shopping-cart"></i>
+           </div>
+         </div>
+       </div>
+      
+      </div>
+      </div>
+      <div class="col" (click)='setModule("crm")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-success">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-success">CRM</h2>
+                
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa icon-earphones font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      <div class="col" (click)='setModule("pro")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-warning">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-warning">PRODUCTION</h2>
+               
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class="fa icon-wrench font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      
+    </div>
+    <div class="row mb-5">
+      <div class="col" (click)='setModule("qc")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-primary">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-primary">QC</h2>
+               
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-primary text-white ms-auto"><i class="fa icon-note font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      <div class="col" (click)='setModule("inv")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-secondary">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-secondary">INVENTORY</h2>
+              
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-secondary text-white ms-auto"><i class="fa icon-basket-loaded font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      <div class="col" (click)='setModule("sale")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-dark">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-dark">SALES</h2>
+               
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-dark text-white ms-auto"><i class="fa icon-bar-chart font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      <div class="col" (click)='setModule("hrd")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-light">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+              
+                <h2 class="my-1 text-coral">HRD</h2>
+                
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-light text-white ms-auto"><i class="fa icon-users font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:100px">
+      <div class="col-3" (click)='setModule("mai")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-maintenance">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-maintenance">MAINTENANCE</h2>
+               
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-maintenance text-white ms-auto"><i class="fa icon-wrench font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+      <div class="col-3" (click)='setModule("adm")' style="cursor:pointer">
+        <div class="card radius-10 border-start border-0 border-3 border-admin">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+               
+                <h2 class="my-1 text-admin">ADMIN</h2>
+                
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-admin text-white ms-auto"><i class="fa icon-settings font-large-1"></i>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      </div>
+    </div> -->
+<!-- </div>
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("acc")'>
+  <div class="card gradient-mint">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Accounts</h3>
+            <br>
+            <span>323</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="ft-dollar-sign font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div>
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("pur")' >
+  <div class="card gradient-purple-love">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h4 class="font-large-1 white mb-0">Purchases</h4>
+            <br>
+            <span>34</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="fa-barcode font-large-1"></i>
+          </div>
+        </div>
+      </div>
+            <div id="ft-tv" class=" ft-tbv mb-2">
+    <br>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("crm")'>
+  <div class="card gradient-king-yna">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">CRM</h3>
+            <br>
+            <span>13/39</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-earphones font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+  
+  
+</div>
+
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3 mb-5"   (click)='setModule("pro")'>
+  <div class="card gradient-mint">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Production</h3>
+            <br>
+            <span>2121</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-wrench font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+              <br>
+              </div>
+    </div>
+  </div>
+</div>
+
+    
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("qc")'>
+  <div class="card gradient-king-yna">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">QC</h3>
+            <br>
+            <span>13/39</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-note font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("inv")'>
+  <div class="card gradient-king-yna">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Inventory</h3>
+            <br>
+            <span>400</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-basket-loaded font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div>
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3"  (click)='setModule("sale")'>
+  <div class="card gradient-ibiza-sunset">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Sales</h3>
+            <br>
+            <span>1234</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-bar-chart font-large-1"></i>
+          </div>
+        </div>
+      </div>
+            <div id="ft-tv" class=" ft-tbv mb-2">
+    <br>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3 mb-5" (click)='setModule("hrd")'>
+  <div class="card gradient-ibiza-sunset">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">HRD</h3>
+            <br>
+            <span>13/39</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-users font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("mai")'>
+  <div class="card gradient-man-of-steel" >
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Maintenance</h3>
+            <br>
+            <span>13/39</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-wrench font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div> 
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-12 mt-3" (click)='setModule("adm")'>
+  <div class="card gradient-blackberry">
+    <div class="card-content">
+      <div class="card-body py-0">
+        <div class="media pb-1">
+          <div class="media-body white text-left">
+            <h3 class="font-large-1 white mb-0">Admin</h3>
+            <br>
+            <span>13/39</span>
+          </div>
+          <div class="media-right white text-right">
+            <i class="icon-settings font-large-1"></i>
+          </div>
+        </div>
+      </div>
+      <div id="ft-tv" class=" ft-tbv mb-2">
+                <br>
+              </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- </div> -->
+
+
+<!--
+      <div class="col-xl-3 col-lg-6 col-md-6 col-12" (click)='setModule("ser")'>
+        <div class="card gradient-purple-bliss">
+          <div class="card-content">
+            <div class="card-body py-0">
+              <div class="media pb-1">
+                <div class="media-body white text-left">
+                  <h3 class="font-large-1 white mb-0">Services</h3>
+                  <br>
+                  <span>123</span>
+                </div>
+                <div class="media-right white text-right">
+                  <i class="icon-users font-large-1"></i>
+                </div>
+              </div>
+            </div>
+            <div id="ft-tv" class=" ft-tbv mb-2">
+                      <br>
+                    </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+     
+
+      <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-12" (click)='setModule("mai")'>
+        <div class="card gradient-man-of-steel" >
+          <div class="card-content">
+            <div class="card-body py-0">
+              <div class="media pb-1">
+                <div class="media-body white text-left">
+                  <h3 class="font-large-1 white mb-0">Maintenance</h3>
+                  <br>
+                  <span>13/39</span>
+                </div>
+                <div class="media-right white text-right">
+                  <i class="icon-wrench font-large-1"></i>
+                </div>
+              </div>
+            </div>
+            <div id="ft-tv" class=" ft-tbv mb-2">
+                      <br>
+                    </div>
+          </div>
+        </div>
+      </div> -->
+
+
+     
+
+
+      <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-12" (click)='setModule("ana")'>
+        <div class="card gradient-purple-love">
+          <div class="card-content">
+            <div class="card-body py-0">
+              <div class="media pb-1">
+                <div class="media-body white text-left">
+                  <h3 class="font-large-1 white mb-0">Analysis</h3>
+                  <br>
+                  <span>13/39</span>
+                </div>
+                <div class="media-right white text-right">
+                  <i class="icon-pie-chart font-large-1"></i>
+                </div>
+              </div>
+            </div>
+            <div id="ft-tv" class=" ft-tbv mb-2">
+                      <br>
+                    </div>
+          </div>
+        </div>
+      </div> -->
+
+
+     
+  <!--Statistics cards Ends-->
+  
+
+
+
+      <!--
+      <div class="col-xl-12 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Purchases to Sales Turnover Charts</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                  <apx-chart
+                  [series]="lineAreaChartOptions.series"
+                  [colors]="lineAreaChartOptions.colors"
+                  [chart]="lineAreaChartOptions.chart"
+                  [xaxis]="lineAreaChartOptions.xaxis"
+                  [yaxis]="lineAreaChartOptions.yaxis"
+                  [title]="lineAreaChartOptions.title"
+                  [dataLabels]="lineAreaChartOptions.dataLabels"
+                  [stroke]="lineAreaChartOptions.stroke"
+                  [grid]="lineAreaChartOptions.grid"
+                  [tooltip]="lineAreaChartOptions.tooltip"
+                  [plotOptions]="lineAreaChartOptions.plotOptions"
+                  [fill]="lineAreaChartOptions.fill"
+                  [legend]="lineAreaChartOptions.legend"
+                  [labels]="lineAreaChartOptions.labels"
+                  [markers]="lineAreaChartOptions.markers"
+                  [theme]="lineAreaChartOptions.theme"
+                  [responsive]="lineAreaChartOptions.responsive"
+                ></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+
+<!-- <div class="row">
+  <div class="col-xl-3 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Tasks to be Completed</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+
+
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="white mb-3">List group item heading</h5>
+                    <small>3 days ago</small>
+                  </div>
+                  <p class="white mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  <small>Donec id elit non mi porta.</small>
+                </li>
+                <li class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-3">List group item heading</h5>
+                    <small class="text-muted">3 days ago</small>
+                  </div>
+                  <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  <small class="text-muted">Donec id elit non mi porta.</small>
+                </li>
+                <li class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-3">List group item heading</h5>
+                    <small class="text-muted">3 days ago</small>
+                  </div>
+                  <p class="mb-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  <small class="text-muted">Donec id elit non mi porta.</small>
+                </li>
+              </ul>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-6 col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">Time Line</h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+            <h2>Hi {{usrname}}</h2>
+
+            <button style="width: 100%;" class="btn btn-warning" (click)="openModal(customContent)">Post</button> -->
+<!--Time line 1 starts-->
+<!--
+            <div class="col-xl-12 col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title"></h4>
+                  </div>
+                  
+                  <div class="card-content">
+
+                   
+                      <div class="card-body">
+                        <table style="width:100%">
+                        <tr>
+                          <td style="width: 50%;" align="left"><font face="Arial" size=3>
+                            <div class="avatar">
+                              <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                          </div>Raja Gopal Kurapati</font><br></td>
+                          <td style="width: 50%;" align="right"><font face="Arial" size=2><i>3-Apr-23 4:50:20am</i></font><br></td>
+                        </tr>
+                        </table>
+                                                
+           
+                        <font face="Arial" size=3>This work is to be fine finished product team please check and come back again</font><br>
+                         <img src="../../../assets/img/crop-pic.jpg" style="width: 100%;"><br>
+                         <hr>
+                         <table style="width: 100%;">
+                         <tr>
+                           <td style="width: 50%;" align="center">
+                             <i class="ft-thumbs-up font-large-1"></i>Like(6)
+                             
+                           </td>
+                           <td style="width: 50%;" align="center">
+                             <i class="ft-message-square font-large-1"></i>Comment(4)
+                             
+                           </td>
+                         </tr>
+                         </table>
+                         <hr>
+                          <table style="width: 100%;">
+                          <tr>
+                            <td style="width: 10%;" valign="top">
+                              <div class="avatar">
+                                <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                            </div>
+                            </td>
+                            <td style="width: 90%;">
+                            <b>Ravi Chitta</b> <br>
+                            This idea is super ra but i am unable to join sorry for this
+                            </td>
+
+                          </tr>
+                          </table>
+                        <table style="width: 100%;">
+                          <tr>
+                            <td style="width: 10%;" valign="top">
+                              <div class="avatar">
+                                <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                            </div>
+                            </td>
+                            <td style="width: 90%;">
+                            <b>Ravi Chitta</b> <br>
+                            This idea is super ra but i am unable to join sorry for this
+                            </td>
+
+                          </tr>
+                          </table>
+           
+                      </div>
+                  </div>
+              </div>
+            </div>-->
+                      <!--Time line1 ends-->
+
+                      <!--Time line2 Starts-->
+
+                      <!--
+                      <div class="col-xl-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"></h4>
+                            </div>
+                      <div class="card-content">
+                      <div class="card-body">
+                        <table style="width:100%">
+                        <tr>
+                          <td style="width: 50%;" align="left"><font face="Arial" size=3>
+                            <div class="avatar">
+                              <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                          </div>Raja Gopal Kurapati</font><br></td>
+                          <td style="width: 50%;" align="right"><font face="Arial" size=2><i>3-Apr-23 4:50:20am</i></font><br></td>
+                        </tr>
+                        </table>
+                                                
+           
+                        <font face="Arial" size=3>This work is to be fine finished product team please check and come back again</font><br>
+                         <img src="../../../assets/img/crop-pic.jpg" style="width: 100%;"><br>
+                         <hr>
+                         <table style="width: 100%;">
+                         <tr>
+                           <td style="width: 50%;" align="center">
+                             <i class="ft-thumbs-up font-large-1"></i>Like(6)
+                             
+                           </td>
+                           <td style="width: 50%;" align="center">
+                             <i class="ft-message-square font-large-1"></i>Comment(4)
+                             
+                           </td>
+                         </tr>
+                         </table>
+                         <hr>
+                          <table style="width: 100%;">
+                          <tr>
+                            <td style="width: 10%;" valign="top">
+                              <div class="avatar">
+                                <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                            </div>
+                            </td>
+                            <td style="width: 90%;">
+                            <b>Ravi Chitta</b> <br>
+                            This idea is super ra but i am unable to join sorry for this
+                            </td>
+
+                          </tr>
+                          </table>
+                        <table style="width: 100%;">
+                          <tr>
+                            <td style="width: 10%;" valign="top">
+                              <div class="avatar">
+                                <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+                            </div>
+                            </td>
+                            <td style="width: 90%;">
+                            <b>Ravi Chitta</b> <br>
+                            This idea is super ra but i am unable to join sorry for this
+                            </td>
+
+                          </tr>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>-->
+<!--Time line2 ends-->
+<!-- 
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-12">
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Users</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor='let usr of usersList'> <div class="avatar">
+              <img src="assets/img/portrait/small/avatar-s-16.png" alt="avatar" height="32" width="32">
+          </div>{{usr.username}}</li>
+             
+          </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+<ng-template #customContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title">Post </h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+       
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 100%;">
+              <textarea class="form-control" rows="3" placeholder="Say Something here..."></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100%;">
+                <label for="upload" class="custom-file-upload" style="width: 100%;">
+                 <span>Choose file</span>
+                  </label>
+                      <input type="file" id="upload" [(ngModel)]='FileObj' accept="image/*" (change)='onSelectFile($event)'/>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="width: 100%;">
+              <div style="width: 100%; height: 300px; overflow-x: hidden;  overflow-y: auto;">
+              <img *ngFor='let fil of fileNames' style="width: 100%;" [src]='fil.file'>
+              </div>
+              </td>
+            </tr>
+            
+        
+          
+          <tr>
+            <td style="width: 100%;">
+              <button class="btn btn-primary" style="width: 100%;" (click)='postDetails()'>POST</button>
+            </td>
+          </tr>
+          </table>
+       
+  </div>
+  
+
+</ng-template> -->
+
+<!--Statistics cards Starts-->
+
+<!-- <div class="row" (resized)="onResized($event)">
+  <div class="container sticky-navbar">
+    <div class="row justify-content-around align-items-center flex-wrap"> -->
+      <!-- ACCOUNTS -->
+      <!-- <div class="col hover-effect" (click)='setModule("acc")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white mx-auto mb-2">
+              <i class="fa ft-dollar-sign"></i>
+            </div>
+            <h6 class="text-info">ACCOUNTS</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Books</a>
+            <a class="dropdown-item" href="#">Financial Statements</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- PURCHASES -->
+      <!-- <div class="col hover-effect" (click)='setModule("pur")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white mx-auto mb-2">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <h6 class="text-danger">PURCHASES</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Order Mgt</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Order Reports</a>
+            <a class="dropdown-item" href="#">Purchase Reports</a>
+            <a class="dropdown-item" href="#">Stock & Accounts</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- CRM -->
+      <!-- <div class="col hover-effect" (click)='setModule("crm")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white mx-auto mb-2">
+              <i class="fa icon-earphones"></i>
+            </div>
+            <h6 class="text-success">CRM</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Pre Sales</a>
+            <a class="dropdown-item" href="#">Post Sales</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Pre Sale Reports</a>
+            <a class="dropdown-item" href="#">Post Sales Reports</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Production -->
+      <!-- <div class="col hover-effect" (click)='setModule("pro")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-warning text-white mx-auto mb-2">
+              <i class="fa icon-wrench"></i>
+            </div>
+            <h6 class="text-warning">PRODUCTION</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Pre Sales</a>
+            <a class="dropdown-item" href="#">Post Sales</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Pre Sale Reports</a>
+            <a class="dropdown-item" href="#">Post Sales Reports</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- qc -->
+      <!-- <div class="col hover-effect" (click)='setModule("qc")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-primary text-white mx-auto mb-2">
+              <i class="fa icon-note"></i>
+            </div>
+            <h6 class="text-primary">QC</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Pre Sales</a>
+            <a class="dropdown-item" href="#">Post Sales</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Pre Sale Reports</a>
+            <a class="dropdown-item" href="#">Post Sales Reports</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- INVENTORY -->
+      <!-- <div class="col hover-effect" (click)='setModule("inv")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-secondary text-white mx-auto mb-2">
+              <i class="fa icon-basket-loaded"></i>
+            </div>
+            <h6 class="text-secondary">INVENTORY</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Stock Reports</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- SALES -->
+      <!-- <div class="col hover-effect" (click)='setModule("sale")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-dark text-white mx-auto mb-2">
+              <i class="fa icon-bar-chart"></i>
+            </div>
+            <h6 class="text-dark">SALES</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Invoice-Temp</a>
+            <a class="dropdown-item" href="#">Invoice</a>
+            <a class="dropdown-item" href="#">Dispatch Clearances</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">List of Sales</a>
+            <a class="dropdown-item" href="#">Detailed Sales</a>
+            <a class="dropdown-item" href="#">Consolidated Sales</a>
+            <a class="dropdown-item" href="#">Item wise Consolidate</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- HRD -->
+      <!-- <div class="col hover-effect" (click)='setModule("hrd")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-light text-white mx-auto mb-2">
+              <i class="fa icon-users"></i>
+            </div>
+            <h6 class="text-coral">HRD</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">HRD</a>
+            <a class="dropdown-item" href="#">Attendance & Accounts</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- MAINTENANCE -->
+      <!-- <div class="col hover-effect" (click)='setModule("mai")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-maintenance text-white mx-auto mb-2">
+              <i class="fa icon-note"></i>
+            </div>
+            <h6 class="text-maintenance">MAINTENANCE</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Reports</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div>
+        </div>
+      </div>
+
+      <-- ADMIN -->
+      <!-- <div class="col hover-effect" (click)='setModule("adm")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-admin text-white mx-auto mb-2">
+              <i class="fa icon-settings"></i>
+            </div>
+            <h6 class="text-admin">ADMIN</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Security</a>
+            <a class="dropdown-item" href="#">Options</a>
+            <a class="dropdown-item" href="#">Reports</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Reports -->
+      <!-- <div class="col hover-effect" (click)='setModule("ana")'>
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-primary text-white mx-auto mb-2">
+              <i class="icon-pie-chart font-large-1"></i>
+            </div>
+            <h6 class="text-primary">REPORTS</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">QC Reports</a>
+            <a class="dropdown-item" href="#">QC Analysis</a>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="card">
+    <div class="card-header">
+      <h2>DASHBOARD SUMMARY</h2>
+      <hr/>
+    </div>
+    <div class="card-body">
+
+<div class="row">
+ 
+
+      -->
+
+<!-- Bar Chart starts -->
+<!-- <div class="col-xl-6 col-12">
+<div class="card1">
+ <div class="card-header">
+     <h4 class="card-title">Purchases Chart</h4>
+ </div>
+ <div class="card-content">
+     <div class="card-body">
+       <apx-chart
+
+       [series]="barChartOptions1.series"
+              [colors]="barChartOptions1.colors"
+              [chart]="barChartOptions1.chart"
+              [xaxis]="barChartOptions1.xaxis"
+              [yaxis]="barChartOptions1.yaxis"
+              [title]="barChartOptions1.title"
+              [dataLabels]="barChartOptions1.dataLabels"
+              [stroke]="barChartOptions1.stroke"
+              [grid]="barChartOptions1.grid"
+              [tooltip]="barChartOptions1.tooltip"
+              [plotOptions]="barChartOptions1.plotOptions"
+              [fill]="barChartOptions1.fill"
+              [legend]="barChartOptions1.legend"
+              [labels]="turnoverLabels1"
+              [markers]="barChartOptions1.markers"
+              [theme]="barChartOptions1.theme"
+              [responsive]="barChartOptions1.responsive"
+     ></apx-chart>
+     </div>
+ </div>
+</div>
+</div> -->
+<!-- Bar Chart ends -->
+
+
+<!-- Pie Chart starts -->
+<!-- <div class="col-lg-6 col-12">
+<div class="card1">
+<div class="card-header">
+ <h4 class="card-title">Category wise Purchases</h4>
+</div>
+<div class="card-content">
+ <div class="card-body">
+       <apx-chart
+       [series]="pieChartOptions1.series"
+              [colors]="pieChartOptions1.colors"
+              [chart]="pieChartOptions1.chart"
+              [xaxis]="pieChartOptions1.xaxis"
+              [yaxis]="pieChartOptions1.yaxis"
+              [title]="pieChartOptions1.title"
+              [dataLabels]="pieChartOptions1.dataLabels"
+              [stroke]="pieChartOptions1.stroke"
+              [grid]="pieChartOptions1.grid"
+              [tooltip]="pieChartOptions1.tooltip"
+              [plotOptions]="pieChartOptions1.plotOptions"
+              [fill]="pieChartOptions1.fill"
+              [legend]="pieChartOptions1.legend"
+              [labels]="pieChartOptions1.labels"
+              [markers]="pieChartOptions1.markers"
+              [theme]="pieChartOptions1.theme"
+              [responsive]="pieChartOptions1.responsive"
+     ></apx-chart>
+ </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+<section id="apexchart">
+<div class="row"> -->
+
+<!-- Bar Chart starts -->
+<!-- <div class="col-xl-6 col-12">
+  <div class="card1">
+      <div class="card-header">
+          <h4 class="card-title">CRM Orders Chart</h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+            <apx-chart
+            [series]="barChartOptions7.series"
+            [colors]="barChartOptions7.colors"
+            [chart]="barChartOptions7.chart"
+            [xaxis]="barChartOptions7.xaxis"
+            [yaxis]="barChartOptions7.yaxis"
+            [title]="barChartOptions7.title"
+            [dataLabels]="barChartOptions7.dataLabels"
+            [stroke]="barChartOptions7.stroke"
+            [grid]="barChartOptions7.grid"
+            [tooltip]="barChartOptions7.tooltip"
+            [plotOptions]="barChartOptions7.plotOptions"
+            [fill]="barChartOptions7.fill"
+            [legend]="barChartOptions7.legend"
+            [labels]="barChartOptions7.labels"
+            [markers]="barChartOptions7.markers"
+            [theme]="barChartOptions7.theme"
+            [responsive]="barChartOptions7.responsive"
+          ></apx-chart>
+          </div>
+      </div>
+  </div>
+</div> -->
+<!-- Bar Chart ends -->
+<!-- 
+<div class="col-lg-6 col-12">
+<div class="card1">
+    <div class="card-header">
+        <h4 class="card-title">CRM Employee wise Orders</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+              <apx-chart
+              [series]="pieChartOptions7.series"
+              [colors]="pieChartOptions7.colors"
+              [chart]="pieChartOptions7.chart"
+              [xaxis]="pieChartOptions7.xaxis"
+              [yaxis]="pieChartOptions7.yaxis"
+              [title]="pieChartOptions7.title"
+              [dataLabels]="pieChartOptions7.dataLabels"
+              [stroke]="pieChartOptions7.stroke"
+              [grid]="pieChartOptions7.grid"
+              [tooltip]="pieChartOptions7.tooltip"
+              [plotOptions]="pieChartOptions7.plotOptions"
+              [fill]="pieChartOptions7.fill"
+              [legend]="pieChartOptions7.legend"
+              [labels]="pieChartOptions7.labels"
+              [markers]="pieChartOptions7.markers"
+              [theme]="pieChartOptions7.theme"
+              [responsive]="pieChartOptions7.responsive"
+            ></apx-chart>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+<div class="row"> -->
+
+<!-- Bar Chart starts -->
+<!-- <div class="col-xl-6 col-12">
+<div class="card1">
+ <div class="card-header">
+     <h4 class="card-title">Accounts Incomes-Expenses</h4>
+ </div>
+ <div class="card-content">
+     <div class="card-body">
+       <apx-chart
+       [series]="barChartOptions.series"
+       [colors]="barChartOptions.colors"
+       [chart]="barChartOptions.chart"
+       [xaxis]="barChartOptions.xaxis"
+       [yaxis]="barChartOptions.yaxis"
+       [title]="barChartOptions.title"
+       [dataLabels]="barChartOptions.dataLabels"
+       [stroke]="barChartOptions.stroke"
+       [grid]="barChartOptions.grid"
+       [tooltip]="barChartOptions.tooltip"
+       [plotOptions]="barChartOptions.plotOptions"
+       [fill]="barChartOptions.fill"
+       [legend]="barChartOptions.legend"
+       [labels]="barChartOptions.labels"
+       [markers]="barChartOptions.markers"
+       [theme]="barChartOptions.theme"
+       [responsive]="barChartOptions.responsive"
+     ></apx-chart>
+     </div>
+ </div>
+</div>
+</div> -->
+<!-- Bar Chart ends -->
+
+
+<!-- Pie Chart starts -->
+<!-- <div class="col-lg-6 col-12">
+<div class="card1">
+<div class="card-header">
+ <h4 class="card-title">Account Age wise Receivable</h4>
+</div>
+<div class="card-content">
+ <div class="card-body">
+       <apx-chart
+       [series]="piedata"
+       [colors]="pieChartOptions.colors"
+       [chart]="pieChartOptions.chart"
+       [xaxis]="pieChartOptions.xaxis"
+       [yaxis]="pieChartOptions.yaxis"
+       [title]="pieChartOptions.title"
+       [dataLabels]="pieChartOptions.dataLabels"
+       [stroke]="pieChartOptions.stroke"
+       [grid]="pieChartOptions.grid"
+       [tooltip]="pieChartOptions.tooltip"
+       [plotOptions]="pieChartOptions.plotOptions"
+       [fill]="pieChartOptions.fill"
+       [legend]="pieChartOptions.legend"
+       [labels]="pieLabels"
+       [markers]="pieChartOptions.markers"
+       [theme]="pieChartOptions.theme"
+       [responsive]="pieChartOptions.responsive"
+     ></apx-chart>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+
+<!--Statistics cards Starts-->
+<!-- <section class="side-menu">
+  <div class="logo">
+      <a routerLink="/">
+          <img src="../../../assets/Logos/logo_short.png" alt="">
+      </a>
+  </div>
+  <div class="cor-menus">
+      <div *ngFor="let a of menus;let i = index" class="menu" (mouseenter)="onHover($event, i)">
+          <a [routerLink]="a.url">
+              <div>
+                  <i [class]="a.icon"></i>
+              </div>
+              <div>{{a.name}}</div>
+          </a>
+          <div *ngIf="a.submenus" class="content" [id]="'content-' + i">
+              <div *ngFor="let k of a.submenus" class="content-item" [routerLink]="k.sub_url"><i [class]="k.icon"></i>
+                  {{k.name}}</div>
+          </div>
+      </div>
+  </div>
+</section> -->
+
+<div class="row" (resized)="onResized($event)">
+  <div class="container sticky-navbar">
+    <div class="row justify-content-around align-items-center flex-wrap">
+      
+      <!-- ADMIN -->
+      <div class="col hover-effect" (click)='setModule("adm")' *ngIf="admenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-admin text-white mx-auto mb-2">
+              <i class="fa icon-settings"></i>
+            </div>
+            <h6 class="text-admin">ADMIN</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Security</a>
+            <a class="dropdown-item" href="#">Options</a>
+            <a class="dropdown-item" href="#">Reports</a>
+          </div> -->
+        </div>
+      </div>
+       <!-- HRD -->
+       <div class="col hover-effect" (click)='setModule("hrd")' *ngIf="hrdenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-light text-white mx-auto mb-2">
+              <i class="fa icon-users"></i>
+            </div>
+            <h6 class="text-coral">HRD</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">HRD</a>
+            <a class="dropdown-item" href="#">Attendance & Accounts</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+          </div> -->
+        </div>
+      </div>
+         <!-- CRM -->
+         <div class="col hover-effect" (click)='setModule("crm")' *ngIf="crmenable">
+          <div class="card radius-10 border-0">
+            <div class="card-body text-center">
+              <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white mx-auto mb-2">
+                <i class="fa icon-earphones"></i>
+              </div>
+              <h6 class="text-success">CRM</h6>
+            </div>
+            <!-- <div class="dropdown-menu dropdown-menu-show">
+              <a class="dropdown-item" href="#">Masters</a>
+              <a class="dropdown-item" href="#">Pre Sales</a>
+              <a class="dropdown-item" href="#">Post Sales</a>
+              <a class="dropdown-item" href="#">Key Reports</a>
+              <a class="dropdown-item" href="#">Pre Sale Reports</a>
+              <a class="dropdown-item" href="#">Post Sales Reports</a>
+              <a class="dropdown-item" href="#">Analysis</a>
+              <a class="dropdown-item" href="#">Settings</a>
+            </div> -->
+          </div>
+        </div>
+            <!-- INVENTORY -->
+      <div class="col hover-effect" (click)='setModule("inv")' *ngIf="invenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-secondary text-white mx-auto mb-2">
+              <i class="fa icon-basket-loaded"></i>
+            </div>
+            <h6 class="text-secondary">INVENTORY</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Stock Reports</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div> -->
+        </div>
+      </div>
+    
+      <!-- PURCHASES -->
+      <div class="col hover-effect" (click)='setModule("pur")' *ngIf="purenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white mx-auto mb-2">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <h6 class="text-danger">PURCHASES</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Order Mgt</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Order Reports</a>
+            <a class="dropdown-item" href="#">Purchase Reports</a>
+            <a class="dropdown-item" href="#">Stock & Accounts</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div> -->
+        </div>
+      </div>
+  <!-- qc -->
+  <div class="col hover-effect" (click)='setModule("qc")' *ngIf="qcenable">
+    <div class="card radius-10 border-0">
+      <div class="card-body text-center">
+        <div class="widgets-icons-2 rounded-circle bg-gradient-primary text-white mx-auto mb-2">
+          <i class="fa icon-note"></i>
+        </div>
+        <h6 class="text-primary">QC</h6>
+      </div>
+      <!-- <div class="dropdown-menu dropdown-menu-show">
+        <a class="dropdown-item" href="#">Masters</a>
+        <a class="dropdown-item" href="#">Pre Sales</a>
+        <a class="dropdown-item" href="#">Post Sales</a>
+        <a class="dropdown-item" href="#">Key Reports</a>
+        <a class="dropdown-item" href="#">Pre Sale Reports</a>
+        <a class="dropdown-item" href="#">Post Sales Reports</a>
+        <a class="dropdown-item" href="#">Analysis</a>
+        <a class="dropdown-item" href="#">Settings</a>
+      </div> -->
+    </div>
+  </div>
+   
+      <div class="col hover-effect" (click)='setModule("pro")' *ngIf="proenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-warning text-white mx-auto mb-2">
+              <i class="fa icon-wrench"></i>
+            </div>
+            <h6 class="text-warning">PRODUCTION</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Masters</a>
+            <a class="dropdown-item" href="#">Pre Sales</a>
+            <a class="dropdown-item" href="#">Post Sales</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Pre Sale Reports</a>
+            <a class="dropdown-item" href="#">Post Sales Reports</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div> -->
+        </div>
+      </div> 
+
+      <!-- MAINTENANCE -->
+      <div class="col hover-effect" (click)='setModule("mai")' *ngIf="maienable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-maintenance text-white mx-auto mb-2">
+              <i class="fa icon-note"></i>
+            </div>
+            <h6 class="text-maintenance">MAINTENANCE</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">Key Reports</a>
+            <a class="dropdown-item" href="#">Reports</a>
+            <a class="dropdown-item" href="#">Settings</a>
+          </div> -->
+        </div>
+      </div>
+  
+
+      <!-- SALES -->
+      <div class="col hover-effect" (click)='setModule("sale")' *ngIf="salenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-dark text-white mx-auto mb-2">
+              <i class="fa icon-bar-chart"></i>
+            </div>
+            <h6 class="text-dark">SALES</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Invoice-Temp</a>
+            <a class="dropdown-item" href="#">Invoice</a>
+            <a class="dropdown-item" href="#">Dispatch Clearances</a>
+            <a class="dropdown-item" href="#">Analysis</a>
+            <a class="dropdown-item" href="#">List of Sales</a>
+            <a class="dropdown-item" href="#">Detailed Sales</a>
+            <a class="dropdown-item" href="#">Consolidated Sales</a>
+            <a class="dropdown-item" href="#">Item wise Consolidate</a>
+          </div> -->
+        </div>
+      </div>
+
+     
+
+    
+  <!-- ACCOUNTS -->
+  <div class="col hover-effect" (click)='setModule("acc")'  *ngIf="accenable">
+    <div class="card radius-10 border-0">
+      <div class="card-body text-center">
+        <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white mx-auto mb-2">
+          <i class="fa ft-dollar-sign"></i>
+        </div>
+        <h6 class="text-info">ACCOUNTS</h6>
+      </div>
+      <!-- <div class="dropdown-menu dropdown-menu-show">
+        <a class="dropdown-item" href="#">Masters</a>
+        <a class="dropdown-item" href="#">Transactions</a>
+        <a class="dropdown-item" href="#">Key Reports</a>
+        <a class="dropdown-item" href="#">Books</a>
+        <a class="dropdown-item" href="#">Financial Statements</a>
+      </div> -->
+    </div>
+  </div>
+
+
+      <!-- Reports -->
+      <div class="col hover-effect" (click)='setModule("ana")' *ngIf="repenable">
+        <div class="card radius-10 border-0">
+          <div class="card-body text-center">
+            <div class="widgets-icons-2 rounded-circle bg-gradient-primary text-white mx-auto mb-2">
+              <i class="icon-pie-chart font-large-1"></i>
+            </div>
+            <h6 class="text-primary">REPORTS</h6>
+          </div>
+          <!-- <div class="dropdown-menu dropdown-menu-show">
+            <a class="dropdown-item" href="#">Master</a>
+            <a class="dropdown-item" href="#">Transactions</a>
+            <a class="dropdown-item" href="#">QC Reports</a>
+            <a class="dropdown-item" href="#">QC Analysis</a>
+          </div> -->
+        </div>
+      </div>
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Dashboard Section -->
+<div class="row">
+  <div class="col-12">
+    <div class="dashboard p-5 shadow-lg text-center" style="background-color: #ffffff; border-radius: 20px;">
+      
+      <div class="row">
+        <h2 style="text-align: left;">DASHBOARD SUMMARY</h2>
+      <hr/>
+       <!-- Pie Chart starts -->
+       <div class="col-lg-6 col-12">
+        <div class="card1">
+        <div class="card-header">
+           <h4 class="card-title">Category wise Purchases</h4>
+        </div>
+        <div class="card-content">
+           <div class="card-body">
+                 <apx-chart
+                 [series]="pieChartOptions1.series"
+                        [colors]="pieChartOptions1.colors"
+                        [chart]="pieChartOptions1.chart"
+                        [xaxis]="pieChartOptions1.xaxis"
+                        [yaxis]="pieChartOptions1.yaxis"
+                        [title]="pieChartOptions1.title"
+                        [dataLabels]="pieChartOptions1.dataLabels"
+                        [stroke]="pieChartOptions1.stroke"
+                        [grid]="pieChartOptions1.grid"
+                        [tooltip]="pieChartOptions1.tooltip"
+                        [plotOptions]="pieChartOptions1.plotOptions"
+                        [fill]="pieChartOptions1.fill"
+                        [legend]="pieChartOptions1.legend"
+                        [labels]="pieChartOptions1.labels"
+                        [markers]="pieChartOptions1.markers"
+                        [theme]="pieChartOptions1.theme"
+                        [responsive]="pieChartOptions1.responsive"
+               ></apx-chart>
+           </div>
+        </div>
+        </div>
+        </div>
+      <!-- Bar Chart starts -->
+      <div class="col-xl-6 col-12">
+      <div class="card1">
+         <div class="card-header">
+             <h4 class="card-title">Purchases Chart</h4>
+         </div>
+         <div class="card-content">
+             <div class="card-body">
+               <apx-chart
+               [series]="barChartOptions1.series"
+                      [colors]="barChartOptions1.colors"
+                      [chart]="barChartOptions1.chart"
+                      [xaxis]="barChartOptions1.xaxis"
+                      [yaxis]="barChartOptions1.yaxis"
+                      [title]="barChartOptions1.title"
+                      [dataLabels]="barChartOptions1.dataLabels"
+                      [stroke]="barChartOptions1.stroke"
+                      [grid]="barChartOptions1.grid"
+                      [tooltip]="barChartOptions1.tooltip"
+                      [plotOptions]="barChartOptions1.plotOptions"
+                      [fill]="barChartOptions1.fill"
+                      [legend]="barChartOptions1.legend"
+                      [labels]="turnoverLabels1"
+                      [markers]="barChartOptions1.markers"
+                      [theme]="barChartOptions1.theme"
+                      [responsive]="barChartOptions1.responsive"
+             ></apx-chart>
+             </div>
+         </div>
+      </div>
+      </div>
+      <!-- Bar Chart ends -->
+      
+      
+     
+      
+      </div>
+      
+      
+      
+      
+      
+      <div class="row">
+        
+        <!-- Bar Chart starts -->
+        <div class="col-xl-6 col-12">
+          <div class="card1">
+              <div class="card-header">
+                  <h4 class="card-title">CRM Orders Chart</h4>
+              </div>
+              <div class="card-content">
+                  <div class="card-body">
+                    <apx-chart
+                    [series]="barChartOptions7.series"
+                    [colors]="barChartOptions7.colors"
+                    [chart]="barChartOptions7.chart"
+                    [xaxis]="barChartOptions7.xaxis"
+                    [yaxis]="barChartOptions7.yaxis"
+                    [title]="barChartOptions7.title"
+                    [dataLabels]="barChartOptions7.dataLabels"
+                    [stroke]="barChartOptions7.stroke"
+                    [grid]="barChartOptions7.grid"
+                    [tooltip]="barChartOptions7.tooltip"
+                    [plotOptions]="barChartOptions7.plotOptions"
+                    [fill]="barChartOptions7.fill"
+                    [legend]="barChartOptions7.legend"
+                    [labels]="barChartOptions7.labels"
+                    [markers]="barChartOptions7.markers"
+                    [theme]="barChartOptions7.theme"
+                    [responsive]="barChartOptions7.responsive"
+                  ></apx-chart>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Bar Chart ends -->
+      
+      <div class="col-lg-6 col-12">
+        <div class="card1">
+            <div class="card-header">
+                <h4 class="card-title">CRM Employee wise Orders</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                      <apx-chart
+                      [colors]="pieChartOptions7.colors"
+                      [series]="pieChartOptions7.series"
+                      [chart]="pieChartOptions7.chart"
+                      [xaxis]="pieChartOptions7.xaxis"
+                      [yaxis]="pieChartOptions7.yaxis"
+                      [title]="pieChartOptions7.title"
+                      [dataLabels]="pieChartOptions7.dataLabels"
+                      [stroke]="pieChartOptions7.stroke"
+                      [grid]="pieChartOptions7.grid"
+                      [tooltip]="pieChartOptions7.tooltip"
+                      [plotOptions]="pieChartOptions7.plotOptions"
+                      [fill]="pieChartOptions7.fill"
+                      [legend]="pieChartOptions7.legend"
+                      [labels]="pieChartOptions7.labels"
+                      [markers]="pieChartOptions7.markers"
+                      [theme]="pieChartOptions7.theme"
+                      [responsive]="pieChartOptions7.responsive"
+                    ></apx-chart>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <!-- Bar Chart starts -->
+        <div class="col-xl-12 col-12">
+         <div class="card1">
+             <div class="card-header">
+                 <h4 class="card-title">Inventory Consumptions Quaterly Chart</h4>
+             </div>
+             <div class="card-content">
+                 <div class="card-body">
+                   <apx-chart
+                   [series]="barChartOptions.series"
+                   [colors]="barChartOptions.colors"
+                   [chart]="barChartOptions.chart"
+                   [xaxis]="barChartOptions.xaxis"
+                   [yaxis]="barChartOptions.yaxis"
+                   [title]="barChartOptions.title"
+                   [dataLabels]="barChartOptions.dataLabels"
+                   [stroke]="barChartOptions.stroke"
+                   [grid]="barChartOptions.grid"
+                   [tooltip]="barChartOptions.tooltip"
+                   [plotOptions]="barChartOptions.plotOptions"
+                   [fill]="barChartOptions.fill"
+                   [legend]="barChartOptions.legend"
+                   [labels]="barChartOptions.labels"
+                   [markers]="barChartOptions.markers"
+                   [theme]="barChartOptions.theme"
+                   [responsive]="barChartOptions.responsive"
+                 ></apx-chart>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- Bar Chart ends -->
+     
+     </div>
+
+     <div class="row">  
+
+<div class="col-lg-6 col-12">
+    <div class="card2">
+        <div class="card-header">
+            <h4 class="card-title">Top 10 Customers</h4>
+        </div>
+        <div class="card-content">
+         
+
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                     
+                    </div>
+                    <div class="card-content">
+                      <div class="card-body">
+                       
+                        <div class="table-responsive">
+                          <table class="table m-0">
+                            <thead class="thead-light">
+                              <tr>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th style="text-align: right;">Business</th>
+                                    <th style="text-align: right;">Role</th>
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor='let customer of sales; let i=index'>
+                                <th scope="row">{{i+1}}</th>
+                                <td> {{customer.name}} </td>
+                                <td align="right">{{customer.busi}}</td>
+                                <td align="right">{{customer.rol}}%</td>
+                              </tr>
+                             
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-6 col-12">
+  <div class="card2">
+      <div class="card-header">
+          <h4 class="card-title">Top 10 Credits</h4>
+      </div>
+      <div class="card-content">
+        
+
+          <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                   
+                  </div>
+                  <div class="card-content">
+                    <div class="card-body">
+                     
+                      <div class="table-responsive">
+                        <table class="table m-0">
+                          <thead class="thead-light">
+                            <tr>
+                              <th>#</th>
+                              <th>Customer</th>
+                              <th style="text-align: right;">Credit</th>
+                         
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor='let customer of credits; let i=index'>
+                                <th scope="row">{{i+1}}</th>
+                                <td> {{customer.name}} </td>
+                                <td align="right">{{customer.busi}}</td>
+                             
+                              </tr>
+                           
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>

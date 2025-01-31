@@ -1,0 +1,97 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Row Styling */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  
+  /* Column Styling */
+  .col-md-3 {
+    flex: 0 0 24%; /* Each column will take up 1/4 of the row */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Label Styling */
+  label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Display Values Styling */
+  .col-md-3 label:last-child {
+    font-weight: normal;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Value Container (for displaying values) */
+  .col-md-3 label:last-child {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .col-md-3 {
+        flex: 0 0 48%; /* On medium screens, each column takes up 48% */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 100%; /* On smaller screens, each column takes up the full width */
+    }
+  }
+  
+  /* Row Spacing Between Groups */
+  .d-flex {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Border between rows */
+  .row {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Remove the border from the last row */
+  .row:last-child {
+    border: none;
+  }
+  
+  /* Optional: Styling for the entire list of leads */
+  .d-flex.flex-wrap {
+    margin-bottom: 20px;
+  }
+  
+  

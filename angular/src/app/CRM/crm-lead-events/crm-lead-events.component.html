@@ -1,0 +1,139 @@
+
+  <div style="padding: 20px">
+    <!-- Events List Section -->
+    <div>
+      <div>
+        <h3>Events Details</h3>
+        <hr />
+      </div>
+      <div class="form first">
+          <div class="main-container">
+            <div class="calendar">
+              <div class="calendar-header">
+                <button (click)="prevMonth()">&#10094;</button>
+                <div>{{ months[currentMonth] }} {{ currentYear }}</div>
+                <button (click)="nextMonth()">&#10095;</button>
+              </div>
+              <div class="calendar-body">
+                <div class="calendar-weekday" *ngFor="let day of weekDays">{{ day }}</div>
+                <div class="calendar-day" *ngFor="let day of calendarDays" [class.current]="day.isCurrent"
+                  [class.today]="day.isToday" (click)="selectDay(day)">
+                  <div class="date">{{ day.date }}
+                    <div class="events">
+                      <div *ngFor="let event of day.events" class="event">
+                        <div class="event-title">{{ event.EventTitle }}</div>
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div *ngIf="showModal" class="modal-background" (click)="closeModal()">
+                <div class="modal-content" (click)="$event.stopPropagation()">
+                  <button class="close-button" (click)="closeModal()">&#10005;</button>
+                  <div class="container">
+                    <h2>Events</h2>
+                    <hr />
+              
+                    <!-- First Row -->
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-6">
+                        <label for="eventTitle" class="form-label" style="font-size: 1.2em;">Event Title <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                          <input type="text" name="eventTitle" [(ngModel)]="currentEvent.eventTitle" class="form-control form-control-lg"
+                            placeholder="Enter Event Title">
+                        </div>
+                      </div>
+              
+                      <div class="col-md-6">
+                        <label for="eventTime" class="form-label" style="font-size: 1.2em;">Event Time <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                          <input type="datetime" name="eventTime" [(ngModel)]="currentEvent.eventTime" class="form-control form-control-lg">
+                        </div>
+                      </div>
+                    </div>
+              
+                    <!-- Second Row -->
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-6">
+                        <label for="eventGuests" class="form-label" style="font-size: 1.2em;">Add Guests <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                          <select name="eventGuests" [(ngModel)]="currentEvent.guests" class="form-select form-control-lg" required>
+                            <option value="">Select Guests</option>
+                            <option *ngFor="let item of lstleadowner" [value]="item.id">
+                              {{ item.description }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+              
+                      <div class="col-md-6">
+                        <label for="meetingLink" class="form-label" style="font-size: 1.2em;">Meeting Link <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                          <input type="text" name="meetingLink" [(ngModel)]="currentEvent.meetingLink" class="form-control form-control-lg"
+                            placeholder="Enter Meeting Link">
+                        </div>
+                      </div>
+                    </div>
+              
+                    <!-- Third Row -->
+                    <div class="row" style="padding-top: 20px;">
+                      <div class="col-md-6">
+                        <label for="meetingLocation" class="form-label" style="font-size: 1.2em;">Add Location <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                          <input type="text" name="meetingLocation" [(ngModel)]="currentEvent
+                          .location"
+                            class="form-control form-control-lg" placeholder="Enter Location">
+                        </div>
+                      </div>
+                    </div>
+
+                   
+                  
+              
+                    <!-- Buttons Row -->
+                    <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                      <div class="col-md-6 mt-3">
+                        <button type="button" (click)="saveEvents()" class="btn-lg btn-primary mr-1 mb-1">Submit</button>
+                        <button type="button" class="btn-lg btn-dark mb-1" (click)="closeModal()">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>S.No</th>
+                <th>Event Title</th>
+                <th>Event Time</th>
+                <th>Guests</th>
+                <th>Location</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr *ngFor="let event of selectedDayEvents; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ event.eventTitle }}</td>
+                <td>{{ event.eventTime }}</td>
+                <td>{{ event.guests }}</td>
+                <td>{{ event.location }}</td>
+                <td>
+                  <button class="btn btn-info btn-sm mr-2" (click)="editEvent(event.recordId)">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.recordId)">Delete</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+          </div>
+    </div>
+  </div>
+
+          

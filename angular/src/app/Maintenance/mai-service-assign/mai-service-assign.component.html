@@ -1,0 +1,117 @@
+<ngx-spinner></ngx-spinner>
+<div *ngIf='opencheck'>
+<h3>Service Assign Details</h3>
+
+<table style="width: 70%;">
+<tr>
+    <td style="width: 25%;" align="right">Equipment</td>
+    <td style="width: 75%;"> <select class="form-control" [(ngModel)]='equipid' (change)='findDetails()'>
+        <option value="0">--Select Equipment--</option>
+        <option *ngFor='let equ of equips' value="{{equ.recordid}}" >{{equ.equipment}} </option>
+    </select> </td>
+</tr>
+<tr *ngIf='detail'>
+    <td style="width: 25%;" align="right">Breakdown Date</td>
+    <td style="width: 75%;"> <input type="text" disabled class="form-control" value='{{detail.breakdowndate | date:"dd-MMM-yy"}}'>  </td>
+</tr>
+<tr *ngIf='detail'>
+    <td style="width: 25%;" align="right">Reported by</td>
+    <td style="width: 75%;"> <input type="text" disabled class="form-control" [(ngModel)]='detail.reporteduser'> </td>
+</tr>
+<tr *ngIf='detail'>
+    <td style="width: 25%;" align="right">Description</td>
+    <td style="width: 75%;"> 
+        <textarea class="form-control" disabled rows="3" [(ngModel)]='detail.description'></textarea>
+         </td>
+</tr>
+<tr>
+    <td style="width: 25%;" align="right">Assigned to</td>
+    <td style="width: 75%;"> 
+        <select class="form-control" [(ngModel)]='supid'>
+            <option value="0">--Select Supplier--</option>
+            <option *ngFor='let sup of suppliers' value="{{sup.recordId}}" >{{sup.partyName}} </option>
+        </select>
+            </td>
+</tr>
+<tr>
+    <td style="width: 25%;" align="right">Base Amount</td>
+    <td style="width: 75%;"> <input type="number" class="form-control" [(ngModel)]='baseamt' (input)='makeCalculations()'> </td>
+</tr>
+<tr>
+    <td style="width: 25%;" align="right">Discount</td>
+    <td style="width: 75%;"> <input type="number" class="form-control" [(ngModel)]='discount' (input)='makeCalculations()'> </td>
+</tr>
+<tr *ngFor='let ta of taxes'>
+    <td style="width: 25%;" align="right">{{ta.taxCode}} @ {{ta.taxPer}}%</td>
+    <td style="width: 75%;"> <input type="number" class="form-control" [(ngModel)]='ta.taxValue' (input)='makeCalculations()'> </td>
+</tr>
+<tr>
+    <td style="width: 25%;" align="right">Total</td>
+    <td style="width: 75%;"> <input type="number" disabled class="form-control" [(ngModel)]='totalamt' > </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <button type="button" class="btn-lg btn-primary" (click)='save()'>Submit</button>
+    </td>
+</tr>
+</table>
+</div>
+
+
+<div *ngIf='!opencheck'>
+
+    <h3>
+        List of Breakdown
+    </h3>
+    
+     
+    <table style="width: 80%;">
+     <tr>
+ 
+      <td align="right" style="width: 40%;">
+          <input type="date" class="form-control" [value]="listdate | date:'yyyy-MM-dd'" (input)="listdate=parseDate($event.target.value)"> 
+     
+      
+      </td>
+      <td align="left" style="width: 25%;">   <button *ngIf='!opened' type="button" class="btn-lg btn-info mr-1 mb-1" (click)='listAdd()'>Show</button> </td>
+ 
+         <td align="left" style="width: 25%;" *ngIf="addbuttonenable">
+             <button type="button" class="btn-lg btn-success mr-1 mb-1" (click)='openNew()' >New</button>
+         </td>
+       
+     </tr>
+     </table>
+ 
+ 
+ 
+    
+    <table class="table m-0" style="width: 100%;">
+        <thead class="thead-light">
+          <tr>
+            <th style="width: 4%;">#</th>
+           
+            <th style="width: 26%;">Equipment</th>
+            <th style="width: 28%;">Assigned To</th>
+            <th style="width: 12%;">Assigned @</th>
+            <th style="width: 12%;">USer</th>
+             <th style="width: 12%;">Cleared</th>
+            <th style="width: 6%;"></th>
+          
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr *ngFor='let enq of prevmains;let i=index'>
+            <th scope="row" style="width: 4%;" >{{i+1}}</th>
+             <td style="width: 26%;">{{enq.equipment}}</td>
+             <td style="width: 28%;">{{enq.serviceprovider}}</td>
+            <td style="width: 12%;">{{enq.assigndate | date:'dd-MMM-yy'}}</td>
+            <td style="width: 12%;">{{enq.reporteduser}}</td>
+             <td style="width: 12%;">{{enq.serviceclear}}</td>
+              <td style="width: 6%;" *ngIf="modifybuttonenable"><i *ngIf='!opened' class="ft-edit font-medium-1"></i></td>
+  
+           </tr>
+         
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,40 @@
+.input-box,
+.select-dropdown {
+    width: 200px;
+}
+
+.table th,
+.table td {
+    padding: 5px !important;
+}
+
+table {
+    .w-50 {
+        width: 90% !important;
+    }
+}
+
+a {
+    color: #007bff !important;
+    text-decoration: underline !important;
+}
+
+.close-button {
+    min-width: 110px !important;
+    font-size: 14px !important;
+    padding: 4px !important;
+}
+
+input:disabled {
+    background-color: #f0f0f0;
+    color: #888888;
+    border: 1px solid #cccccc;
+    cursor: not-allowed;
+}
+
+.cor-print-img {
+    img {
+        width: 80%;
+        height: 60%;
+    }
+}

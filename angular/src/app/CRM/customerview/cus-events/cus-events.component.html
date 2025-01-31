@@ -1,0 +1,162 @@
+
+<div *ngIf="!newEvent">
+    <div class="d-flex justify-content-between ">
+        <h3>Schedulers</h3>
+        <div>
+            <button class="btn mb-3 mr-3 btn-primary" (click)="newEvent = true">Add Schedule</button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Event Title</th>
+                <th scope="col">Event Time</th>
+                <th scope="col">Meeting Link</th>
+                <th scope="col">Guests</th>
+                <th scope="col">Location</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of selectedDayEvents; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ event.eventTitle }}</td>
+                <td>{{ event.eventTime | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{event.meetingLink}}</td>
+                <td>{{ event.eventGuests }}</td>
+                <td>{{ event.meetingLocation }}</td>
+                <td>
+                  
+                        <i class="fas fa-edit" (click)="editEvent(event.id)" title="Edit Event"></i>
+                        <i class="fas fa-trash-alt" (click)="deleteEvent(event.id)" title="Delete Event"></i>
+  
+                        <!-- <button (click)="editEvent(event.recordId)" title="Edit Event" > <i class="fas fa-edit"></i>Edit</button>
+                        <button (click)="deleteEvent(event.recordId)" title="Delete Event"> <i class="fas fa-trash-alt"></i>Delete</button> -->
+                      
+                </td>
+              </tr>
+        </tbody>
+    </table>
+  </div>
+  <div  *ngIf="newEvent">
+    <h3 class="title">New Schedules</h3>
+    <hr>
+    <div class="content">
+        <form>
+          <div class="row">
+            <!-- Event Title -->
+            <div class="col-md-6">
+              <label for="eventTitle" class="form-label" style="font-size: 1.2em;">
+                Event Title <span class="text-danger">*</span>
+              </label>
+              <div class="form-outline">
+                <input 
+                  type="text" 
+                  id="eventTitle" 
+                  name="eventTitle" 
+                  [(ngModel)]="currentEvent.eventTitle" 
+                  class="form-control form-control-lg" 
+                  placeholder="Enter Event Title" 
+                  required
+                />
+              </div>
+            </div>
+      
+            <!-- Event Time -->
+            <div class="col-md-6 ">
+              <label for="eventTime" class="form-label" style="font-size: 1.2em;">
+                Event Time <span class="text-danger">*</span>
+              </label>
+              <div class="form-outline">
+                <input 
+                  type="datetime-local" 
+                  id="eventTime" 
+                  name="eventTime" 
+                  [(ngModel)]="currentEvent.eventTime" 
+                  class="form-control form-control-lg" 
+                  required
+                />
+              </div>
+            </div>
+      
+            <!-- Add Guests -->
+            <div class="col-md-6 ">
+              <label for="eventGuests" class="form-label" style="font-size: 1.2em;">
+                Add Guests <span class="text-danger">*</span>
+              </label>
+              <div class="form-outline">
+                <select 
+                  id="eventGuests" 
+                  name="eventGuests" 
+                  [(ngModel)]="currentEvent.EventGuests" 
+                  class="form-select form-control-lg" 
+                  required
+                >
+                  <option value="" disabled>Select Guests</option>
+                  <option *ngFor="let emp of employees" [value]="emp.empname">{{ emp.empname }}</option>
+                </select>
+              </div>
+            </div>
+      
+            <!-- Meeting Link -->
+            <div class="col-md-6">
+              <label for="meetingLink" class="form-label" style="font-size: 1.2em;">
+                Meeting Link <span class="text-danger">*</span>
+              </label>
+              <div class="form-outline">
+                <input 
+                  type="text" 
+                  id="meetingLink" 
+                  name="meetingLink" 
+                  [(ngModel)]="currentEvent.meetingLink" 
+                  class="form-control form-control-lg" 
+                  placeholder="Enter Meeting Link" 
+                  required
+                />
+              </div>
+            </div>
+      
+            <!-- Meeting Location -->
+            <div class="col-md-6 ">
+              <label for="meetingLocation" class="form-label" style="font-size: 1.2em;">
+                Add Location <span class="text-danger">*</span>
+              </label>
+              <div class="form-outline">
+                <input 
+                  type="text" 
+                  id="meetingLocation" 
+                  name="meetingLocation" 
+                  [(ngModel)]="currentEvent.MeetingLocation" 
+                  class="form-control form-control-lg" 
+                  placeholder="Enter Location" 
+                  required
+                />
+              </div>
+            </div>
+      
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="button" (click)="saveEvents()" class="btn-lg btn-primary mr-1 mb-1">Submit</button>
+              <!-- <button 
+                type="submit" 
+                (click)="newEvent = false" 
+                class="btn btn-primary me-2"
+              >
+                Submit
+              </button> -->
+              <button 
+                type="button" 
+                (click)="newEvent = false" 
+                class="btn btn-secondary mr-1 mb-1"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+    
+      
+  

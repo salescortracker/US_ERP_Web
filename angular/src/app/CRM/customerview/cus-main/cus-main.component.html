@@ -1,0 +1,56 @@
+<div class="card-wrapper card">
+    <h1>{{this.leadData.company}}</h1>
+    
+    <div class="d-flex justify-content-between align-items-center py-2 ">
+        <div>
+            <strong>Customer ID# : CUSTOMER-{{this.leadData.id}}</strong> <br>
+            <strong>Customer Owner : {{this.leadData.leadOwnerName}}</strong>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light btn-sm me-2"  routerLink="/crm/customercreate" [queryParams]="{cusid:this.leadData.id}" >
+                <i class="bi bi-pencil"></i> Edit Customer
+            </button>
+            <!-- <button class="btn btn-light btn-sm me-2" (click)="markAsCustomer()">
+                <i class="bi bi-check-circle"></i> Mark as Customer
+              </button>               -->
+        </div>
+    </div>
+    <div>
+        <div class="m-2">
+            <div class=" tab-buttons">
+                <button *ngFor="let tab of tabs;let i = index" class=" tab-btn"
+                    [ngClass]="{'active': selectedTab === i}" (click)="selectTab(i)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div *ngIf="selectedTab === 0" class="tab-pane fade show active">
+                <app-cus-page></app-cus-page>
+            </div>
+            <div *ngIf="selectedTab === 1" class="tab-pane fade show active">
+                <app-cus-contacts></app-cus-contacts>
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-pane fade show active">
+                <app-customerview-calllog></app-customerview-calllog>
+            </div>
+            <div *ngIf="selectedTab === 3" class="tab-pane fade show active">
+                <app-cus-events></app-cus-events>
+            </div>
+            <div *ngIf="selectedTab === 4" class="tab-pane fade show active">
+                <app-cus-reminders></app-cus-reminders>
+            </div>
+            <div *ngIf="selectedTab === 5" class="tab-pane fade show active">
+               <app-cus-enquiry></app-cus-enquiry>
+            </div>
+            <div *ngIf="selectedTab === 6" class="tab-pane fade show active">
+                <app-cus-quotation></app-cus-quotation>
+            </div>
+            <div *ngIf="selectedTab === 7" class="tab-pane fade show active">
+                <app-cus-order></app-cus-order>
+            </div>
+            <!-- <div *ngIf="selectedTab === 8" class="tab-pane fade show active">
+                <app-cus-documents></app-cus-documents>
+        </div> -->
+    </div>
+</div>

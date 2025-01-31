@@ -1,0 +1,301 @@
+<div *ngIf="enquiry==1">
+    <div class="d-flex justify-content-between ">
+        <h3>Sales Orders</h3>
+        <div>
+            <button class="btn mb-3 mr-3 btn-primary" (click)="enquiry = 2">Add Sales Orders</button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Sales Order ID</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Sales Order Date</th>
+                <th scope="col">Payment Terms</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="solist">
+            <tr *ngFor="let a of solist;let i = index">
+                <td>{{i+1}}</td>
+                <td><a (click)="editso(a.soId,3)">{{a.so_seq_id}}</a></td>
+                <td>{{a.contactName}}</td>
+                <td>{{a.soDate | date}}</td>
+                <td>{{a.paymentTerms}}</td>
+                <td>{{a.comments}}</td>
+                <td><i class="ft-edit font-medium-1"  (click)="editso(a.soId,2)"></i></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="!solist">
+            <tr>
+                <td colspan="7" style="text-align: center;">No Records Found</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+<div *ngIf="enquiry == 2">
+    <h3 class="title">New Sales Order</h3>
+    <hr>
+    <div class="content">
+        <div class="cor-form">
+            <div class="input-box">
+                <span class="details">Contact<span class="text-danger">*</span></span>
+                <select (change)="contactChanged($event.target.value)" [(ngModel)]="soDetails.contactId">
+                    <option value="0">--Select Contact --</option>
+                    <option *ngFor="let a of contactlst" [value]="a.id">{{a.firstName + " " + a.lastName}}</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <span class="details">Sales Order Date<span class="text-danger">*</span></span>
+                <input type="date" placeholder="Enter Sales Order Date" [(ngModel)]="soDetails.soDate">
+            </div>
+            <div class="input-box">
+                <span class="details">Comments/Remarks<span class="text-danger">*</span></span>
+                <input type="text" placeholder="Enter your comments" [(ngModel)]="soDetails.comments">
+            </div>
+            <div class="input-box">
+                <span class="details">Payment Terms<span class="text-danger">*</span></span>
+                <input type="text" placeholder="Enter your Payment Terms" [(ngModel)]="soDetails.paymentTerms">
+            </div>
+        </div>
+        <div class="cor-form">
+            <div class="input-box textarea-box">
+                <span class="details">Terms and Conditions</span>
+                <textarea rows="5"  [(ngModel)]="soDetails.terms"></textarea>
+            </div>
+            <div class="input-box textarea-box">
+                <span class="details">Delivery Terms</span>
+                <textarea rows="5"  [(ngModel)]="soDetails.deliveryTerms"></textarea>
+            </div>
+            <div class="input-box textarea-box">
+                <span class="details">Billing Address</span>
+                <textarea rows="5"  [(ngModel)]="soDetails.billingAddress"></textarea>
+            </div>
+            <div class="input-box textarea-box">
+                <span class="details">Shipping Address</span>
+                <textarea rows="5"  [(ngModel)]="soDetails.shippingAddress"></textarea>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <div class="d-flex justify-content-end mb-2 ">
+                    <div (click)="addso()" class="btn mb-3 mr-3 btn-primary">+ Row
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:3%">#</th>
+                            <th scope="col" style="width:20%">Item Name<span class="cor-mandate">*</span></th>
+                            <th scope="col" style="width:8%">Item Code</th>
+                            <th scope="col" style="width:8%">Qty<span class="cor-mandate">*</span></th>
+                            <th scope="col" style="width:8%">Unit Price<span class="cor-mandate">*</span></th>
+                            <th scope="col" style="width:12%">UOM</th>
+                            <th scope="col" style="width:8%">Lead days</th>
+                            <th scope="col" style="width:8%">Discount %</th>
+                            <th scope="col" style="width:8%">Discount <br> Amount</th>
+                            <th scope="col" style="width:15%">Taxes</th>
+                            <th scope="col" style="width:8%">Total Price</th>
+                            <th scope="col" style="width:8%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of myList;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>
+                                <div class="select-dropdown">
+                                    <select id='cmbitem' (change)="makeUnits($event.target.value,i)"
+                                        [(ngModel)]="a.itemId">
+                                        <option value="0">-- Select Item--</option>
+                                        <option *ngFor="let item of items" [value]="item.recordId">{{item.itemname}}
+                                        </option>
+                                    </select>
+                                </div>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.itemCode"></td>
+                            <td><input class="w-50" type="number" (change)="calculItemTotal(i)" [(ngModel)]="a.qty"></td>
+                            <td><input class="w-50" type="number" (change)="calculItemTotal(i)" [(ngModel)]="a.unitPrice">
+                            </td>
+                            <td>
+                                <div class="w-50">
+                                    <select style="width: 100px;" (change)="uomName($event.target.value,i)"
+                                        [(ngModel)]='a.uomId'>
+                                        <option *ngFor='let um of a.units' [value]="um.umid">{{um.um}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td><input class="w-50" type="number" [(ngModel)]="a.leadDays"></td>
+                            <!-- <td><input class="w-50" type="text" (change)="calculItemTotal(i)" [(ngModel)]="a.discount">
+                            </td> -->
+                            <td>
+                                <input type="number" id="discount" (change)="calculItemTotal(i)" name="discount"
+                                    [(ngModel)]="a.discount" required pattern="^([1-9][0-9]?|100)$" />
+                            </td>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.discountAmount" disabled></td>
+                            <td>
+                                <div class="w-50">
+                                    <select style="width: 100px;" (change)="selectedTax($event.target.value,i)"
+                                        [(ngModel)]='a.taxId'>
+                                        <option *ngFor='let k of taxesuni' [value]="k.recordId">{{k.taxName}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.totalAmt" disabled></td>
+                            <td><i class="ft-delete font-medium-1" (click)="_delete(i)"></i></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="10" style="text-align: right;"><strong>Subtotal</strong></td>
+                            <td>${{soDetails.subtotal}}</td>
+                            <td></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="10" style="text-align: right;"><strong>Freight Charge</strong></td>
+                            <td>
+                                <div class="input-box w-50">
+                                    <input type="number" (change)="calculEnquiryTotal()"
+                                        [(ngModel)]="soDetails.freightCharge">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="10" style="text-align: right;"><strong>Customs Duties</strong></td>
+                            <td>
+                                <div class="input-box w-50">
+                                    <input type="number" (change)="calculEnquiryTotal()"
+                                        [(ngModel)]="soDetails.customsDuties">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="10" style="text-align: right;"><strong>Additional Charges</strong></td>
+                            <td>
+                                <div class="input-box w-50">
+                                    <input type="number" (change)="calculEnquiryTotal()"
+                                        [(ngModel)]="soDetails.additionalCharges">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="10" style="text-align: right;"><strong>Grand total</strong></td>
+                            <td>${{soDetails.grandTotal}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div>
+                <button (click)="submitEnquiry()" class="submit-button">Submit</button>
+            </div>
+            <div>
+                <button (click)="close()" class="close-button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="enquiry == 3">
+    <div class="d-flex">
+        <section class=" cor-print">
+            <!-- <div class="d-flex justify-content-end">
+            </div> -->
+            <div class="row">
+                <div class="col-6">
+                    <h1>{{leadDetails.company}}</h1>
+                    <h3>Sales Order</h3>
+                    <p>Sales Order ID# - {{soDetails.so_seq_id}}</p>
+                    <p>Lead ID# - {{leadDetails.id}}</p>
+                </div>
+                <div class="col-6 text-right cor-print-img">
+                    <img src="../../../../assets/print/cortracker-log.png" alt="">
+                </div>
+            </div>
+
+            <hr class="border-bottom">
+
+            <div class="row">
+                <div class="col-6">
+                    <p class="text-primary"><strong>Lead Details</strong></p>
+                    <p><strong>Lead Name</strong> : {{leadDetails.first_name+" "+leadDetails.last_name}}</p>
+                    <p><strong>Email</strong> : {{leadDetails.business_email}}</p>
+                    <p><strong>Phone</strong> : {{leadDetails.phonenumber}}</p>
+                    <p><strong>Address</strong> :{{leadDetails.street}}, {{leadDetails.city}}
+                        {{leadDetails.state}}, {{leadDetails.country}}, {{leadDetails.zipcode}}</p>
+                </div>
+                <div class="col-6">
+                    <p class="text-primary"><strong>Sales Order Details</strong></p>
+                    <p><strong>Sales Order Date : </strong>{{soDetails.soDate |date}}</p>
+                    <p><strong>Payment terms :</strong> {{soDetails.paymentTerms}}</p>
+                    <!-- <p><strong>Terms and Conditions:</strong> {{soDetails.terms}}</p>
+                    <p><strong>Delivery Terms:</strong> {{soDetails.deliveryTerms}}</p> -->
+                    <p><strong>Billing Address :</strong> {{soDetails.billingAddress}}</p>
+                    <p><strong>Shipping Address :</strong> {{soDetails.shippingAddress}}</p>
+                </div>
+            </div>
+            <div class="table-container ">
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Item Code</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Discount</th>
+                            <th>Tax</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of myList;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{a.itemName}}</td>
+                            <td>{{a.itemCode}}</td>
+                            <td>{{a.qty}}</td>
+                            <td>{{a.unitPrice}}</td>
+                            <td>{{a.discount}}% / {{a.discountAmount}}</td>
+                            <td>{{a.taxName+": "+a.taxPercentage}}% / {{a.taxAmount}}</td>
+                            <td>{{a.totalAmt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6 text-right">
+                    <p><strong>Sub Total:</strong> {{soDetails.subtotal}}</p>
+                    <p><strong>Freight Charges :</strong> {{soDetails.freightCharge}}</p>
+                    <p><strong>Customs Duties :</strong> {{soDetails.customsDuties}}</p>
+                    <p><strong>Additional Charges :</strong> {{soDetails.additionalCharges}}</p>
+                    <p><strong>Total:</strong> {{soDetails.grandTotal}}</p>
+                </div>
+            </div>
+
+            <div class="signature">
+                <p>Authorized Signature ___________________________</p>
+            </div>
+
+        </section>
+
+        <div>
+            <div class="ml-5 mt-3">
+                <button (click)="downloadPDF()" class="btn mb-3 mr-3 btn-primary">Download</button>
+            </div>
+
+            <!-- <div class="ml-5 mt-3">
+                <button class="btn mb-3 mr-3 btn-primary">Create Quote</button>
+            </div> -->
+            <div class="ml-5 mt-3">
+                <button (click)="close()" class="close-button">Close</button>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

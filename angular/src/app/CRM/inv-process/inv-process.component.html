@@ -1,0 +1,52 @@
+<div class="container">
+    <ng-container *ngIf="isSidebarVisible">
+      <h2>Process Details</h2>
+  
+      <!-- Process Form Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="processName">Process Name</label>
+          <input type="text" class="form-control" id="processName" [(ngModel)]="processForm.processName" />
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <button class="btn btn-primary mr-2" (click)="saveProcess()">Save</button>
+        <button class="btn btn-secondary" (click)="closeProcess()">Close</button>
+      </div>
+    </ng-container>
+  
+    <div *ngIf="!isSidebarVisible">
+      <div class="table-responsive">
+        <h2 class="text-center my-4">List of Process</h2>
+        <button class="btn btn-success mb-3" (click)="openNewProcess()">Add Process</button>
+      </div>
+  
+      <!-- Table for Listing Processes -->
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>S.No</th>
+            <th>Process Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let process of lstProcess; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ process.processName }}</td>
+            <td>
+              <button class="btn btn-info btn-sm mr-2" (click)="editProcess(process.recordId)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteProcess(process.recordId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Unauthorized Access Message -->
+    <div *ngIf="!authCheck">
+      <h1>You are not authorized to view this page</h1>
+    </div>
+  </div>
+  

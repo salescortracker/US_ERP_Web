@@ -1,0 +1,178 @@
+<div class="container">
+    <div class="card">
+       <div class="card-header">
+        
+    <h1>Lead Details</h1>
+  <!-- Basic Information -->
+  <h3>Basic Information</h3>
+  <hr/>
+       </div>
+       <div class="card-body">
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-4">
+                <label for="customerCode" class="form-label">Lead Code</label>
+                <input [(ngModel)]="leadmanagementform.customerCode" class="form-control" placeholder="Lead Code">
+            </div>
+            <div class="col-md-4">
+                <label for="customer" class="form-label">Lead</label>
+                <input [(ngModel)]="leadmanagementform.customer" class="form-control" placeholder="Lead">
+            </div>
+            <!-- <div class="col-md-4">
+                <label for="branchId" class="form-label">Branch ID</label>
+                <input [(ngModel)]="leadmanagementform.branchId" class="form-control" placeholder="Branch ID">
+            </div> -->
+            <div class="col-md-4">
+                <label for="leadGroup" class="form-label">Lead Group</label>
+                <select [(ngModel)]="leadmanagementform.leadGroup" class="form-control lead-group-select" id="leadGroup">
+                  <option value="" disabled>Select Lead Group</option>
+                  <option *ngFor="let group of leadGroupsList" [ngValue]="group.recordId">
+                    {{ group.mainGroup }}
+                  </option>
+                </select>
+            </div>              
+        </div>
+        <div class="row">
+              
+            <div class="col-md-4">
+                <label for="leadOwner" class="form-label">Lead Owner</label>
+                <select [(ngModel)]="leadmanagementform.leadOwner" class="form-control lead-owner-select" id="leadOwner">
+                    <option value="" disabled>Select Lead Owner</option>
+                    <option *ngFor="let employee of employeesList" [ngValue]="employee.recordId">
+                        {{ employee.empname }}
+                    </option>
+                </select>
+            </div>        
+           
+        </div>
+    
+    
+        <!-- Contact Information -->
+        <h3 style="padding-top: 20px;">Contact Information</h3>
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-4">
+                <label for="firstName" class="form-label">First Name</label>
+                <input [(ngModel)]="leadmanagementform.firstName" class="form-control" placeholder="First Name">
+            </div>
+            <div class="col-md-4">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input [(ngModel)]="leadmanagementform.lastName" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="col-md-4">
+                <label for="businessEmail" class="form-label">Business Email</label>
+                <input [(ngModel)]="leadmanagementform.businessEmail" class="form-control" placeholder="Business Email"
+                    type="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="secondaryEmail" class="form-label">Secondary Email</label>
+                <input [(ngModel)]="leadmanagementform.secondaryEmail" class="form-control" placeholder="Secondary Email"
+                    type="email">
+            </div>
+            <div class="col-md-4">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input [(ngModel)]="leadmanagementform.phoneNumber" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="col-md-4">
+                <label for="alternateNumber" class="form-label">Alternate Number</label>
+                <input [(ngModel)]="leadmanagementform.alternateNumber" class="form-control" placeholder="Alternate Number">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="leadStatus" class="form-label">Lead Status</label>
+                <select [(ngModel)]="leadmanagementform.leadStatus" class="form-control lead-status-select" id="leadStatus">
+                    <option value="" disabled selected>Select Lead Status</option>
+                    <option *ngFor="let status of leadStatusList" [value]="status.id">
+                        {{ status.description }}
+                    </option>
+                </select>
+            </div>
+            
+            <div class="col-md-4">
+                <label for="leadSource" class="form-label">Lead Source</label>
+                <select [(ngModel)]="leadmanagementform.leadSource" class="form-control lead-source-select" id="leadSource">
+                    <option value="" disabled selected>Select Lead Source</option>
+                    <option *ngFor="let source of leadSourceList" [value]="source.id">
+                        {{ source.description }}
+                    </option>
+                </select>
+            </div>
+            
+            <div class="col-md-4">
+                <label for="leadStage" class="form-label">Lead Stage</label>
+                <select [(ngModel)]="leadmanagementform.leadStage" class="form-control lead-stage-select" id="leadStage">
+                    <option value="" disabled selected>Select Lead Stage</option>
+                    <option *ngFor="let stage of leadStageList" [value]="stage.id">
+                        {{ stage.description }}
+                    </option>
+                </select>
+            </div>        
+        </div>
+    
+        <!-- Additional Details -->
+        <h3 style="padding-top: 20px;">Additional Details</h3>
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-4">
+                <label for="company" class="form-label">Company Name</label>
+                <input [(ngModel)]="leadmanagementform.company" class="form-control" placeholder="Company">
+            </div>
+            <div class="col-md-4">
+                <label for="description" class="form-label">Description</label>
+                <textarea [(ngModel)]="leadmanagementform.description" class="form-control" placeholder="Description"
+                    rows="2"></textarea>
+            </div>
+            <div class="col-md-4">
+                <label for="website" class="form-label">Website</label>
+                <input [(ngModel)]="leadmanagementform.website" class="form-control" placeholder="Website">
+            </div>
+            <div class="col-md-4">
+                <label for="industry" class="form-label">Industry</label>
+                <select [(ngModel)]="leadmanagementform.industry" class="form-control industry-select" id="industry">
+                    <option value="" disabled selected>Select Industry</option>
+                    <option *ngFor="let industry of industryList" [value]="industry.id">
+                        {{ industry.description }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="numberOfEmployees" class="form-label">Number of Employees</label>
+                <input [(ngModel)]="leadmanagementform.numberOfEmployees" class="form-control"
+                    placeholder="Number of Employees" type="number">
+            </div>
+            <div class="col-md-4">
+                <label for="annualRevenue" class="form-label">Annual Revenue</label>
+                <input [(ngModel)]="leadmanagementform.annualRevenue" class="form-control" placeholder="Annual Revenue">
+            </div>
+            <div class="col-md-4">
+                <label for="rating" class="form-label">Rating</label>
+                <input [(ngModel)]="leadmanagementform.rating" class="form-control" placeholder="Rating">
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-md-4">
+                <label for="emailOutputFormat" class="form-label">Email Output Format</label>
+                <input [(ngModel)]="leadmanagementform.emailOutputFormat" class="form-control"
+                    placeholder="Email Output Format">
+            </div> -->
+            <div class="col-md-4">
+                <label for="skypeId" class="form-label">Skype ID</label>
+                <input [(ngModel)]="leadmanagementform.skypeId" class="form-control" placeholder="Skype ID">
+            </div>
+        </div>
+    
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap" style="padding-top: 40px;">
+            <div class="col-md-6 mt-3">
+                <button (click)="saveLead()" type="button" class="btn-lg btn-primary mr-1 mb-1">Save</button>
+                <button type="button" class="btn-lg btn-dark mb-1" routerLink="/crm/LeadsListing">Close</button>
+            </div>
+        </div>
+       </div>
+    </div>
+
+  
+   
+</div>

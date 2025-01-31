@@ -1,0 +1,66 @@
+<ngx-spinner></ngx-spinner>
+<h3>Leave Request</h3>
+<table style="width: 60%;">
+<tr>
+    <td style="width: 30%;" align="right">Employee</td>
+    <td style="width: 70%;">
+    <select class="form-control" [(ngModel)]='empid' (change)='findDetails()'>
+        <option value="-1">--Select Employee--</option>
+        <option *ngFor='let emp of employees' value="{{emp.recordid}}">{{emp.empname}}</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Emp no</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.empno'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Emp name</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.empname'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Mobile</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.mobile'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Department</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.department'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Designation</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.designation'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Prev Leaves</td>
+    <td style="width: 70%;">
+    <input type="text" class="form-control" disabled [(ngModel)]='employee.prevleaves'>
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Leave From</td>
+    <td style="width: 70%;">
+        <input type="date" class="form-control"   [value]="fromdate | date:'yyyy-MM-dd'" (input)="fromdate=parseDate($event.target.value)">
+    </td>
+</tr>
+<tr>
+    <td style="width: 30%;" align="right">Leave To</td>
+    <td style="width: 70%;">
+        <input type="date" class="form-control"   [value]="todate | date:'yyyy-MM-dd'" (input)="todate=parseDate($event.target.value)">
+    </td>
+</tr>
+<tr>
+    <td colspan="2" *ngIf="addbuttonenable">
+        <button type="button" class="btn-lg btn-primary" (click)='save()'>Submit</button>
+    </td>
+</tr>
+</table>

@@ -1,0 +1,103 @@
+<div *ngFor="let lead of leads">
+    <div class="d-flex flex-wrap">
+      <!-- First Row -->
+      <div class="row">
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Code:</label>
+          <label>{{ lead.customerCode }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead:</label>
+          <label>{{ lead.customer }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Branch ID:</label>
+          <label>{{ lead.branchId }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Group:</label>
+          <label>{{ lead.leadGroups }}</label>
+        </div>
+      </div>
+  
+      <!-- Second Row -->
+      <div class="row">
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Owner:</label>
+          <label>{{ lead.leadOwnerName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Company:</label>
+          <label>{{ lead.company }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Phone Number:</label>
+          <label>{{ lead.phoneNumber }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Alternate Number:</label>
+          <label>{{ lead.alternateNumber }}</label>
+        </div>
+      </div>
+  
+      <!-- Third Row -->
+      <div class="row">
+        <div class="col-md-3">
+          <label style="font-weight: bold;">First Name:</label>
+          <label>{{ lead.firstName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Last Name:</label>
+          <label>{{ lead.lastName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Business Email:</label>
+          <label>{{ lead.businessEmail }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Secondary Email:</label>
+          <label>{{ lead.secondaryEmail }}</label>
+        </div>
+      </div>
+  
+      <!-- Fourth Row -->
+      <div class="row">
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Description:</label>
+          <label>{{ lead.description }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Website:</label>
+          <label>{{ lead.website }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Number of Employees:</label>
+          <label>{{ lead.numberOfEmployees }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Annual Revenue:</label>
+          <label>{{ lead.annualRevenue }}</label>
+        </div>
+      </div>
+  
+      <!-- Fifth Row -->
+      <div class="row">
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Status:</label>
+          <label>{{ lead.leadStatusName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Source:</label>
+          <label>{{ lead.leadSourceName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Lead Stage:</label>
+          <label>{{ lead.leadStageName }}</label>
+        </div>
+        <div class="col-md-3">
+          <label style="font-weight: bold;">Industry:</label>
+          <label>{{ lead.industryName }}</label>
+        </div>
+      </div>
+    </div>
+  </div>

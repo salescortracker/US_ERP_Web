@@ -1,0 +1,85 @@
+<ngx-spinner></ngx-spinner>
+<div class="dashboard">
+    <h1>
+        Bulk Upload Customers
+    </h1>
+    <hr>
+    <div *ngIf="!uploadPage">
+        <div class="dashboard1">
+            <div class="instructions">
+                <p>Instructions for Excel Upload</p>
+                <ul>
+                    <li>Download the Sample Excel File: Click on the provided link to download the sample Excel file.
+                        This
+                        file
+                        contains the template you need to follow.
+                    </li>
+                    <li>Fill in the Data: Open the downloaded sample Excel file and fill in your data exactly as shown
+                        in
+                        the
+                        template. Ensure all required fields are completed and formatted correctly.</li>
+                    <li>Save the File: After entering your data, save the Excel file on your computer. Make sure it
+                        retains
+                        the
+                        .xlsx or .xls file extension.</li>
+                    <li>Upload the File: Return to the dashboard, click on the "Choose File" button to select your
+                        completed
+                        Excel
+                        file, and then click the "Upload" button to submit your data.</li>
+                </ul>
+            </div>
+            <div >
+                <div (click)="downloadFile()" class="dashboard-child">
+                    <div>Download sample file here</div>
+                    <i class="fas fa-download"></i>
+                </div>
+                <div>
+                    <div class="dashboard2">
+                        <div class="child1">
+                            <div>Upload File</div>
+                            <!-- <i class="fa-solid fa-upload"></i> -->
+                        </div>
+                        <div class="child2">
+                            <form id="uploadForm">
+                                <input class="form-control" (change)="onFileSelected($event)" type="file"
+                                    accept=".xlsx, .xls">
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="uploadPage">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Company Name</th>
+                    <th>Customer Code</th>
+                    <th>Contact Person</th>
+                    <th>Designation</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of uploadedData;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{a.companyname}}</td>
+                    <td>{{a.customerCode}}</td>
+                    <td>{{a.contactperson}}</td>
+                    <td>{{a.contactDesignation}}</td>
+                    <td>{{a.contactEmail}}</td>
+                    <td>{{a.contactMobile}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="emp-buttons d-flex gap-3">
+            <button (click)="uploadData()" class="submit-btn">Submit</button>
+            <button (click)="uploadPage = 0" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>

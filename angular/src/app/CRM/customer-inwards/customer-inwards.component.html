@@ -1,0 +1,131 @@
+<div class="container">
+    <ng-container *ngIf="isFormVisible">
+      <h2>Inward Materials</h2>
+  
+      <!-- Inward Form Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inwardNo">Inward No.</label>
+          <input type="number" class="form-control" id="inwardNo" [(ngModel)]="inwardForm.inwardNo" />
+        </div>
+  
+        <div class="form-group col-md-3">
+          <label for="gpNo">G.P. No</label>
+          <input type="number" class="form-control" id="gpNo" [(ngModel)]="inwardForm.gpNo" />
+        </div>
+  
+        <div class="form-group col-md-6">
+          <label for="nameofCompany">Name Of The Company</label>
+          <input type="text" class="form-control" id="nameofCompany" [(ngModel)]="inwardForm.nameOfCompany" />
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="itemDescription">Item Description</label>
+          <input type="text" class="form-control" id="itemDescription" [(ngModel)]="inwardForm.itemDescription" />
+        </div>
+  
+        <div class="form-group col-md-3">
+          <label for="size">Size/Area</label>
+          <input type="number" class="form-control" id="size" [(ngModel)]="inwardForm.size" />
+        </div>
+  
+        <div class="form-group col-md-3">
+          <label for="process" class="form-label">Process</label>
+          <select class="form-control" id="process" name="process" [(ngModel)]="inwardForm.process">
+              <option value="" disabled selected>Select Process</option>
+              <option *ngFor="let process of lstProcess" [value]="process.recordId">{{ process.processName }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Additional Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="recordedQuantity">Recorded Quantity</label>
+          <input type="number" class="form-control" id="recordedQuantity" [(ngModel)]="inwardForm.recordedQuantity" />
+        </div>
+  
+        <div class="form-group col-md-3">
+          <label for="dispatchQuantity">Dispatch Quantity</label>
+          <input type="number" class="form-control" id="dispatchQuantity" [(ngModel)]="inwardForm.dispatchQuantity" />
+        </div>
+  
+        <div class="form-group col-md-3">
+          <label for="dateOfDelivery">Dispatch Register number</label>
+          <input type="number" class="form-control" id="dispatchRegisterno" [(ngModel)]="inwardForm.dispatchRegisterNo" />
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="dateOfDelivery">Date of Delivery</label>
+            <input type="date" class="form-control" id="dateOfDelivery" [(ngModel)]="inwardForm.dateOfDelivery" />
+          </div>
+  
+       
+      </div>
+
+      
+      <!-- Additional Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="balanceQuantity">Balance Quantity</label>
+          <input type="number" class="form-control" id="balanceQuantity" [(ngModel)]="inwardForm.balanceQuantity" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="balanceQuantity">Signature</label>
+            <input type="text" class="form-control" id="signature" [(ngModel)]="inwardForm.signature" />
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="saveInward(inwardForm.recordId)">Save</button>
+        <button class="btn btn-secondary" (click)="closeForm()">Close</button>
+      </div>
+    </ng-container>
+   
+    <div *ngIf="!isFormVisible">
+      <div class="table-responsive">
+        <h2 class="text-center my-4">Inward Materials Listing</h2>
+        <button class="btn btn-success mb-3" (click)="openNewInward()">Add Inward Material</button>
+       
+      </div>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Sl. No.</th>
+            <th>Inward No</th>
+            <th>G.P. No</th>
+            <th>Name Of The Company</th>
+            <th>Item Description</th>
+            <th>Size/Area</th>
+            <th>Process</th>
+            <th>Recd. Qty</th>
+            <th>Dispatch Qty</th>
+            <th>Date of Delivery</th>
+            <th>Bal. Qty</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let inward of lstinward; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ inward.inwardNo }}</td>
+            <td>{{ inward.gpNo }}</td>
+            <td>{{ inward.nameOfCompany }}</td>
+            <td>{{ inward.itemDescription }}</td>
+            <td>{{ inward.size }}</td>
+            <td>{{ inward.processName }}</td>
+            <td>{{ inward.recordedQuantity }}</td>
+            <td>{{ inward.dispatchQuantity }}</td>
+            <td>{{ inward.dateOfDelivery | date }}</td>
+            <td>{{ inward.balanceQuantity }}</td>
+            <td>
+              <button class="btn btn-info btn-sm mr-2" (click)="editInward(inward.recordId)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteInward(inward.recordId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

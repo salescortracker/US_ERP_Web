@@ -1,0 +1,230 @@
+<!--Login Page Starts-->
+
+<!-- <section id="login">
+  <div class="row auth-height full-height-vh m-0">
+    <div class="col-12 d-flex align-items-center justify-content-center">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-body auth-img">
+            <div class="row m-0">
+              <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center auth-img-bg p-3">
+                <img src="assets/img/gallery/login.png" alt="" class="img-fluid" width="500" height="384">
+              </div>
+              <div class="col-lg-6 col-12 px-4 py-3">
+                <h4 class="mb-2 card-title">Login</h4>
+                <p>Welcome back, please login to your account.
+
+                  
+                </p>
+                <ngb-alert type="light-danger" class="mb-2" *ngIf="isLoginFailed" (close)="isLoginFailed = false">
+                  <p class="mb-0">Login failed!</p>
+                </ngb-alert>
+
+
+                <form [formGroup]="loginForm">
+                  <div class="form-group">
+                    <input type="number" formControlName="customerCode" class="form-control" placeholder="Customer Code"
+                        required id='ccode' (keydown)='setEventFocus($event,1)'>
+                    <div *ngIf="loginFormSubmitted && (lf.customerCode.invalid || lf.customerCode.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+                      required</div>
+                  </div> 
+                  
+                  <div class="form-group">
+                    <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                                             required  id='ucode' (keydown)='setEventFocus($event,2)'>
+                    <div *ngIf="loginFormSubmitted && (lf.username.invalid || lf.username.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+                      required</div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password"
+                         required  id='pass' (keydown)='setEventFocus($event,3)'>
+                    <div *ngIf="loginFormSubmitted && (lf.password.invalid || lf.password.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is required
+                    </div>
+                  </div>
+                  <div class="d-sm-flex justify-content-between mb-3 font-small-2"> -->
+                  <!--  <div class="remember-me mb-2 mb-sm-0">
+                      <div class="checkbox auth-checkbox">
+                        <input type="checkbox" formControlName="rememberMe" class="form-control" id="rememberMe">
+                        <label for="rememberMe"><span class="font-small-2 mb-3 font-weight-normal">Remember Me</span></label>
+                      </div>
+                    </div>
+                    <a [routerLink]="['/pages/forgotpassword']">Forgot Password?</a>-->
+                  <!-- </div>
+                  <div class="d-flex justify-content-between flex-sm-row flex-column"> -->
+                  <!--  <a [routerLink]="['/pages/register']" class="btn bg-light-primary mb-2 mb-sm-0">Register</a>
+                    <a  class="btn btn-primary" (click)="onSubmit()">Login</a>
+                  </div>
+                </form>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a href="#/pages/welcome">
+                  <h6 class="text-primary m-0">Return to home</h6></a>
+                  <ngx-spinner></ngx-spinner>
+                  <div class="login-options">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--Login Page Ends-->
+
+
+
+
+
+
+<div class="container-fluid">
+    
+    <div class="row justify-content-center">
+        
+        <div class="col-md-12 col-lg-10">
+            <div class="wrap d-md-flex">
+                <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-first">
+                    <div class="text w-100">
+                        <h2>Welcome to Cortracker</h2>
+                        <p>Please login to your account</p>
+                        <a  class="form-control btn btn-dark submit px-3" >
+                          Login Now
+                          <i class="button__icon fas fa-chevron-right"></i>
+                        </a>
+                       
+                    </div>
+                  
+          </div>
+                <div class="login-wrap p-4 p-lg-6">
+              <div class="d-flex">
+                  <div class="w-100">
+                    <img src="assets/img/gallery/logo.png" width="200px" />
+                  </div>
+                       
+              </div>
+                    <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
+                  <div class="form-group mb-3 " data-mdb-input-init>
+                      <label class="label" for="name">Customer</label>
+                      <input type="number" formControlName="customerCode" class="form-control" placeholder="Customer"
+                        required id='ccode'>
+                         <!-- (keydown)='setEventFocus($event,1)'> -->
+                    <!-- <div *ngIf="loginFormSubmitted && (lf.customerCode.invalid || lf.customerCode.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+                      required</div> -->
+                     
+                  </div>
+                 <div class="form-group mb-3">
+                  <label class="label" for="name">Address</label>
+                   <textarea class="form-control"></textarea>
+                 
+                  <!-- (keydown)='setEventFocus($event,2)'>
+<div *ngIf="loginFormSubmitted && (lf.username.invalid || lf.username.errors?.required)"
+class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> This is
+required</div> -->
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="label" for="name">Zip</label>
+                        <input type="text" class="form-control" placeholder="Zip Code"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">Mobile</label>
+                        <input type="text" class="form-control" placeholder="Mobile Number"/>
+                    </div>
+
+                 </div>
+                 <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="label" for="name">Country</label>
+                        <input type="text" class="form-control" placeholder="Country"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">State</label>
+                        <input type="text" class="form-control" placeholder="State"/>
+                    </div>
+                    
+
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">District</label>
+                        <input type="text" class="form-control" placeholder="District"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">City</label>
+                        <input type="text" class="form-control" placeholder="City"/>
+                    </div>
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">Email</label>
+                        <input type="text" class="form-control" placeholder="Email"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">Web</label>
+                        <input type="text" class="form-control" placeholder="Web"/>
+                    </div>
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">Product</label>
+                        <input type="text" class="form-control" placeholder="Product"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">Scheme</label>
+                        <input type="text" class="form-control" placeholder="Scheme"/>
+                    </div>
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">DB Server</label>
+                        <input type="text" class="form-control" placeholder="DB Server"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">DB Database</label>
+                        <input type="text" class="form-control" placeholder="DB Database"/>
+                    </div>
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">DB UserName</label>
+                        <input type="text" class="form-control" placeholder="DB Username"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">DB Password</label>
+                        <input type="text" class="form-control" placeholder="DB Password"/>
+                    </div>
+                 </div>
+                 <div class="form-group row">                    
+                    <div class="col-md-6">
+                        <label class="label" for="name">Default User</label>
+                        <input type="text" class="form-control" placeholder="Default User"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label" for="name">Website URL</label>
+                        <input type="text" class="form-control" placeholder="Website URL"/>
+                    </div>
+                 </div>
+            
+            <div class="form-group">
+                <button type="submit"  class="form-control btn btn-primary submit px-3" >
+                    <span class="button__text">Register Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+                
+            </div>
+           
+<!--            
+          </form> -->
+        </div>
+      </div>
+        </div>
+    </div>
+</div>
+

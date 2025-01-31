@@ -1,0 +1,107 @@
+<!-- <div class="form first"> -->
+    <!-- Call logs list section, only visible when open == 1 -->
+    <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" *ngIf="open === 1">
+        <div class="h4">
+          Call Logs
+        </div>
+        <div>
+          <div class="mr-2 d-flex justify-content-end" style="padding-bottom: 20px;padding-top: 20px;">
+            <!-- Click event to open the Create Call Log form -->
+            <button (click)="openCreateCallLog()" style="background-color: #8d0000;" type="button"
+              class="btn btn-primary">
+              Create Call Log
+            </button>
+          </div>
+        </div>
+        <table class="rwd-table table-bordered" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Lead Owner</th>
+              <th>Contact</th>
+              <th>Call Types</th>
+              <th>Date</th>
+              <th>Comments</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of callLogs; let i = index">
+              <td>{{ a.leadOwnerName }}</td> <!-- Displaying Lead Owner ID -->
+              <td>{{ a.contactId }}</td> <!-- Displaying Contact ID -->
+              <td>{{ a.callTypesName }}</td> <!-- Displaying Call Types -->
+              <td>{{ a.callDate }}</td> <!-- Formatting Date -->
+              <td>{{ a.comments }}</td> <!-- Displaying Comments -->
+              <td style="width: 5%;">
+                <i class="ft-edit font-medium-1" (click)="editCallLog(a.id)" style="padding-right:10px"></i>
+                <i class="ft-trash font-medium-1" (click)="deleteCallLog(a.id)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
+
+    <!-- Create Call Log form section, only visible when open == 2 -->
+    <div class="" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" *ngIf="open === 2">
+        <div class="container">
+            <h2>Call Log Details</h2>
+           
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-4">
+                        <label for="contactId" class="form-label">Contact <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                            <input type="text" 
+                                name="contactId" 
+                                [(ngModel)]="callLogForm.contactId" 
+                                class="form-control form-control" 
+                                 
+                                placeholder="Enter Contact Name">                      
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                      <label for="leadOwnerId" class="form-label">Lead Owner <span class="text-danger">*</span></label>
+                      <div class="form-outline">
+                          <select [(ngModel)]="callLogForm.leadOwnerId" class="form-control">
+                              <option value="" disabled selected>Select Lead Owner</option>
+                              <option *ngFor="let employee of employeesList" [value]="employee.recordId">
+                                  {{ employee.empname }}
+                              </option>
+                          </select>
+                      </div>
+                  </div>
+                  
+                    <div class="col-md-4">
+                        <label for="callTypes" class="form-label">Call Type <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                            <select name="callTypes" [(ngModel)]="callLogForm.callTypes" class="form-select form-control-lg" >
+                                <option value="">--Select Call Type--</option>
+                                <option *ngFor="let type of calltypeslist" [value]="type.id">
+                                    {{ type.description }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-4">
+                        <label for="callDate" class="form-label">Call Date <span class="text-danger">*</span></label>
+                        <div class="form-outline">
+                            <input type="date" name="callDate" [(ngModel)]="callLogForm.callDate" class="form-control" >
+                        </div>
+                    </div>
+        
+                    <div class="col-md-8">
+                        <label for="comments" class="form-label">Comments <span class="text-danger">*</span></label>
+                        <textarea name="comments" [(ngModel)]="callLogForm.comments" class="form-control" cols="100" rows="2" ></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                  <div class="col-md-6 mt-3">
+                    <i class="ft-save font-medium-1 mr-1 mb-1 btn-lg btn-primary" (click)="saveCallLog()" style="padding-right:10px">Save</i>
+                    <i class="ft-x font-medium-1 mb-1 btn-lg btn-dark" (click)="closeForm()">Close</i>
+                  </div>
+                </div>                
+        </div>
+    </div>
+<!-- </div> -->

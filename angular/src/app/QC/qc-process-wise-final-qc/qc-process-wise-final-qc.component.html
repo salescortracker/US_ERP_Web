@@ -1,0 +1,108 @@
+<h3>Batch Final Inspection Details</h3>
+
+<div style="width: 100%; height: 300px; overflow-y: scroll ;">
+
+    <table class="table m-0" style="width: 90%;">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Batchno</th>
+            <th>Date</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Incharge</th>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>UM</th>
+            <th>Open</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="!headers || headers.length === 0">
+            <td colspan="7">
+              <div style="text-align: center; font-weight: bold;">
+                <span style="font-size: 24px; margin-right: 5px;">⚠️</span>
+                <span style="color: black;">The Final Approvals of your company cannot be found.</span>
+              </div>
+            </td>
+          </tr>
+          <tr *ngFor='let head of headers; let i=index'>
+           <th scope="row" >{{i+1}}</th>
+            <td>{{head.batchno}}</td>
+            <td>{{head.dat | date:'dd-MMM-yy'}}</td>
+            <td>{{head.fromdate | date:'dd-MMM-yy'}}</td>
+            <td>{{head.todate | date:'dd-MMM-yy'}}</td>
+            <td>{{head.productionincharge}}</td>
+            <td>{{head.itemname}}</td>
+            <td>{{head.qty}}</td>
+            <td>{{head.um}}</td>
+          
+            <td><i class="ft-edit font-medium-1" (click)='findDetails(head)' ></i></td>
+          </tr>
+       
+        </tbody>
+      </table>
+
+
+
+</div>
+<br>
+
+
+<div style="width: 100%; height: 300px; overflow-y: scroll ;">
+
+    <table class="table m-0" style="width: 90%;">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+               <th>Sno</th>
+            <th>Process</th>
+            <th>Status</th>
+            <th>Rectified</th>
+            <th>Rejected</th>
+            <th>Rectification Value</th>
+            <th>Rejected Value</th>
+            </tr>
+        </thead>
+        <tbody>
+         
+          <tr *ngFor='let head of lines; let i=index'>
+           <th scope="row" >{{i+1}}</th>
+             <td>{{head.sno}}</td>
+            
+            <td>{{head.processname}}</td>
+            <td>{{head.statu}}</td>
+            <td>{{head.recitfied}}</td>
+            <td>{{head.rejected}}</td>
+            <td>{{head.rectificationvalue}}</td>
+            <td>{{head.rejectedvalue}}</td>
+            
+          </tr>
+         
+        </tbody>
+      </table>
+      
+</div>
+      <br><br>
+   
+<table style="width:90%" *ngIf='batch'>
+<tr>
+    <td style="width: 25%;">Total Qty</td>
+    <td style="width: 25%;">Total Rejected</td>
+    <td style="width: 25%;">Material Cost</td>
+    <td style="width: 25%;">Rectification Cost</td>
+</tr>
+<tr>
+    <td style="width: 25%;">{{batch.qty}}</td>
+    <td style="width: 25%;">{{rejected}}</td>
+    <td style="width: 25%;">{{batch.materialcost}}</td>
+    <td style="width: 25%;">{{rectificationvalue}}</td>
+</tr>
+<tr>
+  <td colspan="4" *ngIf="addbuttonenable">
+    <button type="button" class="btn-lg btn-primary" *ngIf='saveCheck' (click)='save()'>Save</button>
+  </td>
+</tr>
+</table>
+ 
+

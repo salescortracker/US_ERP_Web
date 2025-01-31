@@ -1,0 +1,27 @@
+.tooltip-arrow {
+    position: relative;
+    display: inline-block;
+    margin-left: 2px;
+    animation: moveArrow 0.4s infinite alternate ease-in-out;
+    cursor: pointer;
+  }
+  
+  .tooltip-arrow.hidden-arrow {
+    display: none; /* Hide arrow when it's not needed */
+  }
+  
+  .arrow {
+    color: black;
+    font-size: 35px;
+    display: inline-block;
+  }
+  
+  /* Animation for up and down movement */
+  @keyframes moveArrow {
+    0% {
+      transform: translateY(0px); /* Starts at normal position */
+    }
+    100% {
+      transform: translateY(15px); /* Moves down */
+    }
+  }

@@ -1,0 +1,48 @@
+// Modals
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 100px !important;
+  width: 80vw !important; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
+  // counteract the pointer-events: none; in the .modal-dialog
+  color: $modal-content-color;
+  pointer-events: auto;
+  background-color: $modal-content-bg;
+  background-clip: padding-box;
+  border: $modal-content-border-width solid $modal-content-border-color;
+  @include border-radius($modal-content-border-radius);
+  @include box-shadow($modal-content-box-shadow-xs);
+  // Remove focus outline from opened modal
+  outline: 0;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+      margin: 100px !important;
+  }
+}
+// modal content
+.modal-content {
+  overflow: hidden;
+  // modal header
+  .modal-header {
+    border-radius: 0;
+    &[class*="bg-"] > * {
+      color: $white;
+    }
+  }
+  // modal footer
+  .modal-footer {
+    .btn {
+      margin: 0;
+      & + .btn {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(xs) {
+  .modal-open .modal{
+    padding: 0 .5rem !important;
+  }
+}

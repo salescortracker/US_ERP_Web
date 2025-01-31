@@ -1,0 +1,125 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-white text-center" style="background-color: #007bff;">
+            <h4>CUSTOMER FEEDBACK FORM</h4>
+        </div>
+        <div class="card-body">
+            <!-- Feedback Form -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="from">From</label>
+                    <input type="text" class="form-control" id="from" placeholder="Enter your name" [(ngModel)]="formData.from" name="from">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ms">M/s</label>
+                    <input type="text" class="form-control" id="ms" placeholder="Enter M/s" [(ngModel)]="formData.ms" name="ms">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" [(ngModel)]="formData.date" name="date">
+            </div>
+  
+            <div class="table-responsive">
+                <table class="table table-bordered text-center">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>Service</th>
+                            <th>Very Good</th>
+                            <th>Good</th>
+                            <th>Satisfactory</th>
+                            <th>Not Satisfactory</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quality of Product</td>
+                            <td><input type="radio" [(ngModel)]="formData.quality" name="qualityRating" value="Very Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.quality" name="qualityRating" value="Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.quality" name="qualityRating" value="Satisfactory"></td>
+                            <td><input type="radio" [(ngModel)]="formData.quality" name="qualityRating" value="Not Satisfactory"></td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Schedule</td>
+                            <td><input type="radio" [(ngModel)]="formData.delivery" name="deliveryRating" value="Very Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.delivery" name="deliveryRating" value="Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.delivery" name="deliveryRating" value="Satisfactory"></td>
+                            <td><input type="radio" [(ngModel)]="formData.delivery" name="deliveryRating" value="Not Satisfactory"></td>
+                        </tr>
+                        <tr>
+                            <td>Communication</td>
+                            <td><input type="radio" [(ngModel)]="formData.communication" name="communicationRating" value="Very Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.communication" name="communicationRating" value="Good"></td>
+                            <td><input type="radio" [(ngModel)]="formData.communication" name="communicationRating" value="Satisfactory"></td>
+                            <td><input type="radio" [(ngModel)]="formData.communication" name="communicationRating" value="Not Satisfactory"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+  
+            <div class="form-group">
+                <label for="improvements">Request elaborate areas of improvements:</label>
+                <textarea class="form-control" id="improvements" rows="3" [(ngModel)]="formData.improvements" name="improvements"></textarea>
+            </div>
+  
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="averageScore">Average Score</label>
+                    <select id="averageScore" class="form-control" [(ngModel)]="formData.averageScore" name="averageScore">
+                        <option value="" disabled selected>--Select--</option>
+                        <option value="Very Good">Very Good</option>
+                        <option value="Good">Good</option>
+                        <option value="Satisfactory">Satisfactory</option>
+                        <option value="Not Satisfactory">Not Satisfactory</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="signature">Signature of Marketing Manager</label>
+                    <input type="text" class="form-control" id="signature" placeholder="Enter Signature" [(ngModel)]="formData.signature" name="signature">
+                </div>
+            </div>
+  
+            <button type="button" class="btn btn-primary btn-block" (click)="save()">SUBMIT</button>
+        </div>
+    </div>
+  
+    <!-- Table to Display Saved Feedback Entries -->
+    <div class="card shadow mt-5">
+        <div class="card-header text-white text-center bg-secondary">
+            <h5>Saved Feedback Entries</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>S.No</th>
+                        <th>From</th>
+                        <th>M/s</th>
+                        <th>Date</th>
+                        <th>Quality</th>
+                        <th>Delivery</th>
+                        <th>Communication</th>
+                        <th>Average Score</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let entry of feedbackEntries; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ entry.from }}</td>
+                        <td>{{ entry.ms }}</td>
+                        <td>{{ entry.date }}</td>
+                        <td>{{ entry.quality }}</td>
+                        <td>{{ entry.delivery }}</td>
+                        <td>{{ entry.communication }}</td>
+                        <td>{{ entry.averageScore }}</td>
+                        <td>
+                          <button class="btn btn-danger btn-sm" (click)="deleteEntry(entry.recordId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+  

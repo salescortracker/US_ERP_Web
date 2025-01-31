@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+       <h3>Email Configuration <hr/></h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">
+             <label class="form-label">Template Name</label>
+        </div>
+        <div class="col-md-4">
+           <select class="form-select">
+                <option >--Select Template--</option>
+                <option *ngFor="let item of lstdatacustbody" value={{item.recordId}}>{{item.titleName}}</option>
+           </select>
+       </div>
+       <div class="col-md-2">
+        <label class="form-label">Signature Name</label>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select">
+                <option>--Select Signature--</option>
+                <option *ngFor="let item of lstdatacustsignature" value={{item.recordId}}>{{item.customSignature}}</option>
+            </select>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary m-2">Preview</button>
+        
+            <button type="submit" class="btn btn-primary m-2">Send Email</button>
+            <button type="submit" class="btn btn-dark" routerLink="/crm/crmenquiryrx">Close</button>
+        </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                
+                <fieldset>
+                    <legend>Preview</legend>
+                    <p>Dear Ashok, I hope this message finds you well. I wanted to inform you of a temporary change in your point of contact for MANIDEEP TECHNO COATS. Starting tomorrow, I, Mohammed Arbaaz, will be traveling and will not be available. During my absence, Ravi Teja will be taking over as your primary contact. Ravi is fully briefed on all ongoing matters and is committed to providing you with the same level of support you’ve come to expect. Please feel free to reach out to him directly for any assistance you may need during this time. You can find the contact information to reach out with Ravi Teja: P : +917794907007 E Thank you for your understanding, and I appreciate your cooperation.</p>
+                </fieldset>
+            </div>
+           
+            </div>
+    </div>
+</div>

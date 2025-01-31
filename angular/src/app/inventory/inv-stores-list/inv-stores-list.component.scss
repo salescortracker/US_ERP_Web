@@ -1,0 +1,129 @@
+
+ng-sidebar-container
+{
+    height: 100vh;
+}
+
+::ng-deep .ng-sidebar
+{
+    background-color: white;
+    width: 65%;
+}
+.tooltip-arrow {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    animation: moveArrow 0.4s infinite alternate ease-in-out;
+    cursor: pointer;
+  }
+  
+  .tooltip-arrow.paused {
+    animation-play-state: paused;
+  }
+  
+  .arrow {
+    color: black;
+    font-size: 35px;
+  }
+  
+  @keyframes moveArrow {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(15px);
+    }
+  }
+  
+/* General Button Styling */
+.btn-primary {
+  background-color: #4A90E2;
+  border-color: #4A90E2;
+  color: white;
+  padding: 12px 24px; /* Adjusted padding for a larger button */
+  font-size: 1.1rem; /* Larger font size for better readability */
+  border-radius: 30px; /* More rounded corners for a modern look */
+  text-transform: uppercase; /* Uppercase text for a more prominent style */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #357ABD;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Slight scale up effect on hover */
+}
+.btn-secondary {
+  background-color: #999999;
+  border-color: #999999;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: #777777;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05); /* Hover effect with scaling */
+}
+/* Container Styling */
+.container {
+  max-width: 900px; /* Increased width for larger screens */
+  margin: 3rem auto; /* Center the container and add top margin */
+  padding: 3rem; /* Increase padding for better spacing */
+  background-color: #f9f9f9; /* Light grey background for a soft look */
+  border-radius: 16px; /* More rounded corners */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Softer shadow with more spread */
+  font-family: 'Lato', sans-serif; /* Modern font */
+  color: #333; /* Dark text for readability */
+  line-height: 1.6;
+  text-align: left; /* Align text to the left */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container:hover {
+  transform: translateY(-5px); /* Slight lifting effect on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+/* Welcome Box */
+.welcome-box {
+  text-align: center;
+}
+.welcome-box .modal-title {
+  font-size: 2rem; /* Larger font size for title */
+  font-weight: bold;
+  color: #4A90E2; /* Title color */
+  margin-bottom: 1rem;
+}
+.welcome-box p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-family: 'Open Sans', sans-serif; /* Smooth, modern font for text */
+  color: #555; /* Dark grey for better readability */
+  margin-bottom: 1.5rem;
+}
+/* Action Buttons */
+.action-buttons {
+  margin-top: 2rem;
+}
+.action-buttons .btn {
+  padding: 12px 24px; /* Increased padding for bigger buttons */
+  font-size: 1.1rem;
+  border-radius: 30px; /* Rounded button corners */
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif; /* Modern button font */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* More width on smaller screens */
+    padding: 1.5rem; /* Adjust padding */
+  }
+  .btn {
+    width: 100%; /* Full-width buttons on smaller screens */
+  }
+  /* Video Styling for smaller screens */
+  video {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+  }
+}

@@ -1,0 +1,461 @@
+<ngx-spinner></ngx-spinner>
+
+<div *ngIf='authCheck'>
+  <div class="row ">
+    <div class="col-sm-12">
+      <div class="content-header">CRM Dashboard</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card card-inverse bg-primary">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="card-text">{{target1+target2 | number:'0.2'}}</h3>
+                <span>Direct Business {{target1 | number:'0.2'}}</span><br>
+                <span>Team Business {{target2 | number:'0.2'}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-arrow-up font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card card-inverse bg-warning">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="card-text">{{calls1+calls2}}</h3>
+                <span>Direct Calls {{calls1}}</span><br>
+                <span>Team Calls {{calls2}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-arrow-down font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card card-inverse bg-primary">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="card-text">
+                  <span *ngIf='target > 0'>
+                    {{(target1+target2)/target*100 | number:'0.2'}}
+                  </span>
+                  % Achieved
+                </h3>
+                <span>Pending Target
+                  {{target-(target1+target2) | number:'0.2'}}</span><br>
+                <span>Pending Calls {{calls-(calls1+calls2) }}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-arrow-down font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card card-inverse bg-warning">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="card-text">{{credits1+credits2 | number:'0.2'}}</h3>
+                <span>Immediate Credit {{credits1 | number:'0.2'}}</span><br>
+                <span>Longterm Credit {{credits2 | number:'0.2'}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-arrow-up font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <section id="apexchart">
+    <div class="row">
+
+      <!-- Bar Chart starts -->
+      <div class="col-xl-6 col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Orders Chart</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <apx-chart [colors]="barChartOptions.colors" [chart]="barChartOptions.chart"
+                [xaxis]="barChartOptions.xaxis" [yaxis]="barChartOptions.yaxis" [title]="barChartOptions.title"
+                [dataLabels]="barChartOptions.dataLabels" [stroke]="barChartOptions.stroke"
+                [grid]="barChartOptions.grid" [tooltip]="barChartOptions.tooltip"
+                [plotOptions]="barChartOptions.plotOptions" [fill]="barChartOptions.fill"
+                [legend]="barChartOptions.legend" [labels]="barChartOptions.labels" [markers]="barChartOptions.markers"
+                [theme]="barChartOptions.theme" [responsive]="barChartOptions.responsive"></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bar Chart ends -->
+      <!-- calender -->
+
+
+      <div class="col-lg-6 col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Employee wise Orders</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <apx-chart [series]="pieChartOptions.series" [colors]="pieChartOptions.colors"
+                [chart]="pieChartOptions.chart" [xaxis]="pieChartOptions.xaxis" [yaxis]="pieChartOptions.yaxis"
+                [title]="pieChartOptions.title" [dataLabels]="pieChartOptions.dataLabels"
+                [stroke]="pieChartOptions.stroke" [grid]="pieChartOptions.grid" [tooltip]="pieChartOptions.tooltip"
+                [plotOptions]="pieChartOptions.plotOptions" [fill]="pieChartOptions.fill"
+                [legend]="pieChartOptions.legend" [labels]="pieChartOptions.labels" [markers]="pieChartOptions.markers"
+                [theme]="pieChartOptions.theme" [responsive]="pieChartOptions.responsive"></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+  <div class="row">
+    <div class="col-lg-12 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Upcoming Schedules</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+
+            <div>
+              <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Event Date & Time</th>
+                    <th>Meeting Location</th>
+                    <th>Meeting Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of schedules; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ a.eventTitle }}</td>
+                    <td>
+                      <span *ngIf="a.customer_id>0">Customer</span>
+                      <span *ngIf="!(a.customer_id>0)">Lead</span>
+                    </td>
+                    <td>
+                      <span *ngIf="a.customer_id && a.customer_id > 0">
+                        <a [routerLink]="'/crm/crmcusmain/' + a.customer_id" [queryParams]="{ tab: 3 }" target="_blank">
+                          {{ a.customerName }}
+                        </a>
+                      </span>
+                      <span *ngIf="!a.customer_id || a.customer_id <= 0">
+                        <a [routerLink]="'/crm/LeadsView/' + a.leadid" [queryParams]="{ tab: 3 }" target="_blank">
+                          {{ a.leadName }}
+                        </a>
+                      </span>
+                    </td>
+                    <td>{{ a.eventTime | date: 'dd/MM/yyyy HH:mm' }}</td>
+                    <td>{{ a.meetingLocation }}</td>
+                    <td>
+                      <a *ngIf="a.meetingLink"
+                        [href]="(a.meetingLink.startsWith('http')) ? a.meetingLink : 'https://' + a.meetingLink"
+                        target="_blank">
+                        {{ a.meetingLink }}</a>
+                      <span *ngIf="!a.meetingLink">Not Available</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Upcoming Reminders</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+
+            <div>
+              <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th>#</th>
+                    <th>Reminder Name</th>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Notes</th>
+                    <th>Reminder Date</th>
+                    <th>Reminder Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of reminders; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ a.reminderName }}</td>
+                    <td>
+                      <span *ngIf="a.customer_id>0">Customer</span>
+                      <span *ngIf="!(a.customer_id>0)">Lead</span>
+                    </td>
+                    <td>
+                      <span *ngIf="a.customer_id && a.customer_id > 0">
+                        <a [routerLink]="'/crm/crmcusmain/' + a.customer_id" [queryParams]="{ tab: 4 }" target="_blank">
+                          {{ a.customerName }}
+                        </a>
+                      </span>
+                      <span *ngIf="!a.customer_id || a.customer_id <= 0">
+                        <a [routerLink]="'/crm/LeadsView/' + a.leadid" [queryParams]="{ tab: 4 }" target="_blank">
+                          {{ a.leadName }}
+                        </a>
+                      </span>
+                    </td>
+                    <td>{{ a.notes }}</td>
+                    <td>{{ a.reminderDate | date }}</td>
+                    <td>{{ formatTime(a.reminderTime)  }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noReminders>
+        <p>No reminders available.</p>
+      </ng-template>
+
+      <ng-template #customContent let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h6 class="modal-title">Pending Calls</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+
+
+
+        <div class="modal-body">
+
+          <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px">
+            <thead class="bg-dark text-white">
+              <tr>
+                <th>Telecalling No</th>
+                <th>Customer Name</th>
+                <th>Reminder Date & Time</th>
+                <th>Caller Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reminder of nextCallDate">
+                <td style="text-decoration: underline;" routerLink="/crm/crmtelecallblapre"
+                  [queryParams]="{id:reminder.recordId}">{{ reminder.seq }} </td>
+                <td>{{ reminder.customer }}</td>
+                <td>{{ reminder.nextCallDate | date: 'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ reminder.callerComments }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <!-- Lead Selection Dropdown -->
+  <!-- <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Lead Events</h3>
+      <div class="d-flex align-items-center">
+        <label for="leadIdDropdown" class="mr-2">Select Lead:</label>
+        <div style="width: 200px;">
+          <select
+            id="leadIdDropdown"
+            class="form-control form-control-sm"
+            [(ngModel)]="selectedLeadId"
+            (change)="onLeadIdChange()"
+          >
+            <option value="" disabled>Select Lead</option>
+            <option *ngFor="let lead of leadData" [value]="lead.leadId">{{ lead.id }}</option>
+          </select>
+        </div>
+      </div>
+    </div> -->
+
+  <!-- Events Table -->
+  <!-- <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th scope="col" style="padding-left: 100px;">Event Title</th>
+        <th scope="col" style="padding-left: 100px;">Event Time</th>
+        <th scope="col" style="padding-left: 100px;">Meeting Link</th>
+        <th scope="col" style="padding-left: 100px;">Guests</th>
+        <th scope="col" style="padding-left: 100px;">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of selectedDayEvents; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td style="padding-left: 100px;">{{ event.eventTitle }}</td>
+        <td style="padding-left: 100px;">{{ event.eventTime | date: 'dd/MM/yyyy hh:mm' }}</td>
+        <td style="padding-left: 100px;">{{ event.meetingLink }}</td>
+        <td style="padding-left: 100px;">{{ event.eventGuests }}</td>
+        <td style="padding-left: 100px;">{{ event.meetingLocation }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+  <!-- No Events Message -->
+  <!-- <div *ngIf="!selectedDayEvents || selectedDayEvents.length === 0" class="text-center mt-4">
+    <p class="text-muted">No events found for the selected lead.</p>
+  </div> -->
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-lg-6 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Todays Calls</h4>
+      </div>
+      <div class="card-content">
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <div class="card-content">
+                <div class="card-body">
+
+                  <div class="table-responsive">
+                    <table class="table m-0">
+                      <thead class="thead-light">
+                        <tr>
+                          <th>#</th>
+                          <th>Customer</th>
+                          <th>Mobile</th>
+                          <th>Prev Comments</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor='let customer of telecalls; let i=index'>
+                          <th scope="row">{{i+1}}</th>
+                          <td> {{customer.customer}} </td>
+                          <td>{{customer.mobile}}</td>
+                          <td>{{customer.customercomments}}</td>
+
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-6 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Todays Enquiries</h4>
+      </div>
+      <div class="card-content">
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <div class="card-content">
+                <div class="card-body">
+
+                  <div class="table-responsive">
+                    <table class="table m-0">
+                      <thead class="thead-light">
+                        <tr>
+                          <th>#</th>
+                          <th>Customer</th>
+                          <th>Mobile</th>
+                          <th>Prev Comments</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor='let customer of enquiries; let i=index'>
+                          <th scope="row">{{i+1}}</th>
+                          <td> {{customer.customer}} </td>
+                          <td>{{customer.mobile}}</td>
+                          <td>{{customer.customercomments}}</td>
+
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div *ngIf='!authCheck'>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 15%;">&nbsp;</td>
+      <td style="width: 70%;"><img src='../../../assets/img/modules/purchases.png' style="width: 100%;"></td>
+      <td style="width: 15%;">&nbsp;</td>
+    </tr>
+  </table>
+
+</div>

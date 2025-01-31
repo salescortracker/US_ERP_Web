@@ -1,0 +1,482 @@
+
+ <ngx-spinner></ngx-spinner>
+  <div *ngIf='opened'>
+     <h3>
+     Tele Call Details
+   </h3>
+   <br>
+   <table style="width: 80%;">
+
+    <tr>
+      <td style="width: 20%;" align="right">Sequence</td>
+      <td style="width: 70%;"> <input type="text" disabled class="form-control" style="width:50%" value ="{{seq}}">  </td>
+    </tr>
+      <!--<tr>
+        <td style="width: 20%;" align="right">*Transaction Date</td>
+       
+        <td style="width: 70%;">
+  
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp"   ngbDatepicker [(ngModel)]='tradate'  enabled='datCheck'
+              #d1="ngbDatepicker" style="width: 50%">
+            <div class="input-group-append">
+              <div class="input-group-text" (click)="d1.toggle()">
+                <i class="fa fa-calendar" style="cursor: pointer;"></i>
+              </div>
+            </div>
+          </div>
+  
+        </td>
+        <td style="width: 10%;"></td>
+      </tr>-->
+
+    <!--  <tr>
+        <td style="width: 20%;" align="right">*Caller</td>
+        <td style="width: 70%;">
+            <select class="form-control" [(ngModel)]='call.Callerid'>
+                <option value="0">--Select--</option>
+                <option *ngFor='let emp of employees' value="{{emp.empid}}">
+                    {{emp.empname}}
+                </option>
+
+            </select>
+        </td>
+        <td style="width: 10%;"></td>
+      </tr>-->
+
+    <tr>
+        <!-- <td style="width: 20%;" align="right">*Customer</td>
+        <td style="width: 70%;">
+          <input type="text" class="form-control" [(ngModel)]='call.Customer'>
+        </td>
+        <td style="width: 10%;"></td> -->
+        <td style="width: 20%;" align="right">*Customer</td>
+        <td style="width: 70%;">
+          <select id='cmbsupplier' class="form-select" [(ngModel)]='call.Customer' (change)="getfindAddresses($event)" >
+            <option *ngFor="let sup of suppliers" [value]="sup.partyName">{{sup.partyName}}</option>
+        </select>
+          
+          <!-- <input type="text" class="form-control" [(ngModel)]='call.Customer'> -->
+        </td>
+        <td style="width:8%">
+          <button type="button" style="width: 100%;" class="btn btn-info mr-1 mb-1"(click)="opencustomerModal(customcustomer)">New</button>
+        </td>
+
+       
+        <td style="width: 10%;"></td>
+    </tr>
+    <tr>
+        <td style="width: 20%;" align="right">*Mobile</td>
+        <td style="width: 70%;">
+          <input type="text" maxlength="12" class="form-control" [(ngModel)]='call.Mobile'>
+        </td>
+        <td style="width: 10%;"></td>
+   <tr>
+    <tr>
+        <td style="width: 20%;" align="right">Email</td>
+        <td style="width: 70%;">
+          <input type="text" class="form-control" [(ngModel)]='call.Email'>
+        </td>
+        <td style="width: 10%;"></td>
+   <tr>
+    <tr>
+        <td style="width: 20%;" align="right">Prev Call</td>
+        <td style="width: 70%;">
+           <table style="width: 100%;">
+            <tr>
+                <td style="width: 35%;">
+                    <input type="text" class="form-control" style="width: 100%;" disabled [(ngModel)]='pendinginfo.seq'>
+         
+                </td>
+                <td style="width: 15%;">
+                    <input type="button" value="Add" class="btn btn-secondary mr-1 mb-1" (click)="openModal(customContent)">
+                </td>
+                <td style="width: 15%;" align="right">Date</td>
+                <td style="width: 35%;">
+                  <input type="text" class="form-control" style="width: 100%;" disabled value="{{pendinginfo.dat | date:'short'}}">
+       
+              </td>
+            </tr>
+        </table>
+        
+        
+        </td>
+        <td style="width: 10%;">
+            
+    
+        </td>
+   <tr>
+    <tr>
+        <td style="width: 20%;" align="right">Prev Mode</td>
+        <td style="width: 70%;">
+           <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">
+                    <input type="text" class="form-control" style="width: 100%;" disabled [(ngModel)]='pendinginfo.mode'>
+         
+                </td>
+              
+                <td style="width: 15%;" align="right">Mobile</td>
+                <td style="width: 35%;">
+                  <input type="text" class="form-control" style="width: 100%;" disabled [(ngModel)]='pendinginfo.mobile'>
+       
+              </td>
+            </tr>
+        </table>
+        
+        </td><td style="width: 10%;"></td>
+    </tr>
+    <tr>
+      <td style="width: 20%;" align="right">Prev Caller</td>
+      <td style="width: 70%;">
+         <table style="width: 100%;">
+          <tr>
+              <td style="width: 50%;">
+                  <input type="text" class="form-control" style="width: 100%;" disabled [(ngModel)]='pendinginfo.callername'>
+       
+              </td>
+            
+              <td style="width: 15%;" align="right">Prev User</td>
+              <td style="width: 35%;">
+                <input type="text" class="form-control" style="width: 100%;" disabled [(ngModel)]='pendinginfo.username'>
+     
+            </td>
+          </tr>
+      </table>
+      
+      </td><td style="width: 10%;"></td>
+  </tr>
+
+    <tr>
+      <td style="width: 20%;" align="right">Prvious Comments</td>
+      <td style="width: 70%;">
+        <textarea disabled class="form-control" [(ngModel)]='pendinginfo.customercomments' style="width: 100%;" rows="3">
+    
+        </textarea>
+      </td><td style="width: 10%;"></td>
+  </tr>
+  <tr>
+    <td style="width: 20%;" align="right">Reason for call</td>
+    <td style="width: 70%;">
+    <select class="form-select" [(ngModel)]="call.callreason">
+         <option>--Select Reason--</option>
+         <option *ngFor="let reason of lstdatacallforreason" value="{{reason.id}}">{{reason.description}}</option>
+    </select>
+    </td><td style="width: 10%;"><input type="button" value="New Enquiry" class="btn btn-primary" (click)="openEnquiryModal(customenuiry)"/></td>
+<!-- <td  style="width: 10%;"><input type="button" value="Order Search" class="btn btn-primary" (click)="openorderModal(ordersearch)"/></td> -->
+  </tr>
+    <tr>
+        <td style="width: 20%;" align="right">*Customer Comments</td>
+        <td style="width: 70%;">
+          <textarea class="form-control" [(ngModel)]='call.CustomerComments' style="width: 100%;" rows="3"></textarea>
+        </td><td style="width: 10%;"></td>
+    </tr>
+    <tr>
+        <td style="width: 20%;" align="right">*Caller Comments</td>
+        <td style="width: 70%;">
+          <textarea class="form-control" [(ngModel)]='call.CallerComments' style="width: 100%;" rows="3"></textarea>
+        </td><td style="width: 10%;"></td>
+    </tr>
+
+    <tr>
+        <td style="width: 20%;" align="right">*Status</td>
+        <td style="width: 70%;">
+            <select class="form-control" [(ngModel)]='call.CallPosition'>
+                <option value="0">--Select--</option>
+                <option value="1">Hot</option>
+                <option value="2">Warm</option>
+                <option value="3">Cool</option>
+                <option value="4">Declined</option>
+            </select>
+          </td><td style="width: 10%;"></td>
+    </tr>
+    <tr>
+        <td style="width: 20%;" align="right">Next Call date</td>
+        <td style="width: 70%;">
+            <div class="input-group">
+                <input class="form-control" type="datetime-local" placeholder="yyyy-mm-dd" name="dp"  style="width: 50%" [(ngModel)]='nextdate'>
+               
+                <!-- <div class="input-group-append">
+                  <div class="input-group-text" (click)="d2.toggle()">
+                    <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                  </div>
+                </div> -->
+              </div>
+          </td><td style="width: 20%;">  <div style="transform: scale(1.5); -webkit-transform: scale(1.5); transform-origin: 0 0;">
+
+            <input type="checkbox" [disabled]="remindercheck >= 3" [(ngModel)]="call.reminderCheck"> <span>Reminder</span>
+
+          </div>
+
+         </td>
+          <td style="width: 20%;">
+
+          
+
+          </td>
+    </tr>
+    <tr>
+        <td style="width: 20%;" align="right">Next Call Mode</td>
+        <td style="width: 70%;">
+            <select class="form-control" [(ngModel)]='call.NextCallMode'>
+                <option value="0">--Select--</option>
+                <option value="1">Tele Call</option>
+                <option value="2">Enquiry</option>
+                 
+            </select>
+          </td><td style="width: 10%;"></td>
+    </tr>
+
+
+
+
+   <tr>
+
+     <td>
+       &nbsp;
+     </td>
+     <td>
+        &nbsp;
+      </td>
+   </tr>
+   <tr>
+     <td>
+       <button type="button" class="btn btn-danger mr-1 mb-1" *ngIf='delVisible' [disabled]='!delCheck' (click) ='deleteCall()' >Delete</button>
+       <button type="button" class="btn btn-info mr-1 mb-1" [disabled]='!creCheck' (click)='saveCall()' >{{saveStr}}</button>
+       <button type="button" class="btn btn-dark mb-1" (click)='close()'>Close</button>
+     </td>
+   </tr>
+   </table>
+
+ <ng-template #customenuiry let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h6 class="modal-title">New Enquiry</h6>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+          
+      <app-crm-enquiries-rx [openNewEnquiry]="openNewEnquiry"></app-crm-enquiries-rx>
+    </div>
+    
+  
+  </ng-template>
+      
+  <ng-template #customcustomer let-c="close" let-d="dismiss">
+    <div class="modal-header">      
+      <h6 class="modal-title"  >Customers</h6>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    
+
+        <app-crm-customers-child  (notify)='getNewSupplier($event)'></app-crm-customers-child>
+       
+    </div>
+    
+  
+  </ng-template>
+
+  <ng-template #ordersearch let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h6 class="modal-title">Order Search</h6>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+          <div class="row">
+             <div class="col-md-2">
+                 <label class="form-label">Sales Order No</label>
+             </div>
+             <div class="col-md-2">
+             <select class="form-select">
+           
+              <option value="">--select--</option>
+              <option *ngFor='let cnt of lstordersdata' value="{{cnt.seq}}" >
+                {{cnt.seq}}
+                                </option>
+             </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Status</label>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label"></label>
+     </div>
+          </div>
+      
+    </div>
+    
+  
+  </ng-template>
+
+   <ng-template #customContent let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h6 class="modal-title">Pending Calls</h6>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+          
+      <table class="table m-0" style="width: 99%;">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Mobile</th>
+            <th>Mode</th>
+            <th>Open</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let pend of pendings;let i=index'>
+            <td>{{i+1}}</td>
+            <td>{{pend.customer}}</td>
+            <td>{{pend.mobile}}</td>
+            <td>{{pend.mode}}</td>
+            <td><i class="ft-edit font-medium-1" (click)='openPending(pend)'></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  
+  </ng-template>
+
+  </div>
+
+    
+    <div *ngIf='!opened'>
+     
+<div class="card">
+  <div class="card-header">
+    <h3>
+      List of Tele Calls <hr/>
+  </h3>
+  </div>
+  <div class="card-body">
+    <table style="width: 90%;">
+      <tr>
+
+        <!-- <td style="width: 40%;">
+         <div class="input-group">
+           <input class="form-control" placeholder="yyyy-mm-dd" name="dp"   ngbDatepicker   
+             #d3="ngbDatepicker" style="width: 50%" [(ngModel)]='listdate'>
+           <div class="input-group-append">
+             <div class="input-group-text" (click)="d3.toggle()">
+               <i class="fa fa-calendar" style="cursor: pointer;"></i>
+             </div>
+           </div>
+         </div>
+       </td> -->
+       <td style="width: 20%;"> From</td>
+
+<td style="width: 20%;">To </td>
+
+       <td style="width: 10%;">  &nbsp; </td>
+
+      <td style="width: 50%;">&nbsp;</td>
+
+      </tr>
+
+      <tr>
+
+      <td style="width: 20%;">
+
+         <div class="input-group">
+
+             <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp"   ngbDatepicker [(ngModel)]='fromdate'   #d1="ngbDatepicker" style="width: 50%;">
+
+             <!-- <div class="input-group-append">
+
+               <div class="input-group-text" (click)="d1.toggle()">
+
+                 <i class="fa fa-calendar" style="cursor: pointer;"></i>
+
+               </div> -->
+
+             <!-- </div> -->
+
+           </div>
+
+      
+
+      </td>
+
+      <td style="width: 20%;">
+
+         <div class="input-group">
+
+             <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp1"   ngbDatepicker [(ngModel)]='todate'   
+
+               #d2="ngbDatepicker" style="width: 50%;">
+
+             <!-- <div class="input-group-append">
+
+               <div class="input-group-text" (click)="d2.toggle()">
+
+                 <i class="fa fa-calendar" style="cursor: pointer;"></i>
+
+               </div>
+
+             </div> -->
+
+           </div>
+
+      
+
+      </td>
+       <td style="width: 20%;">
+         <button type="button" class="btn btn-info mr-1 mb-1" (click)='listAdd()' >Show</button>
+       </td>
+          <td  style="width: 40%;" align="right">
+              <button type="button" class="btn btn-success mr-1 mb-1" (click)='openNew()' >New</button>
+          </td>
+      </tr>
+      </table>
+      
+      <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px" >
+        <thead class="bg-dark text-white">
+            <tr>
+              <th>#</th>
+              <th>Seq</th>
+              <th>Customer</th>
+              <th>Reason For Call</th>
+              <th>Mobile</th>
+              <th>Status</th>
+             <th>Open</th> 
+            </tr>
+          </thead>
+          <tbody>
+           
+            <tr *ngFor='let det of details; let i=index'>
+              <th scope="row" >{{i+1}}</th>
+              <td (click)='openOld(det)' style="cursor:pointer;text-decoration:underline" onmouseover="this.style.backgroundColor='#f0f0f0';" onmouseout="this.style.backgroundColor='';"
+              >{{det.seq}}</td>
+              <td>{{det.customer}}</td>
+              <td>{{det.customerComments}}</td>
+              <td>{{det.mobile}}</td>
+              <td>{{det.statu}}</td>
+             
+             <td><i class="ft-edit font-medium-1" (click)='openOld(det)' ></i></td> 
+            </tr>
+           
+          </tbody>
+        </table>
+  </div>
+  </div>
+
+     
+   
+ 
+
+   </div>
+ 
+ 
+
+

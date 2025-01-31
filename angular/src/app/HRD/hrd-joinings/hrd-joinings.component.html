@@ -1,0 +1,45 @@
+<ngx-spinner></ngx-spinner>
+<h3>Pending Joining Details</h3>
+
+<div style="overflow-y: scroll; width:100%; height: 450px ">
+    <table class="table table-sm m-0">
+        <thead>
+            <th>#</th>
+            <th>Resume#</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            
+            <th>Expected</th>
+            <th>Date to Join</th>
+            
+            <th>Description</th>
+            
+             <th>Designation</th>
+             <th>Emp no</th>
+            <th>&nbsp;</th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let call of totalcandidates;let i=index'>
+                <td>  {{i+1}}  </td>
+                <td>{{call.seq}}</td>
+                <td>{{call.nameOfCandidate}}</td>
+                 <td>{{call.mobile}}</td>
+               
+                <td>{{call.expectedSalary | number:'0.2'}}</td>
+                <td>{{call.maxDateToJoin | date:'dd-MMM-yy'}}</td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]='call.comments'>
+                </td>
+               
+             
+                <td>{{call.designation}}</td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]='call.empno'>
+                </td>
+                <td *ngIf="addbuttonenable"> <button *ngIf='call.chk==1' type="button" class="btn btn-primary" (click)='save(call)'>Save</button>
+                    <button *ngIf='call.chk!=1' type="button" class="btn btn-danger" (click)='save(call)'>Save</button>  </td>
+            </tr>
+             
+        </tbody>
+    </table>
+</div>

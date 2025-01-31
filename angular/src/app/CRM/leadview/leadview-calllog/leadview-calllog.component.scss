@@ -1,0 +1,37 @@
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    .form-check-input {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #007bff;
+      border-radius: 4px;
+      background-color: #f8f9fa;
+      transition: all 0.2s;
+  
+      &:checked {
+        background-color: #007bff;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.75);
+      }
+    }
+  
+    .form-check-label {
+      font-size: 16px;
+      color: #343a40;
+      font-weight: 500;
+      cursor: pointer;
+  
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+  

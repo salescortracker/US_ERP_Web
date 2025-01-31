@@ -1,0 +1,255 @@
+<div *ngIf="enquiry==1">
+    <div class="d-flex justify-content-between ">
+        <h3>Enquiries</h3>
+        <div>
+            <button class="btn mb-3 mr-3 btn-primary" (click)="enquiry = 2">Add Enquiry</button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Enquiry ID</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Enquiry Date</th>
+                <th scope="col">Follow up</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="enquirylist">
+            <tr *ngFor="let a of enquirylist;let i = index">
+                <td>{{i+1}}</td>
+                <td><a (click)="editEnquiry(a.enquiryId,3)">{{a.enquiry_seq_id}}</a></td>
+                <td>{{a.contactName}}</td>
+                <td>{{a.enquiryDate | date}}</td>
+                <td>{{a.followupDate | date}}</td>
+                <td>{{a.comments}}</td>
+                <td><i class="ft-edit font-medium-1"  (click)="editEnquiry(a.enquiryId,2)"></i></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="!enquirylist">
+            <tr>
+                <td colspan="7" style="text-align: center;">No Records Found</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+<div *ngIf="enquiry == 2">
+    <h3 class="title">New Enquiry</h3>
+    <hr>
+    <div class="content">
+        <div class="cor-form">
+            <div class="input-box">
+                <span class="details">Contact<span class="text-danger">*</span></span>
+                <select (change)="contactChanged($event.target.value)" [(ngModel)]="enquiryDetails.contactId">
+                    <option value="0">--Select Contact --</option>
+                    <option *ngFor="let a of contactlst" [value]="a.id">{{a.firstName + " " + a.lastName}}</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <span class="details">Enquiry Date<span class="text-danger">*</span></span>
+                <input type="date" placeholder="Enter Enquiry Date" [(ngModel)]="enquiryDetails.enquiryDate">
+            </div>
+            <div class="input-box">
+                <span class="details">Comments/Remarks<span class="text-danger">*</span></span>
+                <input type="text" placeholder="Enter your comments" [(ngModel)]="enquiryDetails.comments">
+            </div>
+            <div class="input-box">
+                <span class="details">Follow-Up Date<span class="text-danger">*</span></span>
+                <input type="Date" placeholder="Enter Follow-Up Date" [(ngModel)]="enquiryDetails.followupDate">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <div class="d-flex justify-content-end mb-2 ">
+                    <div (click)="addenquiry()" class="btn mb-3 mr-3 btn-primary">+ Row
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:5%">#</th>
+                            <th scope="col" style="width:10%">Item Name<span class="text-danger">*</span></th>
+                            <th scope="col" style="width:8%">Item Code</th>
+                            <th scope="col" style="width:8%">Qty<span class="text-danger">*</span></th>
+                            <th scope="col" style="width:8%">Unit Price<span class="text-danger">*</span></th>
+                            <th scope="col" style="width:15%">UOM</th>
+                            <th scope="col" style="width:8%">Lead days</th>
+                            <th scope="col" style="width:8%">Discount %</th>
+                            <th scope="col" style="width:8%">Discount <br> Amount</th>
+                            <th scope="col" style="width:8%">Total Price</th>
+                            <th scope="col" style="width:8%">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of myList;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>
+                                <div class="select-dropdown">
+                                    <select id='cmbitem' (change)="makeUnits($event.target.value,i)"
+                                        [(ngModel)]="a.itemId">
+                                        <option value="0">-- Select Item--</option>
+                                        <option *ngFor="let item of items" [value]="item.recordId">{{item.itemname}}
+                                        </option>
+                                    </select>
+                                </div>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.itemCode"></td>
+                            <td><input class="w-50" type="number" (change)="calculItemTotal(i)" [(ngModel)]="a.qty"></td>
+                            <td><input class="w-50" type="number" (change)="calculItemTotal(i)" [(ngModel)]="a.unitPrice">
+                            </td>
+                            <td>
+                                <div class="w-50">
+                                    <select style="width: 100px;" (change)="uomName($event.target.value,i)"
+                                        [(ngModel)]='a.uomId'>
+                                        <option *ngFor='let um of a.units' [value]="um.umid">{{um.um}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td><input class="w-50" type="number" [(ngModel)]="a.leadDays"></td>
+                            <!-- <td><input class="w-50" type="text" (change)="calculItemTotal(i)" [(ngModel)]="a.discount">
+                            </td> -->
+                            <td>
+                                <input type="number" id="discount" (change)="calculItemTotal(i)" name="discount"
+                                    [(ngModel)]="a.discount" required pattern="^([1-9][0-9]?|100)$" />
+                            </td>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.discountAmount" disabled></td>
+                            <td><input class="w-50" type="text" [(ngModel)]="a.totalAmt" disabled></td>
+                            <td><i class="ft-delete font-medium-1" (click)="_delete(i)"></i></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="9" style="text-align: right;"><strong>Subtotal</strong></td>
+                            <td>${{enquiryDetails.subtotal}}</td>
+                            <td></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="9" style="text-align: right;"><strong>Additional Charges (Shipping,
+                                    Handling
+                                    Fees, Customs Duties, etc.)</strong></td>
+                            <td>
+                                <div class="input-box w-50">
+                                    <input type="number" (change)="calculEnquiryTotal()"
+                                        [(ngModel)]="enquiryDetails.additionalCharges">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td colspan="9" style="text-align: right;"><strong>Grand total</strong></td>
+                            <td>${{enquiryDetails.grandTotal}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div>
+                <button (click)="submitEnquiry()" class="submit-button">Submit</button>
+            </div>
+            <div>
+                <button (click)="close()" class="close-button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="enquiry == 3">
+    <div class="d-flex">
+        <section class=" cor-print">
+            <!-- <div class="d-flex justify-content-end">
+            </div> -->
+            <div class="row">
+                <div class="col-6">
+                    <h1>{{leadDetails.company}}</h1>
+                    <h3>Enquiry</h3>
+                    <p>Enquiry ID# - {{enquiryDetails.enquiry_seq_id}}</p>
+                    <p>Lead ID# - {{leadDetails.id}}</p>
+                </div>
+                <div class="col-6 text-right cor-print-img">
+                    <img src="../../../../assets/print/cortracker-log.png" alt="">
+                </div>
+            </div>
+
+            <hr class="border-bottom">
+
+            <div class="row">
+                <div class="col-6">
+                    <p><strong>Bill To</strong></p>
+                    <p class="text-primary">{{leadDetails.first_name+" "+leadDetails.last_name}}</p>
+                    <p>Email : {{leadDetails.business_email}}</p>
+                    <p>Phone : {{leadDetails.phonenumber}}</p>
+                    <p>Address :{{leadDetails.street}}, {{leadDetails.city}}
+                        {{leadDetails.state}}, {{leadDetails.country}}, {{leadDetails.zipcode}}</p>
+                </div>
+                <div class="col-6 text-right">
+                    <p><strong>Enquiry Date: </strong>{{enquiryDetails.enquiryDate |date}}</p>
+                    <p><strong>Follow-up Date: </strong>{{enquiryDetails.followupDate | date}}</p>
+                </div>
+            </div>
+            <div class="table-container ">
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Item</th>
+                            <th>Item Code</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Discount %</th>
+                            <th>Discount <br> Amount </th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of myList;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{a.itemName}}</td>
+                            <td>{{a.itemCode}}</td>
+                            <td>{{a.qty}}</td>
+                            <td>{{a.unitPrice}}</td>
+                            <td>{{a.discount}}</td>
+                            <td>{{a.discountAmount}}</td>
+                            <td>{{a.totalAmt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6 text-right">
+                    <p><strong>Sub Total: &#8377;</strong> {{enquiryDetails.subtotal}}</p>
+                    <p><strong>Additional Charges : &#8377;. </strong> {{enquiryDetails.additionalCharges}}</p>
+                    <p><strong>Total: &#8377;. </strong> {{enquiryDetails.grandTotal}}</p>
+                </div>
+            </div>
+
+            <div class="signature">
+                <p>Authorized Signature ___________________________</p>
+            </div>
+
+        </section>
+
+        <div style="width: 170px;">
+            <div class="ml-2 mt-3">
+                <button (click)="downloadPDF()" class="btn mb-3 mr-3 btn-primary">Download</button>
+            </div>
+
+            <div class="ml-2 mt-3">
+                <button (click)="createQuote(1)" class="btn mb-3 mr-3 btn-primary">Generate Quotation</button>
+            </div>
+            <div class="ml-2 mt-3">
+                <button (click)="createQuote(2)" class="btn mb-3 mr-3 btn-primary">Manual Quotation</button>
+            </div>
+            <div class="ml-2 mt-3">
+                <button (click)="close()" class="close-button">Close</button>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

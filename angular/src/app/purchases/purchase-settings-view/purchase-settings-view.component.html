@@ -1,0 +1,40 @@
+<div class="card-wrapper card">
+    <div>
+        <div class="m-2">
+            <div class=" tab-buttons">
+                <button *ngFor="let tab of tabs;let i = index" class=" tab-btn"
+                    [ngClass]="{'active': selectedTab === i}" (click)="selectTab(i)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div *ngIf="selectedTab === 0" class="tab-pane fade show active">
+                <app-pur-purchase-types></app-pur-purchase-types>
+            </div>
+            <div *ngIf="selectedTab === 1" class="tab-pane fade show active">
+                <app-pur-terms-setup></app-pur-terms-setup>
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-pane fade show active">
+                <app-pur-settings></app-pur-settings>
+            </div>
+            <div *ngIf="selectedTab === 3" class="tab-pane fade show active">
+                <app-pur-accounts-assign></app-pur-accounts-assign>
+            </div>
+            <div *ngIf="selectedTab === 4" class="tab-pane fade show active">
+                <app-pur-mail-settings></app-pur-mail-settings>
+            </div>
+            <div *ngIf="selectedTab === 5" class="tab-pane fade show active">
+                <app-pur-enquiry-covering-letter></app-pur-enquiry-covering-letter>
+            </div>
+            <div *ngIf="selectedTab === 6" class="tab-pane fade show active">
+                <app-pur-order-covering-letter></app-pur-order-covering-letter>
+            </div>
+            <div *ngIf="selectedTab === 7" class="tab-pane fade show active">
+                <app-pur-purchase-return-covering-letter></app-pur-purchase-return-covering-letter>
+            </div>
+            
+          
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="card-wrapper card">
+    <div>
+        <div class="m-2">
+            <div class=" tab-buttons">
+                <button *ngFor="let tab of tabs;let i = index" class=" tab-btn"
+                    [ngClass]="{'active': selectedTab === i}" (click)="selectTab(i)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div *ngIf="selectedTab === 0" class="tab-pane fade show active">
+                <app-pur-purchase-requests></app-pur-purchase-requests>
+            </div>
+            <div *ngIf="selectedTab === 1" class="tab-pane fade show active">
+                <app-pur-purchase-request-approvals></app-pur-purchase-request-approvals>
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-pane fade show active">
+                <app-pur-purchase-enquiries></app-pur-purchase-enquiries>
+            </div>
+            <div *ngIf="selectedTab === 3" class="tab-pane fade show active">
+                <app-pur-purchase-enquiries-approvals></app-pur-purchase-enquiries-approvals>
+            </div>
+            <div *ngIf="selectedTab === 4" class="tab-pane fade show active">
+                <app-pur-purchase-quotations></app-pur-purchase-quotations>
+            </div>
+            <div *ngIf="selectedTab === 5" class="tab-pane fade show active">
+                <app-pur-purchase-quotations-approvals></app-pur-purchase-quotations-approvals>
+            </div>
+            <div *ngIf="selectedTab === 6" class="tab-pane fade show active">
+                <app-pur-purchase-order></app-pur-purchase-order>
+            </div>
+            <div *ngIf="selectedTab === 7" class="tab-pane fade show active">
+                <app-pur-purchase-order-approvals></app-pur-purchase-order-approvals>
+            </div>
+            <div *ngIf="selectedTab === 8" class="tab-pane fade show active">
+                <app-pur-purchase-orders1></app-pur-purchase-orders1>
+            </div>
+          
+        </div>
+    </div>
+</div>

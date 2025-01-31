@@ -1,0 +1,41 @@
+<ngx-spinner></ngx-spinner>
+
+<h3>Leave Approvals</h3>
+<table class="table m-6">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>Empno</th>
+        <th>Employee</th>
+        <th>Mobile</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Leave From</th>
+        <th>Leave To</th>
+        <th>Prev Leaves</th>
+        <th>Status</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let det of pendings;let i=index' >
+        <th scope="row">{{i+1}}</th>
+        <td>{{det.empno}}</td>
+        <td>{{det.empname}}</td>
+        <td>{{det.mobile}}</td>
+        <td>{{det.department}}</td>
+        <td>{{det.designation}}</td>
+        <td>{{det.leavefrom | date:'dd-MMM-yy'}}</td>
+        <td>{{det.leaveto | date:'dd-MMM-yy'}}</td>
+        <td>{{det.prevleaves}}</td>
+        <td> <select class="form-control" [(ngModel)]='det.statu'>
+            <option value="1">Approve</option>
+            <option value="-1">Deny</option>
+        </select>  </td>
+        <td *ngIf="addbuttonenable">
+            <button type="button" class="btn btn-primary" (click)='save(det)'>Submit</button>
+        </td>
+        </tr>
+      
+    </tbody>
+  </table>

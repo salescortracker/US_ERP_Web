@@ -1,0 +1,151 @@
+<div class="container">
+    <ng-container *ngIf="isFormVisible; else labList">
+      <h2>Lab Details</h2>
+  
+      <!-- Lab Form Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="labCode">Lab Code</label>
+          <input type="text" class="form-control grey-background" id="labCode" name="labCode" 
+                 [(ngModel)]="labForm.labCode" #labCode="ngModel" />
+        </div>
+  
+        <div class="form-group col-md-4">
+          <label for="labName">Lab Name</label>
+          <input type="text" class="form-control" id="labName" name="labName" required [(ngModel)]="labForm.labName"
+                 #labName="ngModel" />
+          <div *ngIf="labName.invalid && labName.touched" class="text-danger">Lab Name is required</div>
+        </div>
+  
+        <div class="form-group col-md-4">
+          <label for="chemicalName">Chemical Name</label>
+          <input type="text" class="form-control" id="chemicalName" name="chemicalName" required
+                 [(ngModel)]="labForm.chemicalName" #chemicalName="ngModel" />
+          <div *ngIf="chemicalName.invalid && chemicalName.touched" class="text-danger">Chemical Name is required</div>
+        </div>
+      </div>
+  
+      <!-- Lab Incharge, Status, Customer -->
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="labIncharge">Lab Incharge</label>
+          <input type="text" class="form-control" id="labIncharge" name="labIncharge" [(ngModel)]="labForm.labIncharge" />
+        </div>
+  
+        <div class="form-group col-md-4">
+            <label for="status">STATUS</label>
+            <select (change)="onStatusChange($event.target.value)">
+              <option value="" disabled selected>Select a status</option>
+              <option *ngFor="let status of statusList" [value]="status.statusID">
+                {{ status.statusName }}
+              </option>
+            </select>
+          </div>
+        <div class="form-group col-md-4">
+          <label for="customer">Customer</label>
+          <input type="text" class="form-control" id="customer" name="customer" required
+                 [(ngModel)]="labForm.customer" #customer="ngModel" />
+          <div *ngIf="customer.invalid && customer.touched" class="text-danger">Customer Name is required</div>
+        </div>
+      </div>
+  
+      <!-- Description (full row) -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="labForm.description"></textarea>
+      </div>
+  
+      <!-- Submit and Close Buttons -->
+      <div class="form-group d-flex justify-content-right">
+        <button type="submit" class="btn-lg btn-primary mr-1 mb-1" [disabled]="!creCheck" (click)="save()">
+          {{ saveStr }}
+        </button>
+        <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+      </div>
+    </ng-container>
+  
+    <!-- Lab List Table -->
+    <ng-template #labList>
+      <div class="table-responsive">
+        <h2 class="text-center my-4">Lab Details Listing</h2>
+        <div style="padding-bottom: 10px;">
+          <button type="button" class="btn-lg btn-success mr-1 mb-1" (click)="openNew()">New</button>
+        </div>
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>Lab Code</th>
+              <th>Lab Name</th>
+              <th>Chemical Name</th>
+              <th>Lab Incharge</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lab of listlabForm">
+              <td>{{ lab.labCode }}</td>
+              <td>{{ lab.labName }}</td>
+              <td>{{ lab.chemicalName }}</td>
+              <td>{{ lab.labIncharge }}</td>
+              <td>{{ lab.status }}</td>
+              <td>
+                <button class="btn btn-info btn-sm mr-2 " (click)="editLabDetails(lab.recordID)">Edit</button>
+                <button class="btn btn-danger btn-sm " (click)="deleteLabDetail(lab.recordID)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </div>
+  
+
+
+
+<!-- <div class="container">
+    <div class="table-responsive">
+        <h2 class="text-center my-4">Lab Details Listing</h2>
+        <div style="padding-bottom: 10px;">
+        <button type="button" class="btn-lg btn-success mr-1 mb-1" (click)='openNew()'>New</button>
+        </div>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Lab Code</th>
+            <th>Lab Name</th>
+            <th>Chemical Name</th>
+            <th>Lab Incharge</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lab of labForm">
+            <td>{{ lab.labCode }}</td>
+            <td>{{ lab.labName }}</td>
+            <td>{{ lab.chemicalName }}</td>
+            <td>{{ lab.labIncharge }}</td>
+            <td> {{ lab.statusName }}</td> -->
+            <!-- <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'badge-success': lab.status === 'Active',
+                  'badge-danger': lab.status === 'Inactive'
+                }"
+              >
+                {{ lab.status }}
+              </span>
+            </td> -->
+            <!-- <td>
+              <button class="btn btn-info btn-sm mr-2"(click)='editLabDetails(lab.recordID)'>Edit</button>
+              
+              <button class="btn btn-danger btn-sm" (click)="deleteLabDetail(lab.recordID)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+  

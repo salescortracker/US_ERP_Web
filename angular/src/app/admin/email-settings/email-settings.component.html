@@ -1,0 +1,341 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h3>Send Email Setting</h3>
+        <hr/>
+      </div>
+      <div class="card-body">
+        <div class="container">
+            <div class="tab-buttons">
+              <button class="tab-btn {{customeremailbtn}}"  (click)="openEmailinbox('customeremail')">
+                Custom Email
+              </button>
+              <button class="tab-btn {{emailinboxbtn}}"  (click)="openEmailinbox('emailinbox')">
+                Email Body
+              </button>
+              <button class="tab-btn {{signaturebtn}}"  (click)="openEmailinbox('signature')">
+                Signature
+              </button>
+             
+            </div>
+       
+        <div id="customemail" *ngIf="customeremail" class="mt-3">
+            <div class="row">
+                <div class="col-md-2">
+                 <label class="form-label">Email From</label>
+                </div>
+                <div class="col-md-4">
+                   <input type="text" class="form-control" [(ngModel)]="customemails.emailFrom"/>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Email Password</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="password" class="form-control"  [(ngModel)]="customemails.emailPassword"/>
+                   </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-2">
+                 <label class="form-label">Email CC</label>
+                </div>
+                <div class="col-md-4">
+                   <input type="text" class="form-control" [(ngModel)]="customemails.emailCC"/>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Email To</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="text" class="form-control" [(ngModel)]="customemails.emailTo"/>
+                   </div>
+              
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-2">
+                    <label class="form-label">SMTP</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="text" class="form-control" [(ngModel)]="customemails.emailSMTP"/>
+                   </div>
+                <div class="col-md-2">
+                 <label class="form-label">Port</label>
+                </div>
+                <div class="col-md-4">
+                   <input type="text" class="form-control" [(ngModel)]="customemails.emailPort"/>
+                </div>
+                
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-2">
+                    <label class="form-label">Is Default</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="checkbox" [(ngModel)]="customemails.emailDefault"/>
+                   </div>
+                </div>
+             <div class="row mt-3">
+                <div class="col-md-2">
+                  
+                </div>
+                <div class="col-md-2">
+                    <input type="button" value="Submit" class="btn btn-primary m-2" (click)="savecustEmails()"/>
+                    <input type="button" value="Close" class="btn btn-dark"/>
+                </div>
+                
+             </div>
+             <div class="row mt-4">
+                <table class="table table-borderd table-stripped table-hover">
+                    <thead class="bg-dark text-white">
+                        <th>
+                            S.No
+                        </th>
+                        <th>
+                           Email From
+                        </th>
+                       
+                        <th>
+                            Email To
+                         </th>
+                         <th>
+                            Email CC
+                         </th>
+                         <th>
+                           SMTP
+                         </th>
+                         <th>
+                            Port Number
+                          </th>
+                          <th>
+                            Is Default
+                          </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of lstdatacustemail;let i=index;'>
+                            <td>
+                             {{i+1}}
+                            </td>
+                            <td>
+                                {{item.emailFrom}}
+                                
+                            </td>
+                          
+                            <td>
+                                {{item.emailTo}}
+                                
+                            </td>
+                            <td>
+                                {{item.emailCc}}
+                            </td>
+                            <td>
+                                {{item.emailSmtp}}
+                            </td>
+                            <td>
+                                {{item.emailPort}}
+                            </td>
+                            <td>
+                                {{item.emailDefault}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+        <div id="emailinbox" *ngIf="emailinbox" class="mt-3">
+            <div class="row">
+                <div class="col-md-4">
+                 <label class="form-label">Configured Email Accounts</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select"  [(ngModel)]="custombody.admCustomemailId">
+                    <option>--Select Email Account--</option>
+                    <option *ngFor="let item of lstdatacustemail" value="{{item.recordId}}">{{item.emailFrom}}</option>
+                  </select>
+                </div>
+               
+             </div>
+             <div class="row mt-3">
+              <div class="col-md-4">
+                  <label class="form-label">Title Name</label>
+                 </div>
+                 <div class="col-md-8">
+                    <input type="text" class="form-control" [(ngModel)]="custombody.titleName"/>
+                 </div>
+             
+           </div>
+             <div class="row mt-3">
+                <div class="col-md-4">
+                    <label class="form-label">Email Subject</label>
+                   </div>
+                   <div class="col-md-8">
+                      <input type="text" class="form-control" [(ngModel)]="custombody.customSubject"/>
+                   </div>
+               
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-4">
+                    <label class="form-label">Email Body</label>
+                   </div>
+                   <div class="col-md-8">
+                       <textarea class="form-control" style="height:200px" [(ngModel)]="custombody.customBody">
+
+                       </textarea>
+                   </div>
+                  
+                
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-4">
+                    <label class="form-label">Is Default</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="checkbox" [(ngModel)]="custombody.IsDefault"/>
+                   </div>
+                </div>
+             <div class="row mt-3">
+                <div class="col-md-4">
+                  
+                </div>
+                <div class="col-md-2">
+                    <input type="button" value="Submit" class="btn btn-primary m-2" (click)="savecustBody()"/>
+                    <input type="button" value="Close" class="btn btn-dark"/>
+                </div>
+                
+             </div>
+             <div class="row mt-4">
+                <table class="table table-borderd table-stripped table-hover">
+                    <thead class="bg-dark text-white">
+                        <th>
+                            S.No
+                        </th>
+                        <th>
+                           Email From
+                        </th>
+                        <th>
+                           Subject
+                         </th>
+                         <th>
+                           Body
+                         </th>
+                         <th>
+                            Is Default
+                          </th>
+                        
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of lstdatacustbody;let i=index;'>
+                            <td >
+                             {{i+1}}
+                            </td>
+                            <td >
+                              {{item.admCustomEmail}}
+                             </td>
+                             <td >
+                              {{item.customSubject}}
+                             </td>
+                             <td >
+                              {{item.customBody}}
+                             </td>
+                             <td >
+                              {{item.isDefault}}
+                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+        <div id="signature" *ngIf="signature" class="mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                 <label class="form-label">Select From Email</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select" [(ngModel)]="customsignature.admCustomemailId">
+                    <option>--Select Email Account--</option>
+                    <option *ngFor="let item of lstdatacustemail" value="{{item.recordId}}">{{item.emailFrom}}</option>
+                  </select>
+                </div>
+             
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="form-label">Signature Name</label>
+                   </div>
+                   <div class="col-md-8">
+                      <input type="text" class="form-control" [(ngModel)]="customsignature.customSignature"/>
+                   </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                 <label class="form-label">Signature Text(Paste your Signature here):</label>
+                </div>
+                <div class="col-md-8">
+                   <textarea class="form-control" style="height:200px" [(ngModel)]="customsignature.customSignatureText">
+
+                   </textarea>
+                </div>
+            
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="form-label">Is Default</label>
+                   </div>
+                   <div class="col-md-4">
+                      <input type="checkbox" [(ngModel)]="customsignature.IsDefault" />
+                   </div>
+                </div>
+             <div class="row mt-3">
+                <div class="col-md-4">
+                  
+                </div>
+                <div class="col-md-2">
+                    <input type="button" value="Submit" class="btn btn-primary m-2" (click)="savecustsignature()"/>
+                    <input type="button" value="Close" class="btn btn-dark"/>
+                </div>
+                
+             </div>
+             <div class="row mt-4">
+                <table class="table table-borderd table-stripped table-hover">
+                    <thead class="bg-dark text-white">
+                        <th>
+                            S.No
+                        </th>
+                        <th>
+                           Email From
+                        </th>
+                        <th>
+                          Signature Name
+                         </th>
+                         <th>
+                           Signature
+                         </th>
+                         <th>
+                            Is Default
+                          </th>
+                        
+                    </thead>
+                    <tbody>
+                      <tr *ngFor='let item of lstdatacustsignature;let i=index;'>
+                        <td >
+                         {{i+1}}
+                        </td>
+                        <td >
+                          {{item.admCustomEmail}}
+                         </td>
+                         <td >
+                          {{item.customSignature}}
+                         </td>
+                         <td >
+                          {{item.customSignatureText}}
+                         </td>
+                         <td >
+                          {{item.isDefault}}
+                         </td>
+                    </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,25 @@
+.tooltip-arrow {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    animation: moveArrow 0.4s infinite alternate ease-in-out;
+    cursor: pointer;
+  }
+  
+  .tooltip-arrow.paused {
+    animation-play-state: paused;
+  }
+  
+  .arrow {
+    color: black;
+    font-size: 35px;
+  }
+  
+  @keyframes moveArrow {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(15px);
+    }
+  }

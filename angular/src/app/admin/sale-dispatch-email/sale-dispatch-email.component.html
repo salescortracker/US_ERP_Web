@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+       <h3>Sale Dispatch Email</h3>
+       <hr/>
+    </div>
+    <div class=card-body>
+    <div class="row">
+     <div class="col-md-2">
+          <label class="form-label">Description</label>
+     </div>
+     <div class="col-md-4">
+           <input type="text" class="form-control" [(ngModel)]="saledispatchform.description"/>
+     </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-2">
+              <input type="button" class="btn btn-danger" value="Save" (click)="savecrmsaledispatch()"/>&nbsp;
+              <input type="button" class="btn btn-dark" value="Close"/>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px">
+            <thead class="bg-dark text-white">
+            <tr>
+                <th>S.No</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let item of lstdatasaledispatch;let i=index;'>
+                    <td>{{i+1}}</td>
+                    <td>{{item.description}}</td>
+                    <td><span class="ft-edit font-medium-1" (click)="editcrmdispatchemail(item.id)"></span><span class="ft-delete font-medium-1" (click)="deletecrmdispatchemail(item.id)"></span></td>
+                </tr>
+            </tbody>
+           </table>
+      </div>
+    </div>
+    </div>
+    </div>

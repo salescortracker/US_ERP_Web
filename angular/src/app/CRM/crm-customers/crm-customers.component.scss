@@ -1,0 +1,43 @@
+.tooltip-arrow {
+    position: relative;
+    display: inline-flex;
+    margin-left: 10px;
+    animation: moveArrow 0.4s infinite alternate ease-in-out;
+    cursor: pointer;
+}
+.tooltip-arrow.paused {
+    animation-play-state: paused;
+}
+.arrow {
+    color: black;
+    font-size: 40px; /* Increased size for larger arrows */
+}
+@keyframes moveArrow {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(15px);
+    }
+}
+.form-control {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+/* Styles for the "no countries found" card */
+.no-countries-message .warning-icon {
+  font-size: 24px;
+  margin-right: 5px;
+}
+button {
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+button:hover {
+  opacity: 0.9;
+}
+// /* Optional: Add a glowing effect on text */
+// .no-countries-message span {
+//     text-shadow: 0 0 5px #ffffff, 0 0 10px #ff88cc, 0 0 15px #ff44cc; /* Glowing text effect */
+// }

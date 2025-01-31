@@ -1,0 +1,119 @@
+<ngx-spinner></ngx-spinner>
+
+<div *ngIf='opencheck'>
+    <table style="width: 60%;">
+        <tr>
+            <td style="width: 30%;" align="right">Employee</td>
+            <td style="width: 70%;">
+            <select class="form-control" [(ngModel)]='empid' (change)='findDetails()'>
+                <option value="-1">--Select Employee--</option>
+                <option *ngFor='let emp of employees' value="{{emp.recordid}}">{{emp.empname}}</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Emp no</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.empno'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Emp name</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.empname'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Mobile</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.mobile'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Department</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.department'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Designation</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.designation'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Prev Advance</td>
+            <td style="width: 70%;">
+            <input type="text" class="form-control" disabled [(ngModel)]='employee.prevadvance'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Advance</td>
+            <td style="width: 70%;">
+            <input type="number" class="form-control" [(ngModel)]='AdvanceDebit'>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%;" align="right">Monthly Deduction</td>
+            <td style="width: 70%;">
+            <input type="number" class="form-control"  [(ngModel)]='employee.monthlydeduction'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="button" class="btn-lg btn-primary" (click)='save()'>Submit</button>
+            </td>
+        </tr>
+        </table>
+
+</div>
+
+<div *ngIf='!opencheck'>
+<h3>List of Advances</h3>
+
+<table style="width: 100%;">
+    <tr>
+        <td align="right" style="width: 30%;">
+            <input type="date" class="form-control"   [value]="fromdate | date:'yyyy-MM-dd'" (input)="fromdate=parseDate($event.target.value)">
+      
+        </td>
+        <td align="left" style="width: 30%;">
+            <button type="button" class="btn btn-secondary mr-1 mb-1" (click)='listAdd()' >Show</button>
+        </td>
+       
+        <td align="right" style="width: 40%;" *ngIf="addbuttonenable">
+            <button type="button" class="btn btn-success mr-1 mb-1" (click)='openNew()' >New</button>
+        </td>
+        
+    </tr>
+   </table>
+   
+   <table class="table m-0" style="width: 100%;">
+       <thead class="thead-light">
+         <tr>
+           <th>#</th>
+           <th>Emp no</th>
+           <th>Employee</th>
+           <th>Mobile</th>
+           <th>advance</th>
+           <th>Cut off</th>
+       
+         </tr>
+       </thead>
+       <tbody>
+        
+         <tr *ngFor='let det of advances;let i=index'>
+           <th scope="row" >{{i+1}}</th>
+           <td>{{det.empno}}</td>
+           <td>{{det.empname}}</td>
+           <td>{{det.mobile}}</td>
+           <td>{{det.advance | number:'0.2'}}</td>
+           <td>{{det.monthlycutoff | number:'0.2'}}</td>
+           
+          
+         </tr>
+        
+       </tbody>
+     </table>
+
+</div>

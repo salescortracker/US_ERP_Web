@@ -1,0 +1,79 @@
+<div class="form first">
+    <div *ngIf="open == 1">
+      <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+        <div class="h4">
+          Reminders
+        </div>
+        <div>
+          <div class="mr-2 d-flex justify-content-end" style="padding-bottom: 20px; padding-top: 20px;">
+            <!-- Click event to open the Create Reminder form -->
+            <button (click)="openReminderForm()" style="background-color: #8d0000;" type="button" class="btn btn-primary">
+              Create Reminder
+            </button>
+          </div>
+        </div>
+        <table class="rwd-table table-bordered" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Reminder Name</th>
+              <th>Notes</th>
+              <th>Reminder Date</th>
+              <th>Reminder Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reminder of reminders; let i = index">
+              <td>{{ i + 1 }}</td> <!-- Displaying Serial Number -->
+              <td>{{ reminder.reminderName }}</td> <!-- Displaying Reminder Name -->
+              <td>{{ reminder.notes }}</td> <!-- Displaying Notes -->
+              <td>{{ reminder.reminderDate }}</td> <!-- Displaying Reminder Date -->
+              <td>{{ reminder.reminderTime?.hours }}:{{ reminder.reminderTime?.minutes }}</td>
+              <td style="width: 5%;">
+                <i class="ft-edit font-medium-1" (click)="editReminder(reminder.recordId)" style="padding-right:10px"></i>
+                <i class="ft-trash font-medium-1" (click)="deleteReminder(reminder.recordId)"></i>
+              </td>            
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div *ngIf="open == 2">
+      <div class="container">
+        <h2>Reminder Details</h2>
+  
+        <div class="row" style="padding-top: 20px;">
+          <div class="col-md-4">
+            <label for="ReminderName" class="form-label">Reminder Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" placeholder="Enter reminder name"
+              [(ngModel)]="newReminder.reminderName" name="reminderName" />
+          </div>
+          <div class="col-md-4">
+            <label for="ReminderDate" class="form-label">Reminder Date <span class="text-danger">*</span></label>
+            <input type="date" class="form-control" [(ngModel)]="newReminder.reminderDate" name="reminderDate" />
+          </div>
+          <div class="col-md-4">
+            <label for="ReminderTime" class="form-label">Reminder Time <span class="text-danger">*</span></label>
+            <input type="time" class="form-control" [(ngModel)]="newReminder.reminderTime" name="reminderTime" />
+          </div>
+        </div>
+  
+        <div class="row" style="padding-top: 20px;">
+          <div class="col-md-6">
+            <label for="notes" class="form-label">Notes <span class="text-danger">*</span></label>
+            <textarea class="form-control" rows="3" placeholder="Enter your notes" [(ngModel)]="newReminder.notes"
+              name="notes"></textarea>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap" style="padding-top: 40px;">
+          <div class="col-md-6 mt-3">
+            <button (click)="saveReminder()" type="button" class="btn-lg btn-primary mr-1 mb-1">Save</button>
+            <button type="button" class="btn-lg btn-dark mb-1" (click)="closeForm()">Close</button>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+  

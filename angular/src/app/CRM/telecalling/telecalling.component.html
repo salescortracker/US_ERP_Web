@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-header">
+    <h3>
+      List of Tele Calls
+      <hr />
+    </h3>
+  </div>
+  <div class="card-body">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 20%;"> From</td>
+        <td style="width: 20%;">To </td>
+        <td style="width: 20%;"> &nbsp; </td>
+        <td style="width: 20%;">&nbsp;</td>
+        <td style="width: 20%;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="width: 20%;">
+          <div class="input-group">
+            <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp" style="width: 50%;"
+              [(ngModel)]="fromDate">
+          </div>
+        </td>
+        <td style="width: 20%;">
+          <div class="input-group">
+            <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp1" style="width: 50%;"
+              [(ngModel)]="toDate">
+          </div>
+        </td>
+        <td style="width: 20%;">
+          <div class="input-group">
+            <button type="button" class="btn-lg btn-secondary mr-1 mb-1" (click)='getInfo()'>search</button>
+          </div>
+        </td>
+        <td style="width: 20%;">&nbsp;</td>
+        <td style="width: 20%;" align="right">
+          <div class="input-group">
+            <div class="dropdown">
+
+              <button class="dropbtn">New</button>
+              <div class="dropdown-content">
+                <a (click)="fnleadcustomer(1)">Lead Call log</a>
+                <a (click)="fnleadcustomer(2)">Customer Call log</a>
+              </div>
+            </div>       
+          </div>
+          <!-- <button type="button" class="btn btn-success mr-1 mb-1" (click)='openNew()' >New</button> -->
+        </td>
+      </tr>
+    </table>
+
+    <table class="table table-bordered table-stripped table-hover" style="width: 100%;border-radius:4px">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>#</th>
+          <th>Customer/Lead</th>
+          <th>Customer/Lead Name</th>
+          <th>Reason For Call</th>
+          <th>Call Type</th>
+          <th>Caller Notes</th>
+          <th>Customer Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of calllogs; let i = index">
+          <td>{{i+1}}</td>
+          <td><span *ngIf="a.customerId">Customer</span><span *ngIf="!a.customerId">Lead</span></td>
+          <td>{{a.contactName}}</td>
+          <td>{{a.reasonForCallDescription}}</td>
+          <td>{{a.callType}}</td>
+          <td>{{a.callerNotes}}</td>
+          <td>{{a.customerNotes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

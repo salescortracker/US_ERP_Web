@@ -1,0 +1,231 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+         <h2>Tele Calling Details</h2><hr/>
+      </div>
+      <div class="card-body">
+         <div class="row">
+           
+              <div class="col-md-2" >
+                <label >Customer Name</label>
+             </div>
+             <div class="col-md-3" >
+               <select class="form-select" [(ngModel)]="telecallingcustomerform.customer_id" (change)="fnleadcust($event)">
+                   <option>--Select Customer--</option>
+                   <option *ngFor="let lead of leads" [value]="lead.id">{{lead.company}}</option>
+               </select>
+             </div>
+             <div class="col-md-1" >
+                <i class="fas fa-plus" style="font-size: 20px;cursor: pointer;" (click)="fnredirectlead()"></i>
+               </div>
+               <div class="col-md-6" >
+                <button type="button" class="btn btn-success md-1" (click)="eventmodal(customevent)">Add Event</button>&nbsp;
+               
+             
+                <button type="button" class="btn btn-success md-1" (click)="remindermodal(customreminder)">Add Reminder</button>&nbsp;
+                
+            
+                <button type="button" class="btn btn-success md-1" >order Search</button>
+             </div>
+         </div>
+         <div class="row">
+            
+       
+                <div class="container">
+                    
+    
+                    <div class="row" style="padding-top: 20px;">
+                        <div class="col-md-4">
+                            <label for="contactId" class="form-label">Contact <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline" >
+                                <select class="form-select" [(ngModel)]="telecallingcustomerform.contactid">
+                                    <option>--Select Contact--</option>
+                                    <option *ngFor="let item of contactlst" [value]="item.id">
+                                        {{ item.firstName }} {{ item.lastName }}
+                                    </option>
+                                </select>
+                                <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                    class="form-control form-control" placeholder="Enter Contact Name"> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="contactId" class="form-label">Reason For Call <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <select class="form-select" (change)="onReasonChange(customenuiry,customquotation,customorder)"  [(ngModel)]="telecallingcustomerform.reasonforcall">
+                                    <option value="0">--Select Reason for call--</option>
+                                    <!-- <option value="-3">Schedule</option>
+                                    <option value="-4">Reminder</option> -->
+                                    <option value="-5">Enquiry</option>
+                                    <option value="-6">Quotation</option>
+                                    <option value="-7">Order</option>
+                                <option *ngFor="let type of lstdatacallforreason" [value]="type.id">
+                                    {{ type.description }}
+                                </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="callTypes" class="form-label">Call Type <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <select name="callTypes"
+                                    class="form-select form-control-lg" [(ngModel)]="telecallingcustomerform.calltypes">
+                                    <option value="">--Select Call Type--</option>
+                                    <option *ngFor="let type of calltypeslist" [value]="type.id">
+                                        {{ type.description }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="contactId" class="form-label">Caller Notes <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                    class="form-control form-control" placeholder="Enter Contact Name"> -->
+                                    <textarea class="form-control" style="height: 150px;" [(ngModel)]="telecallingcustomerform.callernotes">
+    
+                                    </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="contactId" class="form-label">Customer Notes <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                                    class="form-control form-control" placeholder="Enter Contact Name"> -->
+                                    <textarea class="form-control" style="height: 150px;" [(ngModel)]="telecallingcustomerform.customernotes">
+    
+                                    </textarea>
+                            </div>
+                        </div>
+                       
+    
+                        <!-- <div class="col-md-4">
+                            <label for="leadOwnerId" class="form-label">Lead Owner <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <select [(ngModel)]="callLogForm.leadOwnerId" class="form-control">
+                                    <option value="" disabled selected>Select Lead Owner</option>
+                                    <option *ngFor="let employee of employeesList" [value]="employee.recordId">
+                                        {{ employee.empname }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div> -->
+    
+                       
+                    </div>
+    
+                    <!-- <div class="row" style="padding-top: 20px;">
+                        <div class="col-md-4">
+                            <label for="callDate" class="form-label">Call Date <span
+                                    class="text-danger">*</span></label>
+                            <div class="form-outline">
+                                <input type="date" name="callDate" [(ngModel)]="callLogForm.callDate"
+                                    class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="col-md-8">
+                            <label for="comments" class="form-label">Comments <span
+                                    class="text-danger">*</span></label>
+                            <textarea name="comments" [(ngModel)]="callLogForm.comments" class="form-control"
+                                cols="100" rows="2"></textarea>
+                        </div>
+                    </div> -->
+                    <div class="d-flex flex-wrap" style="padding-top: 40px;">
+                        <div class="col-md-6 mt-3">
+                            <span class=" btn-lg btn-success" (click)="savecustomerlog()"
+                                style="padding-right:10px" >Save</span>&nbsp;&nbsp;
+                            <span class=" btn-lg btn-success"  routerLink="/crm/crmtelecalling">Close</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="mr-2 d-flex justify-content-end" style="padding-bottom: 20px;padding-top: 20px;">
+                    <!-- Click event to open the Create Call Log form -->
+                    <!-- <button (click)="openCreateCallLog()" style="background-color: #8d0000;" type="button"
+                        class="btn btn-primary">
+                        Create Call Log
+                    </button> -->
+                </div>
+            </div>
+         
+        
+      </div>
+    </div>
+    </div>
+    <ng-template #customenuiry let-c="close" let-d="dismiss" >
+        <div class="modal-header" >
+          <h6 class="modal-title">New Enquiry</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              
+          <app-cus-enquiry [childData]="leadId"></app-cus-enquiry>
+        
+    </div>
+      
+      </ng-template>
+      <ng-template #customquotation let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+          <h6 class="modal-title">New Quotation</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+              
+          <app-cus-quotation [childData]="leadId"></app-cus-quotation>
+        </div>
+        
+      
+      </ng-template>
+      <ng-template #customorder let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+          <h6 class="modal-title">New order</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+              
+          <app-cus-order [childData]="leadId"></app-cus-order>
+        </div>
+        
+      
+      </ng-template>
+      <ng-template #customevent let-c="close" let-d="dismiss" >
+        <div class="modal-header" >
+          <h6 class="modal-title">New Event</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              
+          <app-cus-events [childData]="leadId"></app-cus-events>
+        
+    </div>
+      
+      </ng-template>
+      <ng-template #customreminder let-c="close" let-d="dismiss" >
+        <div class="modal-header" >
+          <h6 class="modal-title">New Reminder</h6>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              
+          <app-cus-reminders [childData]="leadId"></app-cus-reminders>
+        
+    </div>
+      
+      </ng-template>

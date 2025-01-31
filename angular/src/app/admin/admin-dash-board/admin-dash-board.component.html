@@ -1,0 +1,67 @@
+<!-- <h3>Administration</h3>
+<table style="width: 100%;">
+    <tr>
+        <td align="center">
+<img src="../../../assets/img/CustomerLogo{{ccode}}.png">
+
+        </td>
+    </tr>
+</table> -->
+<ng-template #myModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Welcome to the Admin Module!</h5>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h4>We're excited to kickstart your ERP journey with us! 🚀</h4>
+      <p style="font-size: 1.1rem; margin-top: 1rem;">
+        <span style="font-size: 1.5rem;">⬅️</span> On the left-hand side, you'll find a list of modules:
+      </p>
+      <ul style="line-height: 1.8; margin-left: 1.5rem;">
+        <li><strong>Administration</strong></li>
+        <li><strong>HRD</strong></li>
+        <li><strong>CRM</strong></li>
+        <li><strong>Inventory</strong></li>
+        <li><strong>Purchases</strong></li>
+        <li><strong>QC</strong></li>
+        <li><strong>Production</strong></li>
+        <li><strong>Maintenance</strong></li>
+        <li><strong>Accounts</strong></li>
+      </ul>
+      <p style="margin-top: 1rem;">
+        Please configure all the key masters in these modules to ensure a smooth start to your ERP journey.
+      </p>
+      <p style="font-weight: bold;">Press the "Next" button to continue.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="closeModal()">Next</button>
+    </div>
+  </ng-template>
+  
+  <div class="container mt-5">
+    <div class="welcome-box">
+      <h5 class="modal-title">ADMIN DASHBOARD</h5>
+      <br>
+      <p>This platform simplifies your operations and boosts productivity with an intuitive interface for managing key business aspects.</p>
+      <p>To get started, choose one of the following options:</p>
+      
+      <p><strong>Option 1: Watch the video</strong><br>
+      The video below provides an overview of the platform and walks you through the basic steps.</p>
+      
+      <video width="100%" controls>
+        <source src="../../../assets/rec.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <br>
+      
+      <p><strong>Option 2: Go to "Countries"</strong><br>
+      If you're ready, click the button below to access the "Countries" submodule and begin configuring the system.</p>
+      <div class="action-buttons  mb-2">
+        <button type="button" class="btn btn-primary" routerLink="/admin/countries">
+          Go to Countries
+        </button>
+      </div>
+     </div>
+     </div>

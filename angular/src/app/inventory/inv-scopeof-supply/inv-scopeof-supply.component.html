@@ -1,0 +1,52 @@
+<div class="container">
+    <ng-container *ngIf="isSidebarVisible">
+      <h2>Scope Of Supply</h2>
+  
+      <!-- Process Form Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="description"> Description</label>
+          <input type="text" class="form-control" id="processName" [(ngModel)]="scopeForm.description">
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <button class="btn btn-primary mr-2" (click)="save()">Save</button>
+        <button class="btn btn-secondary" (click)="close()">Close</button>
+      </div>
+    </ng-container>
+  
+    <div *ngIf="!isSidebarVisible">
+      <div class="table-responsive">
+        <h2 class="text-center my-4">List of Scope of Supply</h2>
+        <button class="btn btn-success mb-3" (click)="openNew()">Add Scope</button>
+      </div>
+  
+      <!-- Table for Listing Processes -->
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>S.No</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let supply of lstsupply; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ supply.description }}</td>
+            <td>
+              <button class="btn btn-info btn-sm mr-2" (click)="edit(supply.recordId)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="delete(supply.recordId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Unauthorized Access Message -->
+    <div *ngIf="!authCheck">
+      <h1>You are not authorized to view this page</h1>
+    </div>
+  </div>
+  

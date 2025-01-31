@@ -1,0 +1,46 @@
+
+.tab-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .tab-btn {
+    width: 100%;
+    border: none;
+    color: #020617;
+    background-color: #eceef0;
+    border-radius: 8px 18px 0px 0px;
+    font-weight: 500;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .tab-btn:hover {
+    background-color: #9f9fa3;
+  }
+  .tab-btn.active {
+    background-color: #9f9fa3;
+    color: white;
+  }
+  
+  .content {
+    display: none;
+  }
+  .content.show {
+    display: flex;
+    gap: 14px;
+    background-color: #c7d2fe;
+    border-radius: 0px 0px 8px 8px;
+    padding: 16px;
+  }
+  
+  .content svg {
+    width: 50%;
+    height: 200px;
+  }
+
+
+
+  input.ng-invalid.ng-touched {
+    border-color: red;
+}

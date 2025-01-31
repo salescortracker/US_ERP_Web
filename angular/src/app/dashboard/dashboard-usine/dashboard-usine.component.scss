@@ -1,0 +1,808 @@
+/* Global Font Style for the Modals */
+.modal-dialog,
+.modal-content,
+.modal-title-container,
+.modal-title,
+.modal-body,
+.modal-footer,
+.modal-body h1,
+.modal-body h4,
+.modal-body p,
+.btn-primary,
+.btn-primary:hover,
+.btn-success,
+.btn-success:hover {
+  font-family: Verdana, Geneva, sans-serif;
+  text-align: center;
+}
+
+/* Backdrop Styling for Dim Background */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dimmed overlay */
+  z-index: 1040; /* Below modal dialog */
+}
+
+/* Center the first modal on the screen */
+.modal-dialog {
+  max-width: 80%;
+  width: auto;
+  display: flex;
+  align-items: center; /* Centers modal vertically */
+  justify-content: center; /* Centers modal horizontally */
+  position: fixed;
+  top: 25%;
+  left: 22%;
+  transform: translate(-50%, -50%);
+  z-index: 1050; /* Ensure above backdrop */
+}
+
+/* Second Modal Dialog - Move towards the center */
+.second-modal-dialog {
+  max-width: 80%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+}
+
+/* Modal Content Styles */
+.modal-content {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Modal Header Styling for Both Modals */
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ccc;
+  text-align: center;
+}
+
+/* First Modal Specific Header */
+.first-modal-header {
+  background-color: #e8f7ff; /* Light blue background */
+  border-bottom: 2px solid #1e88e5;
+}
+
+/* Second Modal Specific Header */
+.second-modal-header {
+  background-color: #fff3cd; /* Light yellow background */
+  border-bottom: 2px solid #856404;
+}
+
+/* Title Container for Centering */
+.modal-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Title Styling for Both Modals */
+.modal-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Title color */
+  margin: 0;
+  text-align: center;
+}
+
+/* First Modal Title Specific */
+.first-modal-title {
+  color: #1e88e5; /* Blue color */
+}
+
+/* Second Modal Title Specific */
+.second-modal-title {
+  color: #856404; /* Dark yellow color */
+}
+
+/* Close Button Styling for Both Modals */
+.modal-header .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #333;
+  background: transparent;
+  border: none;
+}
+
+.modal-header .close:hover {
+  color: #000;
+}
+
+/* Modal Body Styling */
+.modal-body {
+  padding: 30px;
+  font-size: 3rem;
+  color: #333;
+  text-align: center;
+}
+
+/* First Modal Body Specific */
+.first-modal-body {
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+/* Second Modal Body Specific */
+.second-modal-body {
+  background-color: #fff8e1; /* Light cream body background */
+}
+
+/* Body Text Styling */
+.modal-body h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modal-body h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-body h4 {
+  font-size: 1.5rem;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Modal Footer Styling */
+.modal-footer {
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+}
+
+.first-modal-footer {
+  background-color: #e8f7ff; /* Light blue footer background */
+  border-top: 2px solid #1e88e5;
+}
+
+.second-modal-footer {
+  background-color: #fff3cd; /* Light yellow footer background */
+  border-top: 2px solid #856404;
+}
+
+/* Customizing Buttons */
+.btn-primary, .btn-success {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.first-modal-btn {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.first-modal-btn:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.second-modal-btn {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.second-modal-btn:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Responsiveness for Small Screens */
+@media (max-width: 900px) {
+  .modal-dialog {
+    max-width: 95%;
+  }
+
+  .second-modal-dialog {
+    max-width: 95%;
+  }
+
+  .modal-body h1 {
+    font-size: 2rem;
+  }
+
+  .modal-body p {
+    font-size: 1.2rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.side-menu {
+  position: fixed;
+  z-index: 99999;
+  width: 99px;
+  height: 100vh;
+  color: #F0F0F0;
+  background: linear-gradient(-180deg, #365AEB 0, #000 100%);
+  // background: linear-gradient(-180deg, #365AEB 0, #000 100%);
+  // background: linear-gradient(-180deg,#365AEB 0,#CC002A 100%);        
+  // background: linear-gradient(-180deg, #000000 -20%, #CC002A 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.cor-menus {
+  position: relative;
+  padding: 30px 0 0 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 30px;
+  // overflow: auto;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  .menu {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      font-weight: 400;
+      font-size: 12px;
+      gap: 5px;
+      position: relative;
+      z-index: 999999;
+      display: inline-block;
+
+      i {
+          font-size: 26px;
+      }
+  }
+
+  .content {
+      display: none;
+      position: fixed;
+      left: 100%;
+      left: 95px !important;
+      top: 0;
+      z-index: 9999999;
+      padding: 5px;
+      background-color: #fff;
+      box-shadow: 0 1px 0 #e0e1e7;
+      color: #000;
+      border-radius: 4px;
+      text-align: start;
+      white-space: nowrap;
+      font-size: 14px;
+      width: 270px;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+
+      .content-item {
+          padding: 5px 5px;
+          margin: 2px 0;
+      }
+
+      .content-item:hover {
+          // background: #F4F5FF;
+          // color: #365AEB;
+          background: #E9ECEF;
+          font-weight: 700;
+          border-radius: 5px;
+      }
+  }
+
+  .menu:hover .content {
+      display: block;
+  }
+}
+
+.cor-menus::-webkit-scrollbar {
+  display: none;
+}
+
+.content-item {
+  color: #5F6981;
+
+  i {
+      font-size: 18px !important;
+      padding-right: 5px;
+      width: 30px;
+  }
+}
+
+
+
+ng-sidebar-container
+{
+    height: 100vh;
+}
+
+::ng-deep .ng-sidebar
+{
+    background-color: white;
+    width: 95%;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+#content
+{
+    width: 95%;
+}
+
+.terms-modal .modal-content {
+   // background-color: #292b2c;
+    width: 900px;
+  //  color: white;
+    position:absolute;
+    left: -200px;
+}
+ .terms-modal .close {
+    color: black;
+}
+
+.terms-modal .modal-title {
+  color: black;
+}
+
+
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    width: 190%;
+    color: white;
+    position:absolute;
+    left: -300px;
+}
+ .dark-modal .close {
+    color: white;
+}
+
+.dark-modal .modal-title {
+  color: white;
+}
+
+
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+ // -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+body{
+  background-color: #f7f7ff;
+  }
+  .radius-10 {
+      border-radius: 10px !important;
+  }
+  
+  .border-info {
+      border-left: 5px solid  #0dcaf0 !important;
+  }
+  .border-danger {
+      border-left: 5px solid  #fd3550 !important;
+  }
+  .border-success {
+      border-left: 5px solid  #15ca20 !important;
+  }
+  .border-warning {
+      border-left: 5px solid  #ffc107 !important;
+  }
+  .border-primary {
+    border-left: 5px solid  #6a07ff !important;
+}
+.border-secondary {
+  border-left: 5px solid  grey !important;
+}
+.border-dark {
+  border-left: 5px solid  black !important;
+}
+  
+.border-light {
+  border-left: 5px solid  lightcoral !important;
+}
+.text-coral{
+  color:lightcoral !important;
+}
+  
+  
+  .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0px solid rgba(0, 0, 0, 0);
+      border-radius: 0.5rem;
+      margin-bottom: 3rem;
+    //  box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+  }
+  .card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid transparent; /* Default border to avoid jump effect */
+    border-radius: 0.5rem;
+    margin-bottom: 3rem;
+    width: 100%; /* Adjust width to 100% of the parent container */
+    height: 450px; /* Set a fixed height for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Smooth hover animation */
+}
+
+.card1:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    border: 4px solid #3498db; /* Border color on hover */
+    animation: move 1s infinite; /* Add a subtle pulsing animation to the border */
+}
+
+/* Border Pulse Animation */
+@keyframes move {
+    0% {
+        border-color: #89c6ef;
+    }
+    50% {
+        border-color: #4655b9; /* Slightly darker shade for pulse effect */
+    }
+    100% {
+        border-color: #0004f4;
+    }
+    50% {
+      border-color: #4655b9; /* Slightly darker shade for pulse effect */
+  }
+  100% {
+    border-color: #89c6ef;
+}
+}
+
+/* Adjust for responsiveness */
+@media (max-width: 768px) {
+    .card1 {
+        height: 300px; /* Reduced height on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .card1 {
+        height: 250px; /* Further reduced height for mobile devices */
+    }
+}
+
+
+.card2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid transparent; /* Default border to avoid jump effect */
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+  width: 100%; /* Adjust width to 100% of the parent container */
+  height: 550px; /* Set a fixed height for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Smooth hover animation */
+}
+
+.card2:hover {
+  transform: translateY(-10px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+  border: 4px solid #3498db; /* Border color on hover */
+  animation: move 1s infinite; /* Add a subtle pulsing animation to the border */
+}
+
+/* Adjust for responsiveness */
+@media (max-width: 768px) {
+  .card2 {
+      height: 300px; /* Reduced height on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .card2 {
+      height: 250px; /* Further reduced height for mobile devices */
+  }
+}
+
+  .bg-gradient-scooter {
+      background: #17ead9;
+      background: -webkit-linear-gradient( 
+  45deg
+   , #17ead9, #6078ea)!important;
+      background: linear-gradient( 
+  45deg
+   , #17ead9, #6078ea)!important;
+  }
+  .widgets-icons-2 {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ededed;
+      font-size: 27px;
+      border-radius: 10px;
+  }
+  .rounded-circle {
+      border-radius: 50%!important;
+  }
+  .text-white {
+      color: #fff!important;
+  }
+  .ms-auto {
+      margin-left: auto!important;
+  }
+  .bg-gradient-bloody {
+      background: #f54ea2;
+      background: -webkit-linear-gradient( 
+  45deg
+   , #f54ea2, #ff7676)!important;
+      background: linear-gradient( 
+  45deg
+   , #f54ea2, #ff7676)!important;
+  }
+  
+  .bg-gradient-ohhappiness {
+      background: #00b09b;
+      background: -webkit-linear-gradient( 
+  45deg
+   , #00b09b, #96c93d)!important;
+      background: linear-gradient( 
+  45deg
+   , #00b09b, #96c93d)!important;
+  }
+  
+  .bg-gradient-blooker {
+      background: #ffdf40;
+      background: -webkit-linear-gradient( 
+  45deg
+   , #ffdf40, #ff8359)!important;
+      background: linear-gradient( 
+  45deg
+   , #ffdf40, #ff8359)!important;
+  }
+  .bg-gradient-primary {
+    background: blue;
+    background: -webkit-linear-gradient( 
+45deg
+ , rgb(85, 85, 217), #6159ff)!important;
+    background: linear-gradient( 
+45deg
+ , rgb(148, 148, 209), #6159ff)!important;
+}
+.bg-gradient-secondary {
+  background: grey;
+  background: -webkit-linear-gradient( 
+45deg
+, grey, grey)!important;
+  background: linear-gradient( 
+45deg
+, grey, grey)!important;
+}
+.bg-gradient-dark {
+  background: black;
+  background: -webkit-linear-gradient( 
+45deg
+, black, grey)!important;
+  background: linear-gradient( 
+45deg
+, black, grey)!important;
+}
+.bg-gradient-light {
+  background: lightcoral;
+  background: -webkit-linear-gradient( 
+45deg
+, lightcoral, lightcoral)!important;
+  background: linear-gradient( 
+45deg
+, lightcoral, lightcoral)!important;
+}
+.bg-gradient-maintenance {
+  background: lightsalmon;
+  background: -webkit-linear-gradient( 
+45deg
+, lightsalmon, lightsalmon)!important;
+  background: linear-gradient( 
+45deg
+, lightsalmon, lightsalmon)!important;
+}
+.border-maintenance{
+  border-left: 5px solid lightsalmon !important;
+}
+.text-maintenance{
+  color:lightsalmon;
+}
+.bg-gradient-admin {
+  background: blueviolet;
+  background: -webkit-linear-gradient( 
+45deg
+, blueviolet, blueviolet)!important;
+  background: linear-gradient( 
+45deg
+, blueviolet, blueviolet)!important;
+}
+.border-admin{
+  border-left: 5px solid blueviolet !important;
+}
+.text-admin{
+  color:blueviolet;
+}
+
+/* Hover effect to show dropdown menu */
+.hover-effect:hover .dropdown-menu {
+  display: block;
+  top: 100%;  /* Position dropdown below the card */
+  left: 0;    /* Align dropdown to the left edge of the card */
+  z-index: 1000;
+  width: 100%; /* Make dropdown full width of parent */
+  animation: dropdown-fade-in 0.5s ease forwards; /* Add animation for fade-in effect */
+}
+
+/* Position the hover effect relative to the dropdown */
+.hover-effect {
+  position: relative; /* Required to position the dropdown */
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+  background-color: #f0f0f0; /* Updated background color */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd; /* Updated border style */
+  border-radius: 0.5rem; /* Increased border radius for a more rounded appearance */
+  margin-top: 0;
+  top: 100%;
+  left: 0;
+  padding: 0.5rem 0;
+  min-width: 180px; /* Ensure dropdown has a minimum width */
+  width: 100%; /* Ensure dropdown width matches parent width */
+  max-height: 1100px; /* Set a maximum height for the dropdown */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+  display: none; /* Initially hide the dropdown */
+  position: absolute; /* Absolute positioning relative to parent */
+  transition: all 0.5s ease; /* Faster transition effect */
+  opacity: 0; /* Start with hidden state */
+  transform: translateY(-10px); /* Start slightly above */
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for hover effects */
+}
+
+.dropdown-item:hover {
+  background-color: #1a89f8; /* Updated hover background color */
+  transform: translateY(-2px); /* Slight upward movement for a dynamic feel */
+  box-shadow: 0 4px 8px rgba(26, 137, 248, 0.2); /* Add shadow on hover */
+  color: white;
+}
+
+/* Keyframes for dropdown fade-in effect */
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* .navbar-nav .nav-item:hover .dropdown-menu {
+   display: block;
+} */
+
+.card {
+  cursor: pointer;
+}
+
+.widgets-icons-2 {
+  font-size: 24px;
+}
+
+.centered-line {
+    width: 100%; /* Full width of the viewport */
+    text-align: center; /* Center the line */
+}
+
+.line {
+    border: 0;
+    border-top: 2px solid #333; /* Color and thickness of the line */
+    width: 50%; /* Adjust width of the line */
+    margin: 0 auto; /* Center the line horizontally */
+}

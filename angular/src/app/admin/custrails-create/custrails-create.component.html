@@ -1,0 +1,232 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+         <h2>Create Customer Trails</h2> 
+          <hr/>
+      </div>
+      <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+               <label class="form-label">Company Name</label>
+            </div>
+            <div class="col-md-3">
+                <h4>{{companyName}}</h4>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Company ID</label>
+             </div>
+             <div class="col-md-2">
+                 <h4>{{id}}</h4>
+             </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-3">
+               <label class="form-label">Mode</label>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" ngDefaultControl [(ngModel)]="custtrails.mode">
+                <option>--Select Mode--</option>
+                <option value="Trail">Trail</option>
+                <option value="Paid">Paid</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Registration Date</label>
+             </div>
+             <div class="col-md-3">
+              <input type="date" class="form-control" ngDefaultControl [(ngModel)]="custtrails.regDate"    [value]="custtrails.regDate | date:'yyyy-MM-dd'"/>
+             </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+                <label class="form-label">Expiration Date</label>
+             </div>
+             <div class="col-md-3">
+              <input type="date" class="form-control" ngDefaultControl [(ngModel)]="custtrails.expDate"/>
+             </div>
+             <div class="col-md-3">
+                <label class="form-label">No Of Logins</label>
+             </div>
+             <div class="col-md-3">
+              <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.nooflogins"/>
+             </div>
+          </div>
+        
+          <div class="row mt-3">
+            <div class="col-md-3">
+                <label class="form-label">Dispatch Email</label>
+             </div>
+             <div class="col-md-3">
+              <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.dispatch_email"/>
+             </div>
+            
+          </div>
+         
+          <div class="row mt-3">
+            <div class="col-md-12">
+                <h2>Personal Details</h2>
+                <hr/>
+            </div>
+            <div class="row mt-3">
+               <div class="col-md-3">
+                  <label class="form-label"> Name</label>
+               </div>
+               <div class="col-md-3">
+                <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.customer"/>
+               </div>
+               <div class="col-md-3">
+                <label class="form-label">Address</label>
+               </div>
+               <div class="col-md-3">
+                <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.addr"/>
+               </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> Country</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.country"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">State</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.stat"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> District</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.district"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">City</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control"  ngDefaultControl [(ngModel)]="custtrails.city"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> Zip</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.zip"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">Mobile</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.mobile"/>
+                </div>
+                
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="form-label">TelePhone</label>
+                   </div>
+                   <div class="col-md-3">
+                    <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.tel"/>
+                   </div>
+                   <div class="col-md-3">
+                    <label class="form-label">Fax</label>
+                   </div>
+                   <div class="col-md-3">
+                    <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.fax"/>
+                   </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="form-label">Email</label>
+                   </div>
+                   <div class="col-md-3">
+                    <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.email"/>
+                   </div>
+                  
+             </div>
+              
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+                <h2>Company Details</h2>
+                <hr/>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> Company Name</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.companyName"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">Owner Name</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.ownerName"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> Owner Email</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.ownerEmail"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">POC Name</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.pocName"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label"> POC Email</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.pocEmail"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">Head Count</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.headcount"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label">WebSite URL</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.websiteUrl"/>
+                </div>
+                <div class="col-md-3">
+                 <label class="form-label">Industry</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.industry"/>
+                </div>
+             </div>
+             <div class="row mt-3">
+                <div class="col-md-3">
+                   <label class="form-label">Location</label>
+                </div>
+                <div class="col-md-3">
+                 <input type="text" class="form-control" ngDefaultControl [(ngModel)]="custtrails.location"/>
+                </div>
+               
+             </div>
+        </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+                <input type="button" class="btn btn-primary btn-lg m-2" value="Save" (click)="updateRegTrails()"/>
+           
+            <input type="button" class="btn btn-dark btn-lg" value="Close" routerLink="/admin/custrails"/></div>
+          </div>
+      </div>
+    </div>
+ 
+</div>

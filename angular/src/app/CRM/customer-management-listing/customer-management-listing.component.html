@@ -1,0 +1,104 @@
+<!-- customer-management-listing.component.html -->
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Customer Listing</h2>
+      <hr />
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn-lg btn-success mr-1 mb-1" routerLink="/crm/customercreate">New Customer</button>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select Columns
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        
+            <div *ngFor="let col of columnKeys">
+              <input type="checkbox" [(ngModel)]="displayColumns[col.key]" /> {{ col.label }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th *ngIf="displayColumns.leadOwner">Customer Owner</th>
+            <th *ngIf="displayColumns.companyName">Company Name</th>
+            <th *ngIf="displayColumns.leadSource">Customer Source</th>
+            <th *ngIf="displayColumns.leadStage">Customer Stage</th>
+            <th *ngIf="displayColumns.leadStatus">Customer Status</th>
+            <th *ngIf="displayColumns.createdAt">Creation Date</th>
+            <th *ngIf="displayColumns.industry">Industry</th>
+            <th *ngIf="displayColumns.code">Code</th>
+            <th *ngIf="displayColumns.branchId">Branch ID</th>
+            <th *ngIf="displayColumns.customerCode">Customer Code</th>
+            <th *ngIf="displayColumns.status">Status</th>
+            <th *ngIf="displayColumns.firstName">First Name</th>
+            <th *ngIf="displayColumns.lastName">Last Name</th>
+            <th *ngIf="displayColumns.businessEmail">Business Email</th>
+            <th *ngIf="displayColumns.secondaryEmail">Secondary Email</th>
+            <th *ngIf="displayColumns.phoneNumber">Phone Number</th>
+            <th *ngIf="displayColumns.alternateNumber">Alternate Number</th>
+            <th *ngIf="displayColumns.description">Description</th>
+            <th *ngIf="displayColumns.website">Website</th>
+            <th *ngIf="displayColumns.numberOfEmployees">Number of Employees</th>
+            <th *ngIf="displayColumns.annualRevenue">Annual Revenue</th>
+            <th *ngIf="displayColumns.rating">Rating</th>
+            <th *ngIf="displayColumns.emailOutputFormat">Email Output Format</th>
+            <th *ngIf="displayColumns.skypeId">Skype ID</th>
+            <th *ngIf="displayColumns.leadGroup">Customer Group</th>
+            <th>Converted Customer</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lead of displayCustomers" >
+            <td *ngIf="displayColumns.leadOwner">{{ lead.leadOwnerName }}</td>
+            <td *ngIf="displayColumns.companyName">
+              <a routerLink="/crm/crmcusmain/{{lead.id}}">{{ lead.company }}</a>
+            </td>
+            <td *ngIf="displayColumns.leadSource">{{ lead.leadSourceName }}</td>
+            <td *ngIf="displayColumns.leadStage">{{ lead.leadStageName }}</td>
+            <td *ngIf="displayColumns.leadStatus">{{ lead.leadStatusName }}</td>
+            <td *ngIf="displayColumns.createdAt">{{ lead.createdAt | date:'dd/MM/yyyy' }}</td>
+            <td *ngIf="displayColumns.industry">{{ lead.industryName }}</td>
+            <td *ngIf="displayColumns.code">{{ lead.code }}</td>
+            <td *ngIf="displayColumns.branchId">{{ lead.branchId }}</td>
+            <td *ngIf="displayColumns.customerCode">{{ lead.customerCode }}</td>
+            <td *ngIf="displayColumns.leadGroup">{{ lead.mainGroup }}</td>
+            <td *ngIf="displayColumns.status">{{ lead.status }}</td>
+            <td *ngIf="displayColumns.firstName">{{ lead.first_name }}</td>
+            <td *ngIf="displayColumns.lastName">{{ lead.last_name }}</td>
+            <td *ngIf="displayColumns.businessEmail">{{ lead.business_email }}</td>
+            <td *ngIf="displayColumns.secondaryEmail">{{ lead.secondaryEmail }}</td>
+            <td *ngIf="displayColumns.phoneNumber">{{ lead.phoneNumber }}</td>
+            <td *ngIf="displayColumns.alternateNumber">{{ lead.alternateNumber }}</td>
+            <td *ngIf="displayColumns.description">{{ lead.description }}</td>
+            <td *ngIf="displayColumns.website">{{ lead.website }}</td>
+            <td *ngIf="displayColumns.numberOfEmployees">{{ lead.numberOfEmployees }}</td>
+            <td *ngIf="displayColumns.annualRevenue">{{ lead.annualRevenue }}</td>
+            <td *ngIf="displayColumns.rating">{{ lead.rating }}</td>
+            <td *ngIf="displayColumns.emailOutputFormat">{{ lead.emailOutputFormat }}</td>
+            <td *ngIf="displayColumns.skypeId">{{ lead.skypeId }}</td>
+            <td>
+              <span *ngIf="lead.convert_customer" >Converted Customer</span>
+              <span *ngIf="!lead.convert_customer" >Created Customer</span>
+            </td>
+            <!-- <td [ngClass]="{ 'routeGreen': lead.convert_customer}">{{lead.customerconverted}}</td> -->
+            <td style="width: 5%;">
+              <i *ngIf='!opened' class="ft-edit font-medium-1" routerLink="/crm/customercreate"
+                [queryParams]="{cusid:lead.id}" routerLinkActive="active" style="padding-right:10px"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshCustomers()">
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

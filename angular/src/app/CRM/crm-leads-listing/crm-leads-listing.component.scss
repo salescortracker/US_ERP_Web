@@ -1,0 +1,9 @@
+.company-link {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+
+    &:hover {
+        color: #0056b3; /* Darker shade on hover */
+        text-decoration: underline; /* Add underline on hover */
+    }
+}

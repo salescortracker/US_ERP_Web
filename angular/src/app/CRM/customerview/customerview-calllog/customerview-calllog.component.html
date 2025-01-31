@@ -1,0 +1,127 @@
+<div *ngIf="!newCalllog">
+    <div class="d-flex justify-content-between ">
+        <h3>Call logs</h3>
+        <div>
+            <button class="btn mb-3 mr-3 btn-primary" (click)="newCalllog = true">Add Call logs</button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Customer Owner </th>
+                <th scope="col">Reason For Call</th>
+                <th scope="col">Call Type</th>
+                <th scope="col">Caller Notes</th>
+                <th scope="col">Customer Notes </th>
+                <th scope="col">Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of callLogs; let i = index">
+                <td>{{ i+1 }}</td> 
+                <td>{{ a.contactId }}</td> <!-- Displaying Lead Owner ID -->
+                <td>{{ a.reasonforcallname }}</td> <!-- Displaying Contact ID -->
+                <td>{{ a.callTypesName }}</td> <!-- Displaying Call Types -->
+                <td>{{ a.callernotes }}</td> <!-- Formatting Date -->
+                <td>{{ a.customernotes }}</td> <!-- Displaying Comments -->
+                <td style="width: 5%;">
+                    <i class="ft-edit font-medium-1 text-primary" (click)="editCallLog(a.id)"
+                        style="padding-right:10px"></i>
+                    <i class="ft-trash font-medium-1 text-danger" (click)="deleteCallLog(a.id)"></i>
+                </td>
+            </tr>         
+        </tbody>
+    </table>
+</div>
+<div  *ngIf="newCalllog">
+    <h3 class="title">New Call logs</h3>
+    <hr>
+    <div class="content">
+      
+        <div class="" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;"
+        >
+        <div class="container">
+           
+
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-md-4">
+                    <label for="contactId" class="form-label">Contact <span
+                            class="text-danger">*</span></label>
+                    <div class="form-outline" >
+                        <select class="form-select form-control-lg" [(ngModel)]="callLogForm.contactId">
+                            <option value="">--Select Contact--</option>
+                            <option *ngFor="let item of contactlst" [value]="item.firstName">
+                                {{ item.firstName }} {{ item.lastName }}
+                            </option>
+                        </select>
+                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                            class="form-control form-control" placeholder="Enter Contact Name"> -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="contactId" class="form-label">Reason For Call <span
+                            class="text-danger">*</span></label>
+                    <div class="form-outline">
+                        <select class="form-select form-control-lg" (change)="onReasonChange()"  [(ngModel)]="callLogForm.reasonforcall">
+                            <option value="0">--Select Reason for call--</option>
+                            <option value="-3">Schedule</option>
+                            <option value="-4">Reminder</option>
+                            <option value="-5">Enquiry</option>
+                            <option value="-6">Quotation</option>
+                            <option value="-7">Order</option>
+                        <option *ngFor="let type of lstdatacallforreason" [value]="type.id">
+                            {{ type.description }}
+                        </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="callTypes" class="form-label">Call Type <span
+                            class="text-danger">*</span></label>
+                    <div class="form-outline">
+                        <select name="callTypes" [(ngModel)]="callLogForm.callTypes"
+                            class="form-select form-control-lg">
+                            <option value="">--Select Call Type--</option>
+                            <option *ngFor="let type of calltypeslist" [value]="type.id">
+                                {{ type.description }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="contactId" class="form-label">Caller Notes <span
+                            class="text-danger">*</span></label>
+                    <div class="form-outline">
+                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                            class="form-control form-control" placeholder="Enter Contact Name"> -->
+                            <textarea class="form-control"  maxlength="500" style="height: 150px;" [(ngModel)]="callLogForm.callernotes">
+
+                            </textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="contactId" class="form-label">Customer Notes <span
+                            class="text-danger">*</span></label>
+                    <div class="form-outline">
+                        <!-- <input type="text" name="contactId" [(ngModel)]="callLogForm.contactId"
+                            class="form-control form-control" placeholder="Enter Contact Name"> -->
+                            <textarea class="form-control" maxlength="500" style="height: 150px;" [(ngModel)]="callLogForm.customernotes">
+
+                            </textarea>
+                    </div>
+                </div>
+               
+
+<br/>
+            <div class="d-flex">
+                <div>
+                    <button  (click)="saveCallLog()" class="submit-button">Submit</button>
+                </div>
+                <div>
+                    <button (click)="newCalllog = false" class="close-button">Close</button>
+                </div>
+            </div>
+       
+    </div>
+</div>

@@ -1,0 +1,57 @@
+
+<div class="container">
+    <ng-container *ngIf="isSidebarVisible">
+      <h2>Units</h2>
+  
+      <!-- Process Form Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="description"> Units</label>
+          <input type="text" class="form-control" id="processName" [(ngModel)]="Form.units">
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <button class="btn btn-primary mr-2" (click)="saveUnits()">Save</button>
+        <button class="btn btn-secondary" (click)="close()">Close</button>
+      </div>
+    </ng-container>
+  
+    <div *ngIf="!isSidebarVisible">
+      <div class="table-responsive">
+        <h2 class="text-center my-4">List of Units</h2>
+        <button class="btn btn-success mb-3" (click)="openNew()">Add Units</button>
+      </div>
+  
+      <!-- Table for Listing Processes -->
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>S.No</th>
+            <th>Units</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let units of lstunits; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ units.units }}</td>
+            <td>
+              <button class="btn btn-info btn-sm mr-2" (click)="editUnits(units.recordId)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteUnits(units.recordId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Unauthorized Access Message -->
+    <div *ngIf="!authCheck">
+      <h1>You are not authorized to view this page</h1>
+    </div>
+  </div>
+  
+
+apps-fileview.texmex_20241121.01_p0
+crm-units.component.html
+Displaying crm-units.component.html.

@@ -1,0 +1,260 @@
+<div class="container">
+    <ng-container *ngIf="isFormVisible">
+        <h2>Enquiry Register</h2>
+
+        <!-- Enquiry Form Fields -->
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="date">Date</label>
+                <input type="datetime-local" class="form-control" id="date" [(ngModel)]="enquiryregisterForm.date" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="enquiryFrom">Enquiry From</label>
+                <input type="text" class="form-control" id="enquiryFrom" [(ngModel)]="enquiryregisterForm.enquiryFrom" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="enquiryDetails">Enquiry Details</label>
+                <input type="text" class="form-control" id="enquiryDetails" [(ngModel)]="enquiryregisterForm.enquiryDetails" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="productRange">Product Range</label>
+                <input type="text" class="form-control" id="productRange" [(ngModel)]="enquiryregisterForm.productRange" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="process" class="form-label">Process</label>
+                <select class="form-control" id="process" [(ngModel)]="enquiryregisterForm.process" required>
+                    <option value="" disabled selected>Select Process</option>
+                    <option *ngFor="let process of lstProcess" [value]="process.recordId">{{ process.processName }}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="quotationDetails">Quotation Submission Details</label>
+                <input type="text" class="form-control" id="quotationDetails" [(ngModel)]="enquiryregisterForm.quotationSubmissionDetails" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="negotiationDetails">Negotiation Details</label>
+                <input type="text" class="form-control" id="negotiationDetails" [(ngModel)]="enquiryregisterForm.negotiationDetails" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="orderAcceptance">Order Acceptance Details</label>
+                <select class="form-control" id="orderAcceptance" [(ngModel)]="enquiryregisterForm.orderAcceptanceDetails" required>
+                    <option value="">--Select--</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row" *ngIf="enquiryregisterForm.orderAcceptanceDetails === 'yes'">
+            <div class="form-group col-md-4">
+                <label for="expectedDelivery">Expected Date of Delivery</label>
+                <input type="datetime-local" class="form-control" id="expectedDelivery" [(ngModel)]="enquiryregisterForm.expectedDateOfDelivery" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="actualDelivery">Actual Date of Delivery</label>
+                <input type="datetime-local" class="form-control" id="actualDelivery" [(ngModel)]="enquiryregisterForm.actualDateOfDelivery" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="remarks">Remarks</label>
+                <input type="text" class="form-control" id="remarks" [(ngModel)]="enquiryregisterForm.remarks" required>
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <label for="preparedBy">Prepared By:</label>
+                <input type="text" id="preparedBy" class="form-control" name="preparedBy" [(ngModel)]="enquiryregisterForm.preparedby" required>
+            </div>
+            <div class="col-md-6 text-right">
+                <label for="approvedBy">Approved By:</label>
+                <input type="text" id="preparedBy" class="form-control" name="preparedBy" [(ngModel)]="enquiryregisterForm.approvedBy" required>
+            </div>
+        </div>
+           
+    
+        
+        <div class="d-flex justify-content-end mt-3">
+            <button type="submit" class="btn-lg btn-primary mr-1 mb-1" [disabled]="!creCheck" (click)="save()">
+                {{ saveStr }}
+            </button>
+            <button type="button" class="btn btn-dark mr-1 mb-1" (click)="close()">Close</button>
+            <button type="button" class="btn btn-primary mr-1 mb-1" (click)="next()" >Next</button>
+         
+        </div>
+    </ng-container>
+
+    <div *ngIf="!isFormVisible">
+        <div class="table-responsive">
+            <h2 class="text-center my-4">Enquiry Register Listing</h2>
+            <button class="btn btn-success mb-3" (click)="openNewEnquiry()">Add Enquiry</button>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>S. No.</th>
+                    <th>Date</th>
+                    <th>Enquiry From</th>
+                    <th>Process</th>
+                    <th>Order Acceptance</th>
+                    <th>Expected Delivery</th>
+                    <th>Actual Delivery</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let enquiry of lstEnquiries; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ enquiry.date | date }}</td>
+                    <td>{{ enquiry.enquiryFrom }}</td>
+                    <td>{{ enquiry.processName }}</td>
+                    <td>{{ enquiry.orderAcceptanceDetails }}</td>
+                    <td>{{ enquiry.expectedDateOfDelivery | date }}</td>
+                    <td>{{ enquiry.actualDateOfDelivery | date }}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm mr-2" (click)="edit(enquiry.recordId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="delete(enquiry.recordId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="card">
+    <div class="card-header">
+        <h3>Enquiry Register</h3>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="date" class="form-label">Date</label>
+                <input type="datetime" class="form-control" id="date" name="date" [(ngModel)]="enquiryregisterForm.date" required>
+            </div>
+            <div class="col-md-4">
+                <label for="enquiryFrom" class="form-label">Enquiry From</label>
+                <input type="text" class="form-control" id="enquiryFrom" name="enquiryFrom" [(ngModel)]="enquiryregisterForm.enquiryFrom" required>
+            </div>
+            <div class="col-md-4">
+                <label for="enquiryDetails" class="form-label">Enquiry Details</label>
+                <input type="text" class="form-control" id="enquiryDetails" name="enquiryDetails" [(ngModel)]="enquiryregisterForm.enquiryDetails" required>
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="productRange" class="form-label">Product Range</label>
+                <input type="text" class="form-control" id="productRange" name="productRange" [(ngModel)]="enquiryregisterForm.productRange" required>
+            </div> -->
+            <!-- <div class="col-md-4">
+                <label for="process" class="form-label">Process</label>
+                <input type="text" class="form-control" id="process" name="process" [(ngModel)]="enquiryregisterForm.process">
+                
+            </div> -->
+            <!-- <div class="col-md-4">
+                <label for="process" class="form-label">Process</label>
+                <select class="form-control" id="process" name="process" [(ngModel)]="enquiryregisterForm.process">
+                    <option value="" disabled selected>Select Process</option>
+                    <option *ngFor="let process of lstProcess" [value]="process.recordId">{{ process.processName }}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="quotationDetails" class="form-label">Quotation Submission Details</label>
+                <input type="text" class="form-control" id="quotationDetails" name="quotationDetails" [(ngModel)]="enquiryregisterForm.quotationSubmissionDetails" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="negotiationDetails" class="form-label">Negotiation Details</label>
+                <input type="text" class="form-control" id="negotiationDetails" name="negotiationDetails" [(ngModel)]="enquiryregisterForm.negotiationDetails" required>
+            </div>
+            <div class="col-md-6">
+                <label for="orderAcceptance" class="form-label">Order Acceptance Details</label>
+                <select class="form-control" id="orderAcceptance" name="orderAcceptance" [(ngModel)]="enquiryregisterForm.orderAcceptanceDetails" required>
+                    <option value="">--Select--</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3" *ngIf="enquiryregisterForm.orderAcceptanceDetails === 'yes'">
+            <div class="col-md-4">
+                <label for="expectedDelivery" class="form-label">Expected Date of Delivery</label>
+                <input type="datetime" class="form-control" id="expectedDelivery" name="expectedDelivery" [(ngModel)]="enquiryregisterForm.expectedDateOfDelivery" required>
+            </div>
+            <div class="col-md-4">
+                <label for="actualDelivery" class="form-label">Actual Date of Delivery</label>
+                <input type="datetime" class="form-control" id="actualDelivery" name="actualDelivery" [(ngModel)]="enquiryregisterForm.actualDateOfDelivery" required>
+            </div>
+            <div class="col-md-4">
+                <label for="remarks" class="form-label">Remarks</label>
+                <input type="text" class="form-control" id="remarks" name="remarks" [(ngModel)]="enquiryregisterForm.remarks" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <label for="preparedBy">Prepared By:</label>
+                    <input type="text" id="preparedBy" class="form-control" name="preparedBy" [(ngModel)]="enquiryregisterForm.preparedby" required>
+                </div>
+                <div class="col-md-6 text-right">
+                    <label for="approvedBy">Approved By:</label>
+                    <input type="text" id="preparedBy" class="form-control" name="preparedBy" [(ngModel)]="enquiryregisterForm.approvedBy" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn-lg btn-primary mr-1 mb-1" [disabled]="!creCheck" (click)="save()">
+            {{ saveStr }}
+        </button>
+        <button type="button" class="btn btn-dark mr-1 mb-1" (click)="close()">Close</button>
+        <button type="button" class="btn btn-primary mr-1 mb-1" (click)="next()" >Next</button>
+     
+    </div>
+</div>
+
+<table class="enquiry-table">
+    <thead>
+        <tr>
+            <th>S. No.</th>
+            <th>Date</th>
+            <th>Enquiry From</th>
+            <th>Process</th>
+            <th>Order Acceptance Details</th>
+            <th>Expected Date of Delivery</th>
+            <th>Actual Date of Delivery</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of lstEnquiries; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.date }}</td>
+            <td>{{ row.enquiryFrom }}</td>
+            <td>{{ row.processName }}</td>
+            <td>{{ row.orderAcceptanceDetails }}</td>
+            <td>{{ row.expectedDateOfDelivery }}</td>
+            <td>{{ row.actualDateOfDelivery }}</td>
+            <td>
+                <i class="ft-edit font-medium-1 edit" (click)="edit(row.recordId)"></i>
+                <i class="ft-trash-2 font-medium-1" (click)="delete(row.recordId)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table> -->

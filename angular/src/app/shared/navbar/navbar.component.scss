@@ -1,0 +1,32 @@
+.newclass
+{
+    background-color: #484494;
+    color: white;
+}
+.clientClass
+{
+    font-family: "Arial Rounded MT Bold";
+    font-size:xx-large;
+    font-weight: bold;
+}.navbar-static{
+    box-shadow: 6px 0px 20px 0 rgba(25, 42, 70, 0.35);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    white-space: nowrap;
+}
+.menucss>a{
+    color: #ae1175;
+    // background: #ae1175;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    
+    margin: 0;
+    perspective: 500px;
+    transition: all 0.3s ease;
+    word-spacing: 5px;
+    border-radius: 3px;
+   
+}

@@ -1,0 +1,85 @@
+
+ng-sidebar-container
+{
+    height: 100vh;
+}
+
+::ng-deep .ng-sidebar
+{
+    background-color: white;
+    width: 55%;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.tooltip-arrow {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    animation: moveArrow 0.4s infinite alternate ease-in-out;
+    cursor: pointer;
+  }
+  
+  .tooltip-arrow.paused {
+    animation-play-state: paused;
+  }
+  
+  .arrow {
+    color: black;
+    font-size: 35px;
+  }
+  
+  @keyframes moveArrow {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(15px);
+    }
+  }
+  
+  /* Styles for the "no countries found" card */
+.no-countries-message {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background: linear-gradient(135deg, #6e7eeb, #82aaff); /* Futuristic gradient background */
+  border: 1px solid #4a66c2; /* Darker border with gradient effect */
+  border-radius: 15px; /* More rounded corners for a smooth look */
+  padding: 25px; /* Add more spacing inside the card */
+  font-size: 18px; /* Increased font size for better visibility */
+  color: #ffffff; /* White text for contrast */
+  font-weight: 700; /* Bold text for prominence */
+  margin: 20px auto; /* Add spacing around the card */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease; /* Smooth transitions */
+  max-width: 650px; /* Slightly wider for a modern look */
+  text-align: center; /* Center text inside the card */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+/* Style for the warning icon */
+.warning-icon {
+  font-size: 60px; /* Increased icon size */
+  margin-right: 15px; /* Space between icon and text */
+}
+/* Hover effect */
+.no-countries-message:hover {
+  transform: translateY(-10px); /* More lift on hover */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); /* Deeper shadow for hover */
+  background: linear-gradient(135deg, #82aaff, #6e7eeb); /* Reverse gradient on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Slight white tint for a more dynamic look */
+  color: black;
+  border-color: #374d9d; /* Darker border on hover */
+}

@@ -1,0 +1,31 @@
+<div class="card-wrapper card">
+    <div>
+        <div class="m-2">
+            <div class=" tab-buttons">
+                <button *ngFor="let tab of tabs;let i = index" class=" tab-btn"
+                    [ngClass]="{'active': selectedTab === i}" (click)="selectTab(i)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div *ngIf="selectedTab === 0" class="tab-pane fade show active">
+                <app-pur-advances></app-pur-advances>
+            </div>
+            <div *ngIf="selectedTab === 1" class="tab-pane fade show active">
+                <app-pur-purchases-tra></app-pur-purchases-tra>
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-pane fade show active">
+                <app-pur-purchase-returns></app-pur-purchase-returns>
+            </div>
+            <div *ngIf="selectedTab === 3" class="tab-pane fade show active">
+                <app-pur-purchase-credit-notes></app-pur-purchase-credit-notes>
+            </div>
+            <div *ngIf="selectedTab === 4" class="tab-pane fade show active">
+                <app-pur-purchase-payments></app-pur-purchase-payments>
+            </div>
+            
+          
+        </div>
+    </div>
+</div>

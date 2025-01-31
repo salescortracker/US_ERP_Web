@@ -1,0 +1,44 @@
+<div class="card-wrapper card">
+    <div>
+        <div class="m-2">
+            <div class=" tab-buttons">
+                <button *ngFor="let tab of tabs;let i = index" class=" tab-btn"
+                    [ngClass]="{'active': selectedTab === i}" (click)="selectTab(i)">
+                    {{ tab }}
+                </button>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div *ngIf="selectedTab === 0" class="tab-pane fade show active">
+              <app-inv-opening-stocks></app-inv-opening-stocks>
+                <!-- <app-inv-consumable-production></app-inv-consumable-production> -->
+            </div>
+            <div *ngIf="selectedTab === 1" class="tab-pane fade show active">
+                <app-inv-cost-rep-closing-values></app-inv-cost-rep-closing-values>
+                <!-- <app-inv-losses-tra></app-inv-losses-tra> -->
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-pane fade show active">
+                <app-inv-price-list></app-inv-price-list>
+                <!-- <app-inv-sample-inwards></app-inv-sample-inwards> -->
+            </div>
+            <div *ngIf="selectedTab === 3" class="tab-pane fade show active">
+                <app-inv-consumable-production></app-inv-consumable-production>
+                <!-- <app-leadview-orders></app-leadview-orders> -->
+                <!-- <app-inv-sample-outwards></app-inv-sample-outwards> -->
+            </div>
+            <div *ngIf="selectedTab === 4" class="tab-pane fade show active">
+                <!-- <app-lab-screen-list></app-lab-screen-list> -->
+                <app-inv-losses-tra></app-inv-losses-tra>
+            </div>
+            <div *ngIf="selectedTab === 5" class="tab-pane fade show active">
+                <!-- <app-lab-screen-list></app-lab-screen-list> -->
+                <app-inv-sample-inwards></app-inv-sample-inwards>
+            </div>
+            <div *ngIf="selectedTab === 6" class="tab-pane fade show active">
+                <!-- <app-lab-screen-list></app-lab-screen-list> -->
+                <app-inv-sample-outwards></app-inv-sample-outwards>
+            </div>
+          
+        </div>
+    </div>
+</div>
